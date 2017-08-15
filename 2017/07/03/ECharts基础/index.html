@@ -1,0 +1,738 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="数据可视化," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/uploads/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="第一个简单的图表引入 ECharts12345678&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;meta charset=&quot;utf-8&quot;&amp;gt;    &amp;lt;!-- 引入 ECharts 文件 --&amp;gt;    &amp;lt;script src=&quot;echarts.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;/head&amp;g">
+<meta name="keywords" content="数据可视化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECharts基础">
+<meta property="og:url" content="http://yoursite.com/2017/07/03/ECharts基础/index.html">
+<meta property="og:site_name" content="离离原上草">
+<meta property="og:description" content="第一个简单的图表引入 ECharts12345678&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;meta charset=&quot;utf-8&quot;&amp;gt;    &amp;lt;!-- 引入 ECharts 文件 --&amp;gt;    &amp;lt;script src=&quot;echarts.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;/head&amp;g">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-03T06:17:01.533Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ECharts基础">
+<meta name="twitter:description" content="第一个简单的图表引入 ECharts12345678&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;meta charset=&quot;utf-8&quot;&amp;gt;    &amp;lt;!-- 引入 ECharts 文件 --&amp;gt;    &amp;lt;script src=&quot;echarts.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;/head&amp;g">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/03/ECharts基础/"/>
+
+
+
+
+
+  <title>ECharts基础 | 离离原上草</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">离离原上草</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/03/ECharts基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="徐宏亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="离离原上草">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ECharts基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-03T10:43:20+08:00">
+                2017-07-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第一个简单的图表"><a href="#第一个简单的图表" class="headerlink" title="第一个简单的图表"></a>第一个简单的图表</h1><h2 id="引入-ECharts"><a href="#引入-ECharts" class="headerlink" title="引入 ECharts"></a>引入 ECharts</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 引入 ECharts 文件 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"echarts.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="绘制一个简单的图表"><a href="#绘制一个简单的图表" class="headerlink" title="绘制一个简单的图表"></a>绘制一个简单的图表</h2><p>在绘图前我们需要为 ECharts 准备一个具备高宽的 DOM 容器。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 为 ECharts 准备一个具备大小（宽高）的 DOM --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span> <span class="attr">style</span>=<span class="string">"width: 600px;height:400px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>然后就可以通过 echarts.init 方法初始化一个 echarts 实例并通过 setOption 方法生成一个简单的柱状图，下面是完整代码。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>ECharts<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 引入 echarts.js --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"echarts.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 为ECharts准备一个具备大小（宽高）的Dom --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span> <span class="attr">style</span>=<span class="string">"width: 600px;height:400px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="actionscript">        <span class="comment">// 基于准备好的dom，初始化echarts实例</span></span></div><div class="line"><span class="javascript">        <span class="keyword">var</span> myChart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'main'</span>));</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="actionscript">        <span class="comment">// 指定图表的配置项和数据</span></span></div><div class="line"><span class="actionscript">        <span class="keyword">var</span> option = &#123;</span></div><div class="line"><span class="undefined">            title: &#123;</span></div><div class="line"><span class="actionscript">                text: <span class="string">'ECharts 入门示例'</span></span></div><div class="line"><span class="undefined">            &#125;,</span></div><div class="line"><span class="undefined">            tooltip: &#123;&#125;,</span></div><div class="line"><span class="undefined">            legend: &#123;</span></div><div class="line"><span class="actionscript">                data:[<span class="string">'销量'</span>]</span></div><div class="line"><span class="undefined">            &#125;,</span></div><div class="line"><span class="undefined">            xAxis: &#123;</span></div><div class="line"><span class="actionscript">                data: [<span class="string">"衬衫"</span>,<span class="string">"羊毛衫"</span>,<span class="string">"雪纺衫"</span>,<span class="string">"裤子"</span>,<span class="string">"高跟鞋"</span>,<span class="string">"袜子"</span>]</span></div><div class="line"><span class="undefined">            &#125;,</span></div><div class="line"><span class="undefined">            yAxis: &#123;&#125;,</span></div><div class="line"><span class="undefined">            series: [&#123;</span></div><div class="line"><span class="actionscript">                name: <span class="string">'销量'</span>,</span></div><div class="line"><span class="actionscript">                type: <span class="string">'bar'</span>,</span></div><div class="line"><span class="undefined">                data: [5, 20, 36, 10, 10, 20]</span></div><div class="line"><span class="undefined">            &#125;]</span></div><div class="line"><span class="undefined">        &#125;;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="actionscript">        <span class="comment">// 使用刚指定的配置项和数据显示图表。</span></span></div><div class="line"><span class="undefined">        myChart.setOption(option);</span></div><div class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>这样你的第一个图表就诞生了！</p>
+<h1 id="异步数据加载和更新"><a href="#异步数据加载和更新" class="headerlink" title="异步数据加载和更新"></a>异步数据加载和更新</h1><h2 id="异步数据加载"><a href="#异步数据加载" class="headerlink" title="异步数据加载"></a>异步数据加载</h2><p>echarts中的数据是在初始化后setOption中直接填入的，但是很多时候可能数据需要异步加载后再填入。ECharts 中实现异步数据的更新非常简单，在图表初始化后不管任何时候只要通过 jQuery 等工具异步获取数据后通过 setOption 填入数据和配置项就行。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>echarts<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"jquery-1.12.3.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 引入 ECharts 文件 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"echarts.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 为 ECharts 准备一个具备大小（宽高）的 DOM --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span> <span class="attr">style</span>=<span class="string">"width: 600px;height:400px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">    <span class="keyword">var</span> dom = <span class="built_in">document</span>.getElementById(<span class="string">"main"</span>);</span></div><div class="line"><span class="actionscript">    <span class="keyword">var</span> myChart = echarts.init(dom);</span></div><div class="line"><span class="actionscript">    <span class="keyword">var</span> app = &#123;&#125;;</span></div><div class="line"><span class="actionscript">    option = <span class="literal">null</span>;</span></div><div class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">fetchData</span><span class="params">(cb)</span> </span>&#123;</span></div><div class="line"><span class="actionscript">        <span class="comment">// 通过 setTimeout 模拟异步加载</span></span></div><div class="line"><span class="actionscript">        setTimeout(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span></div><div class="line"><span class="undefined">            cb(&#123;</span></div><div class="line"><span class="actionscript">                categories: [<span class="string">"衬衫"</span>,<span class="string">"羊毛衫"</span>,<span class="string">"雪纺衫"</span>,<span class="string">"裤子"</span>,<span class="string">"高跟鞋"</span>,<span class="string">"袜子"</span>],</span></div><div class="line"><span class="undefined">                data: [5, 20, 36, 10, 10, 20]</span></div><div class="line"><span class="undefined">            &#125;);</span></div><div class="line"><span class="undefined">        &#125;, 3000);</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="actionscript">    <span class="comment">// 初始 option</span></span></div><div class="line"><span class="undefined">    option = &#123;</span></div><div class="line"><span class="undefined">        title: &#123;</span></div><div class="line"><span class="actionscript">            text: <span class="string">'异步数据加载示例'</span></span></div><div class="line"><span class="undefined">        &#125;,</span></div><div class="line"><span class="undefined">        tooltip: &#123;&#125;,</span></div><div class="line"><span class="undefined">        legend: &#123;</span></div><div class="line"><span class="actionscript">            data:[<span class="string">'销量'</span>]</span></div><div class="line"><span class="undefined">        &#125;,</span></div><div class="line"><span class="undefined">        xAxis: &#123;</span></div><div class="line"><span class="undefined">            data: []</span></div><div class="line"><span class="undefined">        &#125;,</span></div><div class="line"><span class="undefined">        yAxis: &#123;&#125;,</span></div><div class="line"><span class="undefined">        series: [&#123;</span></div><div class="line"><span class="actionscript">            name: <span class="string">'销量'</span>,</span></div><div class="line"><span class="actionscript">            type: <span class="string">'bar'</span>,</span></div><div class="line"><span class="undefined">            data: []</span></div><div class="line"><span class="undefined">        &#125;]</span></div><div class="line"><span class="undefined">    &#125;;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="undefined">    myChart.showLoading();</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="actionscript">    fetchData(<span class="function"><span class="keyword">function</span> <span class="params">(data)</span> </span>&#123;</span></div><div class="line"><span class="undefined">        myChart.hideLoading();</span></div><div class="line"><span class="undefined">        myChart.setOption(&#123;</span></div><div class="line"><span class="undefined">            xAxis: &#123;</span></div><div class="line"><span class="undefined">                data: data.categories</span></div><div class="line"><span class="undefined">            &#125;,</span></div><div class="line"><span class="undefined">            series: [&#123;</span></div><div class="line"><span class="actionscript">                <span class="comment">// 根据名字对应到相应的系列</span></span></div><div class="line"><span class="actionscript">                name: <span class="string">'销量'</span>,</span></div><div class="line"><span class="undefined">                data: data.data</span></div><div class="line"><span class="undefined">            &#125;]</span></div><div class="line"><span class="undefined">        &#125;);</span></div><div class="line"><span class="undefined">    &#125;);;</span></div><div class="line"><span class="actionscript">    <span class="keyword">if</span> (option &amp;&amp; <span class="keyword">typeof</span> option === <span class="string">"object"</span>) &#123;</span></div><div class="line"><span class="actionscript">        myChart.setOption(option, <span class="literal">true</span>);</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="数据更新"><a href="#数据更新" class="headerlink" title="数据更新"></a>数据更新</h2><p>ECharts 由数据驱动，数据的改变驱动图表展现的改变，因此动态数据的实现也变得异常简单。<br>所有数据的更新都通过 setOption实现，你只需要定时获取数据，setOption 填入数据，而不用考虑数据到底产生了那些变化，ECharts 会找到两组数据之间的差异然后通过合适的动画去表现数据的变化。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>echarts<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"jquery-1.12.3.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 引入 ECharts 文件 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"echarts.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 为 ECharts 准备一个具备大小（宽高）的 DOM --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span> <span class="attr">style</span>=<span class="string">"width: 600px;height:400px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="actionscript">    <span class="comment">//初始化</span></span></div><div class="line"><span class="javascript">    <span class="keyword">var</span> dom = <span class="built_in">document</span>.getElementById(<span class="string">"main"</span>);</span></div><div class="line"><span class="actionscript">    <span class="keyword">var</span> myChart = echarts.init(dom);</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="actionscript">    <span class="keyword">var</span> app = &#123;&#125;;</span></div><div class="line"><span class="actionscript">    option = <span class="literal">null</span>;</span></div><div class="line"><span class="javascript">    <span class="keyword">var</span> base = +<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2014</span>, <span class="number">9</span>, <span class="number">3</span>);</span></div><div class="line"><span class="actionscript">    <span class="keyword">var</span> oneDay = <span class="number">24</span> * <span class="number">3600</span> * <span class="number">1000</span>;</span></div><div class="line"><span class="actionscript">    <span class="keyword">var</span> date = [];</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript">    <span class="keyword">var</span> data = [<span class="built_in">Math</span>.random() * <span class="number">150</span>];</span></div><div class="line"><span class="javascript">    <span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(base);</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="actionscript">    <span class="comment">//参数shift为ture时把数组的第一个元素从其中删除</span></span></div><div class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">addData</span><span class="params">(shift)</span> </span>&#123;</span></div><div class="line"><span class="actionscript">        now = [now.getFullYear(), now.getMonth() + <span class="number">1</span>, now.getDate()].join(<span class="string">'/'</span>);</span></div><div class="line"><span class="actionscript">        <span class="comment">//向数组的末尾添加一个或多个元素</span></span></div><div class="line"><span class="undefined">        date.push(now);</span></div><div class="line"><span class="javascript">        data.push((<span class="built_in">Math</span>.random() - <span class="number">0.4</span>) * <span class="number">10</span> + data[data.length - <span class="number">1</span>]);</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="actionscript">        <span class="keyword">if</span> (shift) &#123;</span></div><div class="line"><span class="undefined">            date.shift();</span></div><div class="line"><span class="undefined">            data.shift();</span></div><div class="line"><span class="undefined">        &#125;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript">        now = <span class="keyword">new</span> <span class="built_in">Date</span>(+<span class="keyword">new</span> <span class="built_in">Date</span>(now) + oneDay);</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="actionscript">    <span class="comment">//生成100个数据</span></span></div><div class="line"><span class="actionscript">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="number">100</span>; i++) &#123;</span></div><div class="line"><span class="undefined">        addData();</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="undefined">    option = &#123;</span></div><div class="line"><span class="undefined">        xAxis: &#123;</span></div><div class="line"><span class="actionscript">            type: <span class="string">'category'</span>,</span></div><div class="line"><span class="actionscript">            boundaryGap: <span class="literal">false</span>,</span></div><div class="line"><span class="undefined">            data: date</span></div><div class="line"><span class="undefined">        &#125;,</span></div><div class="line"><span class="undefined">        yAxis: &#123;</span></div><div class="line"><span class="actionscript">            boundaryGap: [<span class="number">0</span>, <span class="string">'50%'</span>],</span></div><div class="line"><span class="actionscript">            type: <span class="string">'value'</span></span></div><div class="line"><span class="undefined">        &#125;,</span></div><div class="line"><span class="undefined">        series: [</span></div><div class="line"><span class="undefined">            &#123;</span></div><div class="line"><span class="actionscript">                name:<span class="string">'成交'</span>,</span></div><div class="line"><span class="actionscript">                type:<span class="string">'line'</span>,</span></div><div class="line"><span class="actionscript">                smooth:<span class="literal">true</span>,</span></div><div class="line"><span class="actionscript">                symbol: <span class="string">'none'</span>,</span></div><div class="line"><span class="actionscript">                stack: <span class="string">'a'</span>,</span></div><div class="line"><span class="undefined">                areaStyle: &#123;</span></div><div class="line"><span class="undefined">                    normal: &#123;&#125;</span></div><div class="line"><span class="undefined">                &#125;,</span></div><div class="line"><span class="undefined">                data: data</span></div><div class="line"><span class="undefined">            &#125;</span></div><div class="line"><span class="undefined">        ]</span></div><div class="line"><span class="undefined">    &#125;;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="actionscript">    <span class="comment">//500毫秒循环一次</span></span></div><div class="line"><span class="actionscript">    setInterval(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span></div><div class="line"><span class="actionscript">        <span class="comment">//数据改动</span></span></div><div class="line"><span class="actionscript">        addData(<span class="literal">true</span>);</span></div><div class="line"><span class="actionscript">        <span class="comment">//数据更新</span></span></div><div class="line"><span class="undefined">        myChart.setOption(&#123;</span></div><div class="line"><span class="undefined">            xAxis: &#123;</span></div><div class="line"><span class="undefined">                data: date</span></div><div class="line"><span class="undefined">            &#125;,</span></div><div class="line"><span class="undefined">            series: [&#123;</span></div><div class="line"><span class="actionscript">                name:<span class="string">'成交'</span>,</span></div><div class="line"><span class="undefined">                data: data</span></div><div class="line"><span class="undefined">            &#125;]</span></div><div class="line"><span class="undefined">        &#125;);</span></div><div class="line"><span class="undefined">    &#125;, 500);</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="actionscript">    <span class="keyword">if</span> (option &amp;&amp; <span class="keyword">typeof</span> option === <span class="string">"object"</span>) &#123;</span></div><div class="line"><span class="actionscript">        myChart.setOption(option, <span class="literal">true</span>);</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h1 id="在图表中加入交互组件"><a href="#在图表中加入交互组件" class="headerlink" title="在图表中加入交互组件"></a>在图表中加入交互组件</h1><p>除了图表外 ECharts 中，提供了很多交互组件。例如：</p>
+<ul>
+<li>图例组件 legend</li>
+<li>标题组件 title</li>
+<li>视觉映射组件 visualMap</li>
+<li>数据区域缩放组件 dataZoom</li>
+<li>时间线组件 timeline</li>
+</ul>
+<h1 id="移动端自适应"><a href="#移动端自适应" class="headerlink" title="移动端自适应"></a>移动端自适应</h1><p>ECharts 工作在用户指定高宽的 DOM 节点（容器）中。ECharts 的『组件』和『系列』都在这个 DOM 节点中，每个节点都可以由用户指定位置。图表库内部并不适宜实现 DOM 文档流布局，因此采用类似绝对布局的简单容易理解的布局方式。但是有时候容器尺寸极端时，这种方式并不能自动避免组件重叠的情况，尤其在移动端小屏的情况下。</p>
+<h2 id="ECharts组件的定位和布局"><a href="#ECharts组件的定位和布局" class="headerlink" title="ECharts组件的定位和布局"></a>ECharts组件的定位和布局</h2><p>大部分『组件』和『系列』会遵循两种定位方式：<br><strong> left/right/top/bottom/width/height 定位方式：</strong><br>在横向，left、right、width 三个量中，只需两个量有值即可，因为任两个量可以决定组件的位置和大小，例如 left 和 right 或者 right 和 width 都可以决定组件的位置和大小。<br>在纵向，top、bottom、height 三个量中，和横向类同。</p>
+<p>值可以为绝对值或百分比或位置描述</p>
+<ul>
+<li>绝对值<br>单位是浏览器像素（px），用 number 形式书写（不写单位）。例如 {left: 23, height: 400}。</li>
+<li>百分比<br>表示占 DOM 容器高宽的百分之多少，用 string 形式书写。例如 {right: ‘30%’, bottom: ‘40%’}。</li>
+<li>位置描述<br>可以设置 left: ‘center’，表示水平居中与top: ‘middle’，表示垂直居中。</li>
+</ul>
+<p><strong>center / radius 定位方式：</strong></p>
+<ul>
+<li>center<br>是一个数组，表示 [x, y]，其中，x、y可以是『绝对值』或者『百分比』，含义和前述相同。</li>
+<li>radius<br>是一个数组，表示 [内半径, 外半径]，其中，内外半径可以是『绝对值』或者『百分比』，含义和前述相同。</li>
+</ul>
+<p>在自适应容器大小时，百分比设置是很有用的。</p>
+<h2 id="横向（horizontal）和纵向（vertical）"><a href="#横向（horizontal）和纵向（vertical）" class="headerlink" title="横向（horizontal）和纵向（vertical）"></a>横向（horizontal）和纵向（vertical）</h2><p>ECharts的『外观狭长』型的组件（如 legend、visualMap、dataZoom、timeline等），大多提供了『横向布局』『纵向布局』的选择。例如，在细长的移动端屏幕上，可能适合使用『纵向布局』；在PC宽屏上，可能适合使用『横向布局』。</p>
+<p>横纵向布局的设置，一般在『组件』或者『系列』的 orient 或者 layout 配置项上，设置为 ‘horizontal’ 或者 ‘vertical’。</p>
+<h2 id="Media-Query"><a href="#Media-Query" class="headerlink" title="Media Query"></a>Media Query</h2><p>Media Query 提供了『随着容器尺寸改变而改变』的能力。<br>要在 option 中设置 Media Query 须遵循如下格式：<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">option = &#123;</div><div class="line">    baseOption: &#123; // 这里是基本的『原子option』。</div><div class="line">        title: <span class="meta">&#123;...&#125;</span>,</div><div class="line">        legend: <span class="meta">&#123;...&#125;</span>,</div><div class="line">        series: [<span class="meta">&#123;...&#125;</span>, <span class="meta">&#123;...&#125;</span>, ...],</div><div class="line">        ...</div><div class="line">    &#125;,</div><div class="line">    media: [ // 这里定义了 media query 的逐条规则。</div><div class="line">        &#123;</div><div class="line">            query: <span class="meta">&#123;...&#125;</span>,   // 这里写规则。</div><div class="line">            option: &#123;       // 这里写此规则满足下的option。</div><div class="line">                legend: <span class="meta">&#123;...&#125;</span>,</div><div class="line">                ...</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            query: <span class="meta">&#123;...&#125;</span>,   // 第二个规则。</div><div class="line">            option: &#123;       // 第二个规则对应的option。</div><div class="line">                legend: <span class="meta">&#123;...&#125;</span>,</div><div class="line">                ...</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        &#123;                   // 这条里没有写规则，表示『默认』，</div><div class="line">            option: &#123;       // 即所有规则都不满足时，采纳这个option。</div><div class="line">                legend: <span class="meta">&#123;...&#125;</span>,</div><div class="line">                ...</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>上面的例子中，baseOption、以及 media 每个 option 都是『原子 option』，即普通的含有各组件、系列定义的 option。而由『原子option』组合成的整个 option，我们称为『复合 option』。baseOption 是必然被使用的，此外，满足了某个 query 条件时，对应的 option 会被使用 chart.mergeOption() 来 merge 进去。</p>
+<h3 id="query："><a href="#query：" class="headerlink" title="query："></a>query：</h3><p>每个 query 类似于这样：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attribute">minWidth</span>: <span class="number">200</span>,</div><div class="line">    maxHeight: <span class="number">300</span>,</div><div class="line">    minAspectRatio: <span class="number">1.3</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在支持三个属性：width、height、aspectRatio（长宽比）。每个属性都可以加上 min 或 max 前缀。比如，minWidth: 200 表示『大于等于200px宽度』。两个属性一起写表示『并且』，比如：{minWidth: 200, maxHeight: 300} 表示『大于等于200px宽度，并且小于等于300px高度』。</p>
+<h3 id="option："><a href="#option：" class="headerlink" title="option："></a>option：</h3><p>media中的 option 既然是『原子 option』，理论上可以写任何 option 的配置项。但是一般我们只写跟布局定位相关的，例如截取上面例子中的一部分 query option：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">media</span>: [</div><div class="line">    ...,</div><div class="line">    &#123;</div><div class="line">        <span class="attribute">query</span>: &#123;</div><div class="line">            <span class="attribute">maxAspectRatio</span>: <span class="number">1</span>           <span class="comment">// 当长宽比小于1时。</span></div><div class="line">        &#125;,</div><div class="line">        <span class="attribute">option</span>: &#123;</div><div class="line">            <span class="attribute">legend</span>: &#123;                   <span class="comment">// legend 放在底部中间。</span></div><div class="line">                <span class="attribute">right</span>: <span class="string">'center'</span>,</div><div class="line">                <span class="attribute">bottom</span>: <span class="number">0</span>,</div><div class="line">                <span class="attribute">orient</span>: <span class="string">'horizontal'</span>    <span class="comment">// legend 横向布局。</span></div><div class="line">            &#125;,</div><div class="line">            <span class="attribute">series</span>: [                   <span class="comment">// 两个饼图左右布局。</span></div><div class="line">                &#123;</div><div class="line">                    <span class="attribute">radius</span>: [<span class="number">20</span>, <span class="string">'50%'</span>],</div><div class="line">                    <span class="attribute">center</span>: [<span class="string">'50%'</span>, <span class="string">'30%'</span>]</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    <span class="attribute">radius</span>: [<span class="number">30</span>, <span class="string">'50%'</span>],</div><div class="line">                    <span class="attribute">center</span>: [<span class="string">'50%'</span>, <span class="string">'70%'</span>]</div><div class="line">                &#125;</div><div class="line">            ]</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attribute">query</span>: &#123;</div><div class="line">            <span class="attribute">maxWidth</span>: <span class="number">500</span>               <span class="comment">// 当容器宽度小于 500 时。</span></div><div class="line">        &#125;,</div><div class="line">        <span class="attribute">option</span>: &#123;</div><div class="line">            <span class="attribute">legend</span>: &#123;</div><div class="line">                <span class="attribute">right</span>: <span class="number">10</span>,              <span class="comment">// legend 放置在右侧中间。</span></div><div class="line">                <span class="attribute">top</span>: <span class="string">'15%'</span>,</div><div class="line">                <span class="attribute">orient</span>: <span class="string">'vertical'</span>      <span class="comment">// 纵向布局。</span></div><div class="line">            &#125;,</div><div class="line">            <span class="attribute">series</span>: [                   <span class="comment">// 两个饼图上下布局。</span></div><div class="line">                &#123;</div><div class="line">                    <span class="attribute">radius</span>: [<span class="number">20</span>, <span class="string">'50%'</span>],</div><div class="line">                    <span class="attribute">center</span>: [<span class="string">'50%'</span>, <span class="string">'30%'</span>]</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    <span class="attribute">radius</span>: [<span class="number">30</span>, <span class="string">'50%'</span>],</div><div class="line">                    <span class="attribute">center</span>: [<span class="string">'50%'</span>, <span class="string">'75%'</span>]</div><div class="line">                &#125;</div><div class="line">            ]</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    ...</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h3 id="多个-query-被满足时的优先级："><a href="#多个-query-被满足时的优先级：" class="headerlink" title="多个 query 被满足时的优先级："></a>多个 query 被满足时的优先级：</h3><p>注意，可以有多个 query 同时被满足，会都被 mergeOption，定义在<strong>后</strong>的后被 merge（即优先级更高）。</p>
+<h3 id="默认-query："><a href="#默认-query：" class="headerlink" title="默认 query："></a>默认 query：</h3><p>如果 media 中有某项不写 query，则表示『默认值』，即所有规则都不满足时，采纳这个option。</p>
+<h3 id="容器大小实时变化时的注意事项："><a href="#容器大小实时变化时的注意事项：" class="headerlink" title="容器大小实时变化时的注意事项："></a>容器大小实时变化时的注意事项：</h3><p>在不少情况下，并不需要容器DOM节点任意随着拖拽变化大小，而是只是根据不同终端设置几个典型尺寸。</p>
+<p>但是如果容器DOM节点需要能任意随着拖拽变化大小，那么目前使用时需要注意这件事：某个配置项，如果在某一个 query option 中出现，那么在其他 query option 中也必须出现，否则不能够回归到原来的状态。（left/right/top/bottom/width/height 不受这个限制。）</p>
+<h3 id="『复合-option』-中的-media-不支持-merge"><a href="#『复合-option』-中的-media-不支持-merge" class="headerlink" title="『复合 option』 中的 media 不支持 merge"></a>『复合 option』 中的 media 不支持 merge</h3><p>也就是说，当第二（或三、四、五 …）次 chart.setOption(rawOption) 时，如果 rawOption 是 复合option（即包含 media 列表），那么新的 rawOption.media 列表不会和老的 media 列表进行 merge，而是简单替代。当然，rawOption.baseOption 仍然会正常和老的 option 进行merge。</p>
+<p>其实，很少有场景需要使用『复合 option』来多次 setOption，而我们推荐的做法是，使用 mediaQuery 时，第一次setOption使用『复合 option』，后面 setOption 时仅使用 『原子 option』，也就是仅仅用 setOption 来改变 baseOption。</p>
+<h1 id="ECharts-中的事件和行为"><a href="#ECharts-中的事件和行为" class="headerlink" title="ECharts 中的事件和行为"></a>ECharts 中的事件和行为</h1><p>在 ECharts 的图表中用户的操作将会触发相应的事件。开发者可以监听这些事件，然后通过回调函数做相应的处理，比如跳转到一个地址，或者弹出对话框，或者做数据下钻等等。</p>
+<p>在 ECharts 3 中绑定事件跟 2 一样都是通过 on 方法，但是事件名称比 2 更加简单了。ECharts 3 中，事件名称对应 DOM 事件名称，均为小写的字符串，如下是一个绑定点击操作的示例。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">myChart.on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">params</span>) </span>&#123;</div><div class="line">    <span class="comment">// 控制台打印数据的名称</span></div><div class="line">    <span class="built_in">console</span>.log(params.name);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="鼠标事件的处理"><a href="#鼠标事件的处理" class="headerlink" title="鼠标事件的处理"></a>鼠标事件的处理</h2><p>ECharts 支持常规的鼠标事件类型，包括 ‘click’、’dblclick’、’mousedown’、’mousemove’、’mouseup’、’mouseover’、’mouseout’ 事件。</p>
+<p>一个简单的点击柱状图后打开相应的百度搜索页面的示例。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 基于准备好的dom，初始化ECharts实例</span></div><div class="line"><span class="keyword">var</span> myChart = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'main'</span>));</div><div class="line"></div><div class="line"><span class="comment">// 指定图表的配置项和数据</span></div><div class="line"><span class="keyword">var</span> option = &#123;</div><div class="line">    xAxis: &#123;</div><div class="line">        data: [<span class="string">"衬衫"</span>,<span class="string">"羊毛衫"</span>,<span class="string">"雪纺衫"</span>,<span class="string">"裤子"</span>,<span class="string">"高跟鞋"</span>,<span class="string">"袜子"</span>]</div><div class="line">    &#125;,</div><div class="line">    yAxis: &#123;&#125;,</div><div class="line">    series: [&#123;</div><div class="line">        name: <span class="string">'销量'</span>,</div><div class="line">        type: <span class="string">'bar'</span>,</div><div class="line">        data: [<span class="number">5</span>, <span class="number">20</span>, <span class="number">36</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">20</span>]</div><div class="line">    &#125;]</div><div class="line">&#125;;</div><div class="line"><span class="comment">// 使用刚指定的配置项和数据显示图表。</span></div><div class="line">myChart.setOption(option);</div><div class="line"><span class="comment">// 处理点击事件并且跳转到相应的百度搜索页面</span></div><div class="line">myChart.on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">params</span>) </span>&#123;</div><div class="line">    <span class="built_in">window</span>.open(<span class="string">'https://www.baidu.com/s?wd='</span> + <span class="built_in">encodeURIComponent</span>(params.name));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>所有的鼠标事件包含参数 params，这是一个包含点击图形的数据信息的对象，如下格式：<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="regexp">//</span> 当前点击的图形元素所属的组件名称，</div><div class="line">    <span class="regexp">//</span> 其值如 <span class="string">'series'</span>、<span class="string">'markLine'</span>、<span class="string">'markPoint'</span>、<span class="string">'timeLine'</span> 等。</div><div class="line">    componentType: string,</div><div class="line">    <span class="regexp">//</span> 系列类型。值可能为：<span class="string">'line'</span>、<span class="string">'bar'</span>、<span class="string">'pie'</span> 等。当 componentType 为 <span class="string">'series'</span> 时有意义。</div><div class="line">    seriesType: string,</div><div class="line">    <span class="regexp">//</span> 系列在传入的 option.series 中的 index。当 componentType 为 <span class="string">'series'</span> 时有意义。</div><div class="line">    seriesIndex: number,</div><div class="line">    <span class="regexp">//</span> 系列名称。当 componentType 为 <span class="string">'series'</span> 时有意义。</div><div class="line">    seriesName: string,</div><div class="line">    <span class="regexp">//</span> 数据名，类目名</div><div class="line">    name: string,</div><div class="line">    <span class="regexp">//</span> 数据在传入的 data 数组中的 index</div><div class="line">    dataIndex: number,</div><div class="line">    <span class="regexp">//</span> 传入的原始数据项</div><div class="line">    data: Object,</div><div class="line">    <span class="regexp">//</span> sankey、graph 等图表同时含有 nodeData 和 edgeData 两种 data，</div><div class="line">    <span class="regexp">//</span> dataType 的值会是 <span class="string">'node'</span> 或者 <span class="string">'edge'</span>，表示当前点击在 node 还是 edge 上。</div><div class="line">    <span class="regexp">//</span> 其他大部分图表中只有一种 data，dataType 无意义。</div><div class="line">    dataType: string,</div><div class="line">    <span class="regexp">//</span> 传入的数据值</div><div class="line">    value: number|Array</div><div class="line">    <span class="regexp">//</span> 数据图形的颜色。当 componentType 为 <span class="string">'series'</span> 时有意义。</div><div class="line">    color: string</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如何区分鼠标点击到了哪里：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">myChart.<span class="keyword">on</span>(<span class="string">'click'</span>, function (<span class="keyword">params</span>) &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">params</span>.componentType === <span class="string">'markPoint'</span>) &#123;</div><div class="line">        <span class="comment">// 点击到了 markPoint 上</span></div><div class="line">        <span class="keyword">if</span> (<span class="keyword">params</span>.seriesIndex === <span class="number">5</span>) &#123;</div><div class="line">            <span class="comment">// 点击到了 index 为 5 的 series 的 markPoint 上。</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">params</span>.componentType === <span class="string">'series'</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">params</span>.seriesType === <span class="string">'graph'</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (<span class="keyword">params</span>.dataType === <span class="string">'edge'</span>) &#123;</div><div class="line">                <span class="comment">// 点击到了 graph 的 edge（边）上。</span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> &#123;</div><div class="line">                <span class="comment">// 点击到了 graph 的 node（节点）上。</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>你可以在回调函数中获得这个对象中的数据名、系列名称后在自己的数据仓库中索引得到其它的信息候更新图表，显示浮层等等，如下示例代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">myChart.on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">parmas</span>) </span>&#123;</div><div class="line">    $.get(<span class="string">'detail?q='</span> + params.name, <span class="function"><span class="keyword">function</span> (<span class="params">detail</span>) </span>&#123;</div><div class="line">        myChart.setOption(&#123;</div><div class="line">            series: [&#123;</div><div class="line">                name: <span class="string">'pie'</span>,</div><div class="line">                <span class="comment">// 通过饼图表现单个柱子中的数据分布</span></div><div class="line">                data: [detail.data]</div><div class="line">            &#125;]</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="组件交互的行为事件"><a href="#组件交互的行为事件" class="headerlink" title="组件交互的行为事件"></a>组件交互的行为事件</h3><p>在 ECharts 中基本上所有的组件交互行为都会触发相应的事件。</p>
+<p>下面是监听一个图例开关的示例：<br><figure class="highlight sqf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 图例开关的行为只会触发 legendselectchanged 事件</span></div><div class="line">myChart.on(<span class="string">'legendselectchanged'</span>, function (<span class="built_in">params</span>) &#123;</div><div class="line">    <span class="comment">// 获取点击图例的选中状态</span></div><div class="line">    var isSelected = <span class="built_in">params</span>.selected[<span class="built_in">params</span>.<span class="built_in">name</span>];</div><div class="line">    <span class="comment">// 在控制台中打印</span></div><div class="line">    console.<span class="built_in">log</span>((isSelected ? <span class="string">'选中了'</span> : <span class="string">'取消选中了'</span>) + <span class="string">'图例'</span> + <span class="built_in">params</span>.<span class="built_in">name</span>);</div><div class="line">    <span class="comment">// 打印所有图例的状态</span></div><div class="line">    console.<span class="built_in">log</span>(<span class="built_in">params</span>.selected);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="代码触发-ECharts-中组件的行为"><a href="#代码触发-ECharts-中组件的行为" class="headerlink" title="代码触发 ECharts 中组件的行为"></a>代码触发 ECharts 中组件的行为</h2><p>上面提到诸如’legendselectchanged’事件会由组件交互的行为触发，那除了用户的交互操作，有时候也会有需要在程序里调用方法触发图表的行为，诸如显示 tooltip，选中图例。<br>在 ECharts 2.x 是通过 myChart.component.tooltip.showTip 这种形式调用相应的接口触发图表行为，入口很深，而且涉及到内部组件的组织。相对地，在 ECharts 3 里改为通过调用 myChart.dispatchAction({ type: ‘’ }) 触发图表行为，统一管理了所有动作，也可以方便地根据需要去记录用户的行为路径。<br>常用的动作和动作对应参数在 action 文档中有列出。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据可视化/" rel="tag"># 数据可视化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/19/Canvas基础/" rel="next" title="canvas基础">
+                <i class="fa fa-chevron-left"></i> canvas基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/04/JQuery AJAX 与 json 练习/" rel="prev" title="JQuery AJAX 与 json 练习">
+                JQuery AJAX 与 json 练习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="徐宏亮" />
+          <p class="site-author-name" itemprop="name">徐宏亮</p>
+           
+              <p class="site-description motion-element" itemprop="description">我要用尽所有的力气才能书写一个词，放弃。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xuhongliang1996" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个简单的图表"><span class="nav-number">1.</span> <span class="nav-text">第一个简单的图表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引入-ECharts"><span class="nav-number">1.1.</span> <span class="nav-text">引入 ECharts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘制一个简单的图表"><span class="nav-number">1.2.</span> <span class="nav-text">绘制一个简单的图表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异步数据加载和更新"><span class="nav-number">2.</span> <span class="nav-text">异步数据加载和更新</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#异步数据加载"><span class="nav-number">2.1.</span> <span class="nav-text">异步数据加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据更新"><span class="nav-number">2.2.</span> <span class="nav-text">数据更新</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在图表中加入交互组件"><span class="nav-number">3.</span> <span class="nav-text">在图表中加入交互组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#移动端自适应"><span class="nav-number">4.</span> <span class="nav-text">移动端自适应</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ECharts组件的定位和布局"><span class="nav-number">4.1.</span> <span class="nav-text">ECharts组件的定位和布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#横向（horizontal）和纵向（vertical）"><span class="nav-number">4.2.</span> <span class="nav-text">横向（horizontal）和纵向（vertical）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Media-Query"><span class="nav-number">4.3.</span> <span class="nav-text">Media Query</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#query："><span class="nav-number">4.3.1.</span> <span class="nav-text">query：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#option："><span class="nav-number">4.3.2.</span> <span class="nav-text">option：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多个-query-被满足时的优先级："><span class="nav-number">4.3.3.</span> <span class="nav-text">多个 query 被满足时的优先级：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认-query："><span class="nav-number">4.3.4.</span> <span class="nav-text">默认 query：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器大小实时变化时的注意事项："><span class="nav-number">4.3.5.</span> <span class="nav-text">容器大小实时变化时的注意事项：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#『复合-option』-中的-media-不支持-merge"><span class="nav-number">4.3.6.</span> <span class="nav-text">『复合 option』 中的 media 不支持 merge</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ECharts-中的事件和行为"><span class="nav-number">5.</span> <span class="nav-text">ECharts 中的事件和行为</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#鼠标事件的处理"><span class="nav-number">5.1.</span> <span class="nav-text">鼠标事件的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组件交互的行为事件"><span class="nav-number">5.1.1.</span> <span class="nav-text">组件交互的行为事件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码触发-ECharts-中组件的行为"><span class="nav-number">5.2.</span> <span class="nav-text">代码触发 ECharts 中组件的行为</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐宏亮</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

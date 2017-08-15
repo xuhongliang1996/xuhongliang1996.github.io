@@ -1,0 +1,794 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/uploads/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="介绍接口什么是接口？接口（interface）是一些方法特征的集合，这些方法特征来自于具体方法，这些方法符合它们一般来自于一些在系统中不断出现的方法。一个接口只有方法的特征，而没有方法的实现，因此这些方法在不同的地方被实现时，可以具有完全不同的行为。 在人们讲到“接口”时，这个词往往有两种不同的含义：  第一种是指Java接口，这是一种Java语言中存在的结构，有特定的语法和结构。 第二种仅仅是指">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Spring 入门">
+<meta property="og:url" content="http://yoursite.com/2017/07/28/Java Spring 入门/index.html">
+<meta property="og:site_name" content="离离原上草">
+<meta property="og:description" content="介绍接口什么是接口？接口（interface）是一些方法特征的集合，这些方法特征来自于具体方法，这些方法符合它们一般来自于一些在系统中不断出现的方法。一个接口只有方法的特征，而没有方法的实现，因此这些方法在不同的地方被实现时，可以具有完全不同的行为。 在人们讲到“接口”时，这个词往往有两种不同的含义：  第一种是指Java接口，这是一种Java语言中存在的结构，有特定的语法和结构。 第二种仅仅是指">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-01T07:37:53.150Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java Spring 入门">
+<meta name="twitter:description" content="介绍接口什么是接口？接口（interface）是一些方法特征的集合，这些方法特征来自于具体方法，这些方法符合它们一般来自于一些在系统中不断出现的方法。一个接口只有方法的特征，而没有方法的实现，因此这些方法在不同的地方被实现时，可以具有完全不同的行为。 在人们讲到“接口”时，这个词往往有两种不同的含义：  第一种是指Java接口，这是一种Java语言中存在的结构，有特定的语法和结构。 第二种仅仅是指">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/28/Java Spring 入门/"/>
+
+
+
+
+
+  <title>Java Spring 入门 | 离离原上草</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">离离原上草</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/28/Java Spring 入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="徐宏亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="离离原上草">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java Spring 入门</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-28T13:35:36+08:00">
+                2017-07-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><h3 id="什么是接口？"><a href="#什么是接口？" class="headerlink" title="什么是接口？"></a>什么是接口？</h3><p>接口（interface）是一些方法特征的集合，这些方法特征来自于具体方法，这些方法符合它们一般来自于一些在系统中不断出现的方法。一个接口只有方法的特征，而没有方法的实现，因此这些方法在不同的地方被实现时，可以具有完全不同的行为。</p>
+<p>在人们讲到“接口”时，这个词往往有两种不同的含义：</p>
+<ul>
+<li>第一种是指Java接口，这是一种Java语言中存在的结构，有特定的语法和结构。</li>
+<li>第二种仅仅是指一个类所具有的方法的特征集合，是一种逻辑上的抽象。</li>
+<li>Java的接口可以有public、静态的（static）和final的属性。</li>
+</ul>
+<h3 id="接口的用法"><a href="#接口的用法" class="headerlink" title="接口的用法"></a>接口的用法</h3><figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Test</span></span>&#123;</div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> num;</div><div class="line">   <span class="comment">//成员常量具有固定的修饰符：public static final</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> method;</div><div class="line">   <span class="comment">//成员函数具有固定的修饰符：public abstract </span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Testimpl</span> <span class="keyword">implements</span> <span class="title">Test</span></span>&#123;</div><div class="line">	<span class="comment">// 实现接口中的所有方法</span></div><div class="line">    .....</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="接口的特性"><a href="#接口的特性" class="headerlink" title="接口的特性"></a>接口的特性</h3><ol>
+<li>接口不是类，尤其不用使用new运算符实例一个接口。</li>
+<li>不能构造接口的对象，却能声明接口的变量。</li>
+</ol>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">*功能：到达指定的时间发出通告</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="comment">//接口</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ActionListener</span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">actionPerformed</span>(<span class="params">ActionEvent <span class="keyword">event</span></span>)</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//实现类</span></div><div class="line"><span class="keyword">class</span> <span class="title">TimePrinter</span> <span class="title">implements</span> <span class="title">ActionListener</span>&#123;</div><div class="line">     <span class="comment">//此处ActionEvent参数提供了事件的相关信息</span></div><div class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span>(<span class="params">ActionEvent <span class="keyword">event</span></span>)</span>&#123;</div><div class="line">        Date now = <span class="keyword">new</span> Data();</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"At the tone, the time is"</span> + now);</div><div class="line">        Toolkit.getDefaultToolkit().beep();</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//然后构造这个类的一个对象，并将它传递给Timer构造器。</span></div><div class="line">ActionListener listener = <span class="keyword">new</span> TimePrinter();</div><div class="line">Timer t = <span class="keyword">new</span> Timer(<span class="number">10000</span>, listener);</div></pre></td></tr></table></figure>
+<ol>
+<li>接口中不能包含实例域或静态方法。</li>
+<li>接口与接口之间可以是继承关系，而且可以实现多继承。</li>
+</ol>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public<span class="built_in"> interface </span>Moveable&#123;</div><div class="line">    void move(double x, double y);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public<span class="built_in"> interface </span>Powered extends Moveable&#123;</div><div class="line">    double milesPerGallon();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意点</p>
+<ul>
+<li>对于接口中的固定修饰符，可以省略。</li>
+<li>一个类实现多个接口时，接口与接口之间要用逗号隔开。</li>
+<li>接口的变量必须引用实现了接口的类对象。</li>
+</ul>
+<h3 id="学习接口时所存在的疑惑"><a href="#学习接口时所存在的疑惑" class="headerlink" title="学习接口时所存在的疑惑"></a>学习接口时所存在的疑惑</h3><p>接口为何不能用继承代替呢？</p>
+<ol>
+<li>Java中不支持多继承，也就是不能存在一个子类继承多个父类的情况，当然你会问这是为什么呢.因为这会造成子类中某些方法或者变量的不确定性。</li>
+<li>为了弥补1中采用单继承所带来的不足，Java出现了接口这个概念，接口可以很好的避免这个问题的出现。</li>
+<li>Java中通过多实现接口的方式去解决类之间无法多继承的问题。</li>
+</ol>
+<h2 id="面向接口编程"><a href="#面向接口编程" class="headerlink" title="面向接口编程"></a>面向接口编程</h2><h3 id="面向接口编程和面向对象编程是什么关系"><a href="#面向接口编程和面向对象编程是什么关系" class="headerlink" title="面向接口编程和面向对象编程是什么关系"></a>面向接口编程和面向对象编程是什么关系</h3><p>面向接口编程和面向对象编程并不是平级的，它并不是比面向对象编程更先进的一种独立的编程思想，而是附属于面向对象思想体系，</p>
+<h3 id="生活中接口的本质"><a href="#生活中接口的本质" class="headerlink" title="生活中接口的本质"></a>生活中接口的本质</h3><h4 id="接口是一组规则的集合，它规定了实现本接口的类或接口必须拥有的一组规则。体现了自然界“如果你是……则必须能……”的理念。"><a href="#接口是一组规则的集合，它规定了实现本接口的类或接口必须拥有的一组规则。体现了自然界“如果你是……则必须能……”的理念。" class="headerlink" title="接口是一组规则的集合，它规定了实现本接口的类或接口必须拥有的一组规则。体现了自然界“如果你是……则必须能……”的理念。"></a>接口是一组规则的集合，它规定了实现本接口的类或接口必须拥有的一组规则。体现了自然界“如果你是……则必须能……”的理念。</h4><p>例如，在自然界中，人都能吃饭，即“如果你是人，则必须能吃饭”。那么模拟到计算机程序中，就应该有一个IPerson（习惯上，接口名由“I”开头）接口，并有一个方法叫Eat()，然后我们规定，每一个表示“人”的类，必须实现IPerson接口，这就模拟了自然界“如果你是人，则必须能吃饭”这条规则。<br>从这里，我想各位也能看到些许面向对象思想的东西。面向对象思想的核心之一，就是模拟真实世界，把真实世界中的事物抽象成类，整个程序靠各个类的实例互相通信、互相协作完成系统功能，这非常符合真实世界的运行状况，也是面向对象思想的精髓。</p>
+<h4 id="接口是在一定粒度视图上同类事物的抽象表示。注意这里我强调了在一定粒度视图上，因为“同类事物”这个概念是相对的，它因为粒度视图不同而不同。"><a href="#接口是在一定粒度视图上同类事物的抽象表示。注意这里我强调了在一定粒度视图上，因为“同类事物”这个概念是相对的，它因为粒度视图不同而不同。" class="headerlink" title="接口是在一定粒度视图上同类事物的抽象表示。注意这里我强调了在一定粒度视图上，因为“同类事物”这个概念是相对的，它因为粒度视图不同而不同。"></a>接口是在一定粒度视图上同类事物的抽象表示。注意这里我强调了在一定粒度视图上，因为“同类事物”这个概念是相对的，它因为粒度视图不同而不同。</h4><p>例如，在我的眼里，我是一个人，和一头猪有本质区别，我可以接受我和我同学是同类这个说法，但绝不能接受我和一头猪是同类。但是，如果在一个动物学家眼里，我和猪应该是同类，因为我们都是动物，他可以认为“人”和“猪”都实现了IAnimal这个接口，而他在研究动物行为时，不会把我和猪分开对待，而会从“动物”这个较大的粒度上研究，但他会认为我和一棵树有本质区别。</p>
+<p>现在换了一个遗传学家，情况又不同了，因为生物都能遗传，所以在他眼里，我不仅和猪没区别，和一只蚊子、一个细菌、一颗树、一个蘑菇乃至一个SARS病毒都没什么区别，因为他会认为我们都实现了IDescendable这个接口（注：descend vi. 遗传），即我们都是可遗传的东西，他不会分别研究我们，而会将所有生物作为同类进行研究，在他眼里没有人和病毒之分，只有可遗传的物质和不可遗传的物质。但至少，我和一块石头还是有区别的。</p>
+<p>可不幸的事情发生了，某日，地球上出现了一位伟大的人，他叫列宁，他在熟读马克思、恩格斯的辩证唯物主义思想巨著后，颇有心得，于是他下了一个著名的定义：所谓物质，就是能被意识所反映的客观实在。至此，我和一块石头、一丝空气、一条成语和传输手机信号的电磁场已经没什么区别了，因为在列宁的眼里，我们都是可以被意识所反映的客观实在。如果列宁是一名程序员，他会这么说：所谓物质，就是所有同时实现了“IReflectabe”和“IEsse”两个接口的类所生成的实例。（注：reflect v. 反映  esse n. 客观实在）</p>
+<p>也许你会觉得我上面的例子像在瞎掰，但是，这正是接口得以存在的意义。面向对象思想和核心之一叫做多态性，什么叫多态性？说白了就是在某个粒度视图层面上对同类事物不加区别的对待而统一处理。而之所以敢这样做，就是因为有接口的存在。像那个遗传学家，他明白所有生物都实现了IDescendable接口，那只要是生物，一定有Descend（）这个方法，于是他就可以统一研究，而不至于分别研究每一种生物而最终累死。</p>
+<p>可能这里还不能给你一个关于接口本质和作用的直观印象。那么在后文的例子和对几个设计模式的解析中，你将会更直观体验到接口的内涵。</p>
+<h3 id="面向接口编程综述"><a href="#面向接口编程综述" class="headerlink" title="面向接口编程综述"></a>面向接口编程综述</h3><p>什么是面向接口编程呢？我个人的定义是：在系统分析和架构中，分清层次和依赖关系，每个层次不是直接向其上层提供服务（即不是直接实例化在上层中），而是通过定义一组接口，仅向上层暴露其接口功能，上层对于下层仅仅是接口依赖，而不依赖具体类。</p>
+<p>这样做的好处：</p>
+<ul>
+<li><p>对系统灵活性大有好处。当下层需要改变时，只要接口及接口功能不变，则上层不用做任何修改。甚至可以在不改动上层代码时将下层整个替换掉，就像我们将一个WD的60G硬盘换成一个希捷的160G的硬盘，计算机其他地方不用做任何改动，而是把原硬盘拔下来、新硬盘插上就行了，因为计算机其他部分不依赖具体硬盘，而只依赖一个IDE接口，只要硬盘实现了这个接口，就可以替换上去。</p>
+</li>
+<li><p>不同部件或层次的开发人员可以并行开工，就像造硬盘的不用等造CPU的，也不用等造显示器的，只要接口一致，设计合理，完全可以并行进行开发，从而提高效率。</p>
+</li>
+</ul>
+<ol>
+<li><p>关于“面向接口编程”中的“接口”与具体面向对象语言中“接口”两个词<br>“面向接口编程”中的接口是一种思想层面的用于实现多态性、提高软件灵活性和可维护性的架构部件。<br>具体语言中的“接口”是将这种思想中的部件具体实施到代码里的手段。</p>
+</li>
+<li><p>关于抽象类与接口<br>从具体功能来看，除多重继承外（C#，Java中），抽象类似乎完全能取代接口。抽象类和接口的区别在于使用动机。使用抽象类是为了代码的复用使用接口的动机是为了实现多态性。<br>接口和抽象类的另一个区别在于，抽象类和它的子类之间应该是一般和特殊的关系，而接口仅仅是它的子类应该实现的一组规则。（当然，有时也可能存在一般与特殊的关系，但我们使用接口的目的不在这里）如，交通工具定义成抽象类，汽车、飞机、轮船定义成子类，是可以接受的，因为汽车、飞机、轮船都是一种特殊的交通工具。再譬如Icomparable接口，它只是说，实现这个接口的类必须要可以进行比较，这是一条规则。如果Car这个类实现了Icomparable，只是说，我们的Car中有一个方法可以对两个Car的实例进行比较，可能是比哪辆车更贵，也可能比哪辆车更大，这都无所谓，但我们不能说“汽车是一种特殊的可以比较”，这在文法上都不通。</p>
+</li>
+</ol>
+<h2 id="IOC详解"><a href="#IOC详解" class="headerlink" title="IOC详解"></a>IOC详解</h2><h3 id="通过实例理解IoC的概念"><a href="#通过实例理解IoC的概念" class="headerlink" title="通过实例理解IoC的概念"></a>通过实例理解IoC的概念</h3><p>MoAttack：通过演员安排剧本<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MoAttack</span> &#123;</span>  </div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cityGateAsk</span><span class="params">()</span></span>&#123;  </div><div class="line">       <span class="comment">//①演员直接侵入剧本  </span></div><div class="line">       LiuDeHua ldh = <span class="keyword">new</span> LiuDeHua();  </div><div class="line">       ldh.responseAsk(<span class="string">"墨者革离！"</span>);  </div><div class="line">   &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们会发现以上剧本在①处，作为具体角色饰演者的刘德华直接侵入到剧本中，使剧本和演员直接耦合在一起。</p>
+<p>一个明智的编剧在剧情创作时应围绕故事的角色进行，而非绑定在刘德华一人身上。需要为该剧本主人公革离定义一个接口。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MoAttack</span> &#123;</span>  </div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cityGateAsk</span><span class="params">()</span>  </span></div><div class="line"><span class="function">   </span>&#123;  </div><div class="line">       <span class="comment">//①引入革离角色接口  </span></div><div class="line">	   <span class="comment">//接口为剧本的一个角色-革离</span></div><div class="line">	   <span class="comment">//革离接口的实现类为演员刘德华</span></div><div class="line">       GeLi geli = <span class="keyword">new</span> LiuDeHua();   </div><div class="line">         </div><div class="line">       <span class="comment">//②通过接口开展剧情  </span></div><div class="line">       geli.responseAsk(<span class="string">"墨者革离！"</span>);    </div><div class="line">   &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在①处引入了剧本的角色——革离，剧本的情节通过角色展开，在拍摄时角色由演员刘德华饰演。</p>
+<p>可是，MoAttack同时依赖于GeLi接口和LiuDeHua类，并没有达到我们所期望的剧本仅依赖于角色的目的。但是角色最终必须通过具体的演员才能完成拍摄，如何让LiuDeHua和剧本无关而又能完成GeLi的具体动作呢？<br>这时候导演的作用就来了，导演将LiuDeHua安排在GeLi的角色上，导演将剧本、角色、饰演者装配起来。</p>
+<p>通过引入导演，使剧本和具体饰演者解耦了。对应到软件中，导演像是一个装配器，安排演员表演具体的角色。</p>
+<p>现在我们可以反过来讲解IoC的概念了。IoC（Inverse of Control）的字面意思是控制反转，它包括两个内容： </p>
+<ul>
+<li>其一是控制</li>
+<li>其二是反转</li>
+</ul>
+<p>“控制”是指选择GeLi角色扮演者的控制权；“反转”是指这种控制权从剧本中移除，转交到导演的手中。<br>对于软件来说，即是某一接口具体实现类的选择控制权从调用类中移除，转交给第三方决定。 </p>
+<p>因为IoC确实不够开门见山，因此业界曾进行了广泛的讨论，最终软件界的泰斗级人物Martin Fowler提出了DI（依赖注入：Dependency Injection）的概念用以代替IoC，即让调用类对某一接口实现类的依赖关系由第三方（容器或协作类）注入，以移除调用类对某一接口实现类的依赖。“依赖注入”这个名词显然比“控制反转”直接明了、易于理解。</p>
+<h3 id="IoC的类型"><a href="#IoC的类型" class="headerlink" title="IoC的类型"></a>IoC的类型</h3><p>从注入方法上看，主要可以划分为三种类型：构造函数注入、属性注入和接口注入。Spring支持构造函数注入和属性注入。</p>
+<h4 id="构造函数注入"><a href="#构造函数注入" class="headerlink" title="构造函数注入"></a>构造函数注入</h4><p>在构造函数注入中，我们通过调用类的构造函数，将接口实现类通过构造函数变量传入</p>
+<p>MoAttack：通过构造函数注入革离扮演者<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MoAttack</span> &#123;</span>  </div><div class="line">	<span class="keyword">private</span> GeLi geli;  </div><div class="line">	<span class="comment">//①注入革离的具体扮演者  </span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MoAttack</span><span class="params">(GeLi geli)</span></span>&#123;   </div><div class="line">		<span class="keyword">this</span>.geli = geli;  </div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cityGateAsk</span><span class="params">()</span></span>&#123;  </div><div class="line">		geli.responseAsk(<span class="string">"墨者革离！"</span>);  </div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>MoAttack的构造函数不关心具体是谁扮演革离这个角色，只要在①处传入的扮演者按剧本要求完成相应的表演即可。角色的具体扮演者由导演来安排。</p>
+<p>Director：通过构造函数注入革离扮演者<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Director</span> &#123;</span>  </div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">direct</span><span class="params">()</span></span>&#123;  </div><div class="line">		<span class="comment">//①指定角色的扮演者  </span></div><div class="line">		GeLi geli = <span class="keyword">new</span> LiuDeHua();    </div><div class="line">  </div><div class="line">        <span class="comment">//②注入具体扮演者到剧本中  </span></div><div class="line">		MoAttack moAttack = <span class="keyword">new</span> MoAttack(geli);</div><div class="line">		moAttack.cityGateAsk();  </div><div class="line">   &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在①处，导演安排刘德华饰演革离的角色，并在②处，将刘德华“注入”到墨攻的剧本中，然后开始“城门叩问”剧情的演出工作。</p>
+<h4 id="属性注入"><a href="#属性注入" class="headerlink" title="属性注入"></a>属性注入</h4><p>导演会发现，虽然革离是影片《墨攻》的第一主角，但并非每个场景都需要革离的出现，在这种情况下通过构造函数注入相当于每时每刻都在革离的饰演者在场，可见并不妥当，这时可以考虑使用属性注入。</p>
+<p>属性注入可以有选择地通过Setter方法完成调用类所需依赖的注入，更加灵活方便。</p>
+<p>MoAttack：通过Setter方法注入革离扮演者<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MoAttack</span> &#123;</span>  </div><div class="line">    <span class="keyword">private</span> GeLi geli;  </div><div class="line">    <span class="comment">//①属性注入方法</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setGeli</span><span class="params">(GeLi geli)</span> </span>&#123;    </div><div class="line">		<span class="keyword">this</span>.geli = geli; </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cityGateAsk</span><span class="params">()</span> </span>&#123;  </div><div class="line">        geli.responseAsk(<span class="string">"墨者革离"</span>);  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>MoAttack在①处为geli属性提供一个Setter方法，以便让导演在需要时注入geli的具体扮演者。</p>
+<p>Director：通过Setter方法注入革离扮演者<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Director</span> &#123;</span>  </div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">direct</span><span class="params">()</span></span>&#123;  </div><div class="line">		GeLi geli = <span class="keyword">new</span> LiuDeHua();  </div><div class="line">		MoAttack moAttack = <span class="keyword">new</span> MoAttack();  </div><div class="line"></div><div class="line">		<span class="comment">//①调用属性Setter方法注入  </span></div><div class="line">		moAttack.setGeli(geli);   </div><div class="line">		moAttack.cityGateAsk();  </div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>和通过构造函数注入革离扮演者不同，在实例化MoAttack剧本时，并未指定任何扮演者，而是在实例化MoAttack后，在需要革离出场时，才调用其setGeli()方法注入扮演者。</p>
+<h4 id="接口注入（不提倡）"><a href="#接口注入（不提倡）" class="headerlink" title="接口注入（不提倡）"></a>接口注入（不提倡）</h4><p>将调用类所有依赖注入的方法抽取到一个接口中，调用类通过实现该接口提供相应的注入方法。为了采取接口注入的方式，必须先声明一个接口。</p>
+<p>先声明一个ActorArrangable接口<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public<span class="built_in"> interface </span>ActorArrangable &#123;  </div><div class="line">	void injectGeli(GeLi geli);  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>MoAttack实现ActorArrangable接口提供具体的实现类。</p>
+<p>MoAttack：通过接口方法注入革离扮演者<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MoAttack</span> <span class="keyword">implements</span> <span class="title">ActorArrangable</span> </span>&#123;  </div><div class="line">    <span class="keyword">private</span> GeLi geli;  </div><div class="line">    <span class="comment">//①实现接口方法  </span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">injectGeli</span> <span class="params">(GeLi geli)</span> </span>&#123;    </div><div class="line">		<span class="keyword">this</span>.geli = geli;         </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cityGateAsk</span><span class="params">()</span> </span>&#123;  </div><div class="line">        geli.responseAsk(<span class="string">"墨者革离"</span>);  </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Director：通过接口方法注入革离扮演者<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Director</span> &#123;</span>  </div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">direct</span><span class="params">()</span></span>&#123;  </div><div class="line">		GeLi geli = <span class="keyword">new</span> LiuDeHua();  </div><div class="line">		MoAttack moAttack = <span class="keyword">new</span> MoAttack();  </div><div class="line">		moAttack.injectGeli(geli);  </div><div class="line">		moAttack.cityGateAsk();  </div><div class="line">	&#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>通过接口注入需要额外声明一个接口，增加了类的数目，而且它的效果和属性注入并无本质区别，因此我们不提倡采用这种方式。 </p>
+<h3 id="通过容器完成依赖关系的注入"><a href="#通过容器完成依赖关系的注入" class="headerlink" title="通过容器完成依赖关系的注入"></a>通过容器完成依赖关系的注入</h3><p>虽然MoAttack和LiuDeHua实现了解耦，MoAttack无须关注角色实现类的实例化工作，但这些工作在代码中依然存在，只是转移到Director类中而已。假设某一制片人想改变这一局面，在选择某个剧本后，希望通过一个“海选”或者第三中介机构来选择导演、演员，让他们各司其职，那剧本、导演、演员就都实现解耦了。 </p>
+<p>所谓媒体“海选”和第三方中介机构在程序领域即是一个<strong>第三方的容器</strong>，它帮助完成类的初始化与装配工作，让开发者从这些底层实现类的实例化、依赖关系装配等工作中脱离出来，专注于更有意义的业务逻辑开发工作。这无疑是一件令人向往的事情，Spring就是这样的一个容器，它通过配置文件或注解描述类和类之间的依赖关系，自动完成类的初始化和依赖注入的工作。下面是Spring配置文件的对以上实例进行配置的配置文件片断：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span> <span class="meta">?&gt;</span></span>  </div><div class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span>  </span></div><div class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>  </span></div><div class="line"><span class="tag">    <span class="attr">xmlns:p</span>=<span class="string">"http://www.springframework.org/schema/p"</span>  </span></div><div class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans</span></span></div><div class="line"><span class="tag"><span class="string">	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"</span>&gt;</span>  </div><div class="line">	<span class="comment">&lt;!--①实现类实例化--&gt;</span>  </div><div class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"geli"</span> <span class="attr">class</span>=<span class="string">"LiuDeHua"</span>/&gt;</span>  </div><div class="line">	<span class="comment">&lt;!--②通过geli-ref建立依赖关系--&gt;</span>  </div><div class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"moAttack"</span> <span class="attr">class</span>=<span class="string">"com.baobaotao.ioc.MoAttack"</span> <span class="attr">p:geli-ref</span>=<span class="string">"geli"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>通过new XmlBeanFactory(“beans.xml”)等方式即可启动容器。在容器启动时，Spring根据配置文件的描述信息，自动实例化Bean并完成依赖关系的装配，从容器中即可返回准备就绪的Bean实例，后续可直接使用之。<br>Spring为什么会有这种“神奇”的力量，仅凭一个简单的配置文件，就能魔法般地实例化并装配好程序所用的Bean呢？这种“神奇”的力量归功于Java语言本身的类<strong>反射</strong>功能。</p>
+<h3 id="Spring-注入方式及XML配置详解"><a href="#Spring-注入方式及XML配置详解" class="headerlink" title="Spring 注入方式及XML配置详解"></a>Spring 注入方式及XML配置详解</h3><h4 id="Setter注入"><a href="#Setter注入" class="headerlink" title="Setter注入"></a>Setter注入</h4><p>这是最简单的注入方式，假设有一个Order，类中需要实例化一个notifyservice对象。</p>
+<p>定义一个private的NotifyService成员变量，然后创建setNotifyService的set方法<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Order</span> &#123;</span></div><div class="line">    <span class="comment">/*要注入的对象*/</span></div><div class="line">    <span class="keyword">private</span> NotifyService notifyservice;</div><div class="line">    <span class="comment">/*notifyservice不是在内部new()出来的， 而是通过指定方法传进来的，也就是我们说的注入。这里是setter方法注入*/</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNotifyservice</span><span class="params">(NotifyService notifyservice)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.notifyservice = notifyservice;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/*订单支付完成后，系统通知老板*/</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">PaySuccess</span><span class="params">()</span></span>&#123;</div><div class="line">        notifyservice.sendMessage(<span class="string">"客户张铁蛋完成订单2017079657付款，共人民币:97.5元"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>随后编写spring的xml文件</p>
+<p><bean><br>id属性是bean的标识，必须唯一。<br>class属性是类的完全限定名，指明由哪个类来实例化。</bean></p>
+<p><property>是用来指明要注入的属性和对象的。<br>name指定notifyService对象<br>ref指向要注入的对象(id)</property></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;bean id=<span class="string">"notify"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"twm.spring.start.NotifyServiceByCellPhoneImpl"</span> /&gt;</div><div class="line">&lt;bean id=<span class="string">"order"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"twm.spring.start.Order"</span> &gt;</div><div class="line">    &lt;!-- 配置要注入的对象 --&gt;</div><div class="line">    &lt;property name=<span class="string">"notifyservice"</span> ref=<span class="string">"notify"</span>/&gt;</div><div class="line">&lt;<span class="regexp">/bean&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="构造器注入"><a href="#构造器注入" class="headerlink" title="构造器注入"></a>构造器注入</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*构造函数注入*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Order</span><span class="params">(NotifyService notifyservice1)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.notifyservice1 = notifyservice1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="function"><span class="keyword">constructor</span>-<span class="title">arg</span> <span class="title">ref</span>="<span class="title">notify</span>"&gt;&lt;/<span class="title">constructor</span>-<span class="title">arg</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>1、智能识别<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"order"</span> <span class="attr">class</span>=<span class="string">"twm.spring.start.Order"</span> &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">"张老三"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">ref</span>=<span class="string">"notify"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">"1234567"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><constructor-arg>没有别的属性。Spring这时会先按类型排序，同类型的按先后顺序向构造函数参数赋值。所以如果完全按照构造函数的参数顺序写，肯定是没有问题的。上面这样写，也是没有问题的，两个String类型的参数顺序对了就行。</constructor-arg></p>
+<p>2、指明参数类型。<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;bean id=<span class="string">"order"</span> class=<span class="string">"twm.spring.start.Order"</span> &gt;</div><div class="line">    &lt;constructor-<span class="built_in">arg</span> <span class="built_in">type</span>=<span class="string">"String"</span> value=<span class="string">"张老三"</span>&gt;&lt;/constructor-<span class="built_in">arg</span>&gt;</div><div class="line">    &lt;constructor-<span class="built_in">arg</span> <span class="built_in">type</span>=<span class="string">"twm.spring.start.NotifyService"</span> ref=<span class="string">"notify"</span>&gt;&lt;/constructor-<span class="built_in">arg</span>&gt;</div><div class="line">    &lt;constructor-<span class="built_in">arg</span> <span class="built_in">type</span>=<span class="string">"String"</span> value=<span class="string">"1234567"</span>&gt;&lt;/constructor-<span class="built_in">arg</span>&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<p>和1智能识别一样，Spring会先按类型区分，同类型的按先后顺序向构造函数参数赋值。</p>
+<p>3、指定参数名<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"order"</span> <span class="attr">class</span>=<span class="string">"twm.spring.start.Order"</span> &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"张老三"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"notifyservice1"</span> <span class="attr">ref</span>=<span class="string">"notify"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"orderno"</span> <span class="attr">value</span>=<span class="string">"1234567"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>这样Spring会完全按照构造函数的形参名字匹配。</p>
+<p>4、指定索引index<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"order"</span> <span class="attr">class</span>=<span class="string">"twm.spring.start.Order"</span> &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"0"</span> <span class="attr">value</span>=<span class="string">"张老三"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"2"</span> <span class="attr">ref</span>=<span class="string">"notify"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"1"</span> <span class="attr">value</span>=<span class="string">"2017877997"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>指定的索引顺序一定要和类型匹配，不然会报错。构造函数有2个相同类型的参数,指定索引可以解决此种情况。<br>注意index是从0开始</p>
+<h4 id="静态工厂的方法注入"><a href="#静态工厂的方法注入" class="headerlink" title="静态工厂的方法注入"></a>静态工厂的方法注入</h4><p>增加一个工厂类<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NotifyFactory</span> &#123;</span></div><div class="line">    <span class="comment">/*静态工厂方法*/</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> NotifyService <span class="title">getNotifyService</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> NotifyServiceByWeixinImpl();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>xml会发现有很大差别:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"order"</span> <span class="attr">class</span>=<span class="string">"twm.spring.start.Order"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"张老三"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"notifyservice1"</span> <span class="attr">ref</span>=<span class="string">"notify2"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"orderno"</span> <span class="attr">value</span>=<span class="string">"1234567"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"notify2"</span> <span class="attr">class</span>=<span class="string">"twm.spring.start.NotifyFactory"</span></span></div><div class="line"><span class="tag">    <span class="attr">factory-method</span>=<span class="string">"getNotifyService"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
+<p>注意看指向的class并不是NotifyService的实现类，而是指向静态工厂NotifyFactory，并且配置factory-method=”getNotifyService”指定调用哪个工厂方法</p>
+<h4 id="实例工厂的方法注入"><a href="#实例工厂的方法注入" class="headerlink" title="实例工厂的方法注入"></a>实例工厂的方法注入</h4><p>首先new工厂类，再调用普通的实例方法<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NotifyFactory</span> &#123;</span></div><div class="line">    <span class="comment">/*普通工厂方法*/</span></div><div class="line">    <span class="function"><span class="keyword">public</span> NotifyService <span class="title">getNotifyService</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> NotifyServiceByWeixinImpl();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>实例工厂方法(非静态）和静态工厂方法本质相同（除了使用facory-bean属性替代class属性，其他都相同）<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"order"</span> <span class="attr">class</span>=<span class="string">"twm.spring.start.Order"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"张老三"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"notifyservice1"</span> <span class="attr">ref</span>=<span class="string">"notify2"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"orderno"</span> <span class="attr">value</span>=<span class="string">"1234567"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"notifyfactory"</span> <span class="attr">class</span>=<span class="string">"twm.spring.start.NotifyFactory"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"notify2"</span> <span class="attr">factory-bean</span>=<span class="string">"notifyfactory"</span> <span class="attr">factory-method</span>=<span class="string">"getNotifyService"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/04/JQuery AJAX 与 json 练习/" rel="next" title="JQuery AJAX 与 json 练习">
+                <i class="fa fa-chevron-left"></i> JQuery AJAX 与 json 练习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/10/js高程/" rel="prev" title="js高程">
+                js高程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="徐宏亮" />
+          <p class="site-author-name" itemprop="name">徐宏亮</p>
+           
+              <p class="site-description motion-element" itemprop="description">我要用尽所有的力气才能书写一个词，放弃。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xuhongliang1996" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">1.1.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是接口？"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是接口？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口的用法"><span class="nav-number">1.1.2.</span> <span class="nav-text">接口的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口的特性"><span class="nav-number">1.1.3.</span> <span class="nav-text">接口的特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习接口时所存在的疑惑"><span class="nav-number">1.1.4.</span> <span class="nav-text">学习接口时所存在的疑惑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向接口编程"><span class="nav-number">1.2.</span> <span class="nav-text">面向接口编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#面向接口编程和面向对象编程是什么关系"><span class="nav-number">1.2.1.</span> <span class="nav-text">面向接口编程和面向对象编程是什么关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生活中接口的本质"><span class="nav-number">1.2.2.</span> <span class="nav-text">生活中接口的本质</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接口是一组规则的集合，它规定了实现本接口的类或接口必须拥有的一组规则。体现了自然界“如果你是……则必须能……”的理念。"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">接口是一组规则的集合，它规定了实现本接口的类或接口必须拥有的一组规则。体现了自然界“如果你是……则必须能……”的理念。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口是在一定粒度视图上同类事物的抽象表示。注意这里我强调了在一定粒度视图上，因为“同类事物”这个概念是相对的，它因为粒度视图不同而不同。"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">接口是在一定粒度视图上同类事物的抽象表示。注意这里我强调了在一定粒度视图上，因为“同类事物”这个概念是相对的，它因为粒度视图不同而不同。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向接口编程综述"><span class="nav-number">1.2.3.</span> <span class="nav-text">面向接口编程综述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IOC详解"><span class="nav-number">1.3.</span> <span class="nav-text">IOC详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过实例理解IoC的概念"><span class="nav-number">1.3.1.</span> <span class="nav-text">通过实例理解IoC的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IoC的类型"><span class="nav-number">1.3.2.</span> <span class="nav-text">IoC的类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#构造函数注入"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">构造函数注入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性注入"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">属性注入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口注入（不提倡）"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">接口注入（不提倡）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过容器完成依赖关系的注入"><span class="nav-number">1.3.3.</span> <span class="nav-text">通过容器完成依赖关系的注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-注入方式及XML配置详解"><span class="nav-number">1.3.4.</span> <span class="nav-text">Spring 注入方式及XML配置详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Setter注入"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">Setter注入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造器注入"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">构造器注入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#静态工厂的方法注入"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">静态工厂的方法注入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例工厂的方法注入"><span class="nav-number">1.3.4.4.</span> <span class="nav-text">实例工厂的方法注入</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐宏亮</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
