@@ -1,0 +1,835 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/uploads/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Python 基础Python的语法采用缩进方式123456# print absolute value of an integer:a = 100if a &amp;gt;= 0:    print(a)else:    print(-a) #是注释，注释是给人看的，解释器会忽略掉注释。当语句以冒号:结尾时，缩进的语句视为代码块。 Python程序是大小写敏感的，如果写错了大小写，程序会报错。 数据类型">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python入门">
+<meta property="og:url" content="http://yoursite.com/2017/08/21/python入门/index.html">
+<meta property="og:site_name" content="离离原上草">
+<meta property="og:description" content="Python 基础Python的语法采用缩进方式123456# print absolute value of an integer:a = 100if a &amp;gt;= 0:    print(a)else:    print(-a) #是注释，注释是给人看的，解释器会忽略掉注释。当语句以冒号:结尾时，缩进的语句视为代码块。 Python程序是大小写敏感的，如果写错了大小写，程序会报错。 数据类型">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-21T06:55:59.928Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python入门">
+<meta name="twitter:description" content="Python 基础Python的语法采用缩进方式123456# print absolute value of an integer:a = 100if a &amp;gt;= 0:    print(a)else:    print(-a) #是注释，注释是给人看的，解释器会忽略掉注释。当语句以冒号:结尾时，缩进的语句视为代码块。 Python程序是大小写敏感的，如果写错了大小写，程序会报错。 数据类型">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '2826EPHU2B',
+      apiKey: 'f88bfd768a4b086dc17a7c4946499618',
+      indexName: '26fdb1447b8c93b980ce075eb0d6b7e9',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/21/python入门/"/>
+
+
+
+
+
+  <title>python入门 | 离离原上草</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?eee29daecf3c11799e28ab5768869fee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">离离原上草</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/21/python入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="徐宏亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="离离原上草">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python入门</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-21T10:19:13+08:00">
+                2017-08-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Python-基础"><a href="#Python-基础" class="headerlink" title="Python 基础"></a>Python 基础</h1><p>Python的语法采用缩进方式<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># print absolute value of an integer:</span></div><div class="line"><span class="keyword">a</span> = <span class="number">100</span></div><div class="line"><span class="keyword">if</span> <span class="keyword">a</span> &gt;= <span class="number">0</span>:</div><div class="line">    print(<span class="keyword">a</span>)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    print(-<span class="keyword">a</span>)</div></pre></td></tr></table></figure></p>
+<p>#是注释，注释是给人看的，解释器会忽略掉注释。<br>当语句以冒号:结尾时，<strong>缩进的语句</strong>视为代码块。</p>
+<p>Python程序是大小写敏感的，如果写错了大小写，程序会报错。</p>
+<h2 id="数据类型和变量"><a href="#数据类型和变量" class="headerlink" title="数据类型和变量"></a>数据类型和变量</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>整数：1，100，0xff00，0xa5b4c3d2<br>浮点数：1.23，3.14，1.23e9，12.3e8<br>字符串：’abc’，”xyz”<br>转义字符<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'\\\t\\'</span>)</div><div class="line">\       \</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">r'\\\t\\'</span>)</div><div class="line">\\\t\\</div></pre></td></tr></table></figure></p>
+<p>用’’’…’’’的格式表示多行内容<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'''line1</span></div><div class="line"><span class="string"><span class="meta">... </span>line2</span></div><div class="line"><span class="string"><span class="meta">... </span>line3'''</span>)</div><div class="line">line1</div><div class="line">line2</div><div class="line">line3</div></pre></td></tr></table></figure></p>
+<p>布尔值：True、False、用and、or和not运算<br>空值：None<br>Python还提供了列表、字典等多种数据类型，还允许创建自定义数据类型</p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>变量名必须是大小写英文、数字和_的组合，且不能用数字开头。<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="attr">a</span> = <span class="number">1</span></div><div class="line"><span class="comment"># 变量a是一个整数。</span></div><div class="line"></div><div class="line"><span class="attr">t_007</span> = <span class="string">'T007'</span></div><div class="line"><span class="comment"># 变量t_007是一个字符串。</span></div><div class="line"></div><div class="line"><span class="attr">Answer</span> = <span class="literal">True</span></div><div class="line"><span class="comment"># 变量Answer是一个布尔值True</span></div></pre></td></tr></table></figure></p>
+<p>python 与 JavaScript 变量差不多都是动态语言，差别就是 Python 不用带<code>var</code>。</p>
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><p>常量就是不能变的变量，通常用全部大写的变量名表示常量，但事实上PI仍然是一个变量，Python根本没有任何机制保证PI不会被改变。<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; <span class="number">10</span> / <span class="number">3</span></div><div class="line"><span class="number">3.3333333333333335</span></div><div class="line"></div><div class="line">&gt;&gt;&gt; <span class="number">9</span> / <span class="number">3</span></div><div class="line"><span class="number">3.0</span></div><div class="line"></div><div class="line">&gt;&gt;&gt; <span class="number">10</span> <span class="comment">// 3</span></div><div class="line"><span class="number">3</span></div><div class="line"></div><div class="line">&gt;&gt;&gt; <span class="number">10</span> % <span class="number">3</span></div><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure></p>
+<h2 id="字符串和编码"><a href="#字符串和编码" class="headerlink" title="字符串和编码"></a>字符串和编码</h2><h3 id="Python的字符串"><a href="#Python的字符串" class="headerlink" title="Python的字符串"></a>Python的字符串</h3><p>对于单个字符的编码，ord()函数获取字符的整数表示，chr()函数把编码转换为对应的字符：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; ord(<span class="string">'A'</span>)</div><div class="line"><span class="number">65</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; ord(<span class="string">'中'</span>)</div><div class="line"><span class="number">20013</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; chr(<span class="number">66</span>)</div><div class="line"><span class="string">'B'</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; chr(<span class="number">25991</span>)</div><div class="line"><span class="string">'文'</span></div></pre></td></tr></table></figure></p>
+<p>如果知道字符的整数编码，还可以用十六进制这么写str：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="string">'\u4e2d\u6587'</span></div><div class="line"><span class="string">'中文'</span></div></pre></td></tr></table></figure></p>
+<p>Python对<code>bytes</code>类型的数据用带`b前缀的单引号或双引号表示：<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">x</span> = b<span class="string">'ABC'</span></div></pre></td></tr></table></figure></p>
+<p>以Unicode表示的str通过encode()方法可以编码为指定的bytes，例如：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="string">'ABC'</span>.encode(<span class="string">'ascii'</span>)</div><div class="line">b<span class="string">'ABC'</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="string">'中文'</span>.encode(<span class="string">'utf-8'</span>)</div><div class="line">b<span class="string">'\xe4\xb8\xad\xe6\x96\x87'</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="string">'中文'</span>.encode(<span class="string">'ascii'</span>)</div><div class="line">Traceback (most recent call last)<span class="symbol">:</span></div><div class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;<span class="class"><span class="keyword">module</span>&gt;</span></div><div class="line"><span class="symbol">UnicodeEncodeError:</span> <span class="string">'ascii'</span> codec can<span class="string">'t encode characters in position 0-1: ordinal not in range(128)</span></div></pre></td></tr></table></figure></p>
+<p>纯英文的<code>str</code>可以用<code>ASCII</code>编码为<code>bytes</code>，内容是一样的，含有中文的<code>str</code>可以用<code>UTF-8</code>编码为<code>bytes</code>。含有中文的<code>str</code>无法用<code>ASCII</code>编码，因为中文编码的范围超过了<code>ASCII</code>编码的范围，Python会报错。</p>
+<p>如果我们从网络或磁盘上读取了字节流，那么读到的数据就是<code>bytes</code>。要把<code>bytes</code>变为<code>str</code>，就需要用<code>decode()</code>方法：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; b<span class="string">'ABC'</span>.decode(<span class="string">'ascii'</span>)</div><div class="line"><span class="string">'ABC'</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; b<span class="string">'\xe4\xb8\xad\xe6\x96\x87'</span>.decode(<span class="string">'utf-8'</span>)</div><div class="line"><span class="string">'中文'</span></div></pre></td></tr></table></figure></p>
+<p>要计算<code>str</code>包含多少个字符，可以用<code>len()</code>函数：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; len(<span class="string">'ABC'</span>)</div><div class="line"><span class="number">3</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; len(<span class="string">'中文'</span>)</div><div class="line"><span class="number">2</span></div></pre></td></tr></table></figure></p>
+<p>len()函数计算的是str的字符数，如果换成bytes，len()函数就计算字节数：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; len(b<span class="string">'ABC'</span>)</div><div class="line"><span class="number">3</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; len(b<span class="string">'\xe4\xb8\xad\xe6\x96\x87'</span>)</div><div class="line"><span class="number">6</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; len(<span class="string">'中文'</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line"><span class="number">6</span></div></pre></td></tr></table></figure></p>
+<p>让Python解释器按UTF-8编码读取<br><figure class="highlight d"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/usr/bin/env python3</span></div><div class="line"># -*- coding: utf-<span class="number">8</span> -*-</div></pre></td></tr></table></figure></p>
+<p>第一行注释是为了告诉Linux/OS X系统，这是一个Python可执行程序，Windows系统会忽略这个注释；<br>第二行注释是为了告诉Python解释器，按照UTF-8编码读取源代码，否则，你在源代码中写的中文输出可能会有乱码。</p>
+<h3 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h3><p>和C语言是一致的，用%实现：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">print</span><span class="params">(<span class="string">'我叫%s，我来自%s，我是一名%s。'</span>%(<span class="string">'徐宏亮'</span>,<span class="string">'南京'</span>,<span class="string">'软件工程师'</span>)</span></span>)</div><div class="line">我叫徐宏亮，我来自南京，我是一名软件工程师。</div></pre></td></tr></table></figure></p>
+<p>常见的占位符有：%d 整数、%f 浮点数、%s 字符串、%x 十六进制整数</p>
+<p>格式化整数和浮点数还可以指定是否补0和整数与小数的位数：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; '%<span class="number">2</span>d-%<span class="number">02</span>d' % (<span class="number">3</span>, <span class="number">1</span>)</div><div class="line">' <span class="number">3</span><span class="number">-01</span>'</div><div class="line">&gt;&gt;&gt; '%<span class="number">.2</span>f' % <span class="number">3.1415926</span></div><div class="line">'<span class="number">3.14</span>'</div></pre></td></tr></table></figure></p>
+<p>字符串里面的%是一个普通字符用%%来表示一个%：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="string">'growth rate: %d %%'</span> % <span class="number">7</span></div><div class="line"><span class="string">'growth rate: 7 %'</span></div></pre></td></tr></table></figure></p>
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><p>小明的成绩从去年的72分提升到了今年的85分，请计算小明成绩提升的百分点，并用字符串格式化显示出’xx.x%’，只保留小数点后1位：<br><figure class="highlight makefile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line">s1=72</div><div class="line">s2=85</div><div class="line">r=(s2-s1)/s1*100</div><div class="line">print('%.1f%%'%r)</div><div class="line"></div><div class="line">18.1%</div></pre></td></tr></table></figure></p>
+<h2 id="使用list和tuple"><a href="#使用list和tuple" class="headerlink" title="使用list和tuple"></a>使用list和tuple</h2><h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><p>list 是一种有序的集合，可以随时添加和删除其中的元素。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">classmates = [<span class="string">'Michael'</span>,<span class="string">'Bob'</span>,<span class="string">'Tracy'</span>]</div><div class="line"><span class="function"><span class="title">print</span><span class="params">(classmates)</span></span></div><div class="line">[<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>]</div></pre></td></tr></table></figure></p>
+<p>用len()函数可以获得<code>list</code>元素的个数：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">classmates = [<span class="string">'Michael'</span>,<span class="string">'Bob'</span>,<span class="string">'Tracy'</span>]</div><div class="line"><span class="function"><span class="title">print</span><span class="params">(len(classmates)</span></span>)</div><div class="line"><span class="number">3</span></div></pre></td></tr></table></figure></p>
+<p>用索引来访问<code>list</code>中每一个位置的元素，超出范围报错，访问最后一个元素的索引是<code>classmates[len(classmates) - 1]</code>。<br>索引为负数时如<code>-1</code>，代表从倒数第一个。</p>
+<p><code>append()</code>向list中追加元素到末尾：<code>classmates.append(&#39;Adam&#39;)</code></p>
+<p><code>insert()</code>向list中插入元素到指定位置：<code>classmates.insert(1, &#39;Jack&#39;)</code></p>
+<p><code>pop()</code>删除list末尾的元素：<code>classmates.pop()</code></p>
+<p><code>pop(index)</code>删除list指定位置上的元素：<code>classmates.pop(1)</code></p>
+<h3 id="tuple"><a href="#tuple" class="headerlink" title="tuple"></a>tuple</h3><p>另一种有序列表元组，它的特点是一旦初始化，指向就不能修改。</p>
+<p>只有1个元素的tuple定义时必须加一个逗号,，来消除歧义：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; t = (<span class="number">1</span>)</div><div class="line"><span class="meta">&gt;&gt;</span>&gt; t</div><div class="line"><span class="number">1</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; t = (<span class="number">1</span>,)</div><div class="line"><span class="meta">&gt;&gt;</span>&gt; t</div><div class="line">(<span class="number">1</span>,)</div></pre></td></tr></table></figure></p>
+<p>tuple的每个元素，指向永远不变。<br>即指向’a’，就不能改成指向’b’，指向一个list，就不能改成指向其他对象，但指向的这个list本身是可变的。</p>
+<h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">age = 20</div><div class="line"><span class="keyword">if</span> age &gt;= 18:</div><div class="line">    <span class="built_in">print</span>(<span class="string">'your age is'</span>, age)</div><div class="line">    <span class="built_in">print</span>(<span class="string">'adult'</span>)</div><div class="line">	</div><div class="line">age = 3</div><div class="line"><span class="keyword">if</span> age &gt;= 18:</div><div class="line">    <span class="built_in">print</span>(<span class="string">'your age is'</span>, age)</div><div class="line">    <span class="built_in">print</span>(<span class="string">'adult'</span>)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="built_in">print</span>(<span class="string">'your age is'</span>, age)</div><div class="line">    <span class="built_in">print</span>(<span class="string">'teenager'</span>)</div><div class="line">	</div><div class="line">age = 3</div><div class="line"><span class="keyword">if</span> age &gt;= 18:</div><div class="line">    <span class="built_in">print</span>(<span class="string">'adult'</span>)</div><div class="line"><span class="keyword">elif</span> age &gt;= 6:</div><div class="line">    <span class="built_in">print</span>(<span class="string">'teenager'</span>)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="built_in">print</span>(<span class="string">'kid'</span>)</div></pre></td></tr></table></figure>
+<p>elif是else if的缩写</p>
+<p>用input()读取用户的输入，返回的数据类型是str，<code>int()函数</code>把 str 转换成整数，str 不是合法的数字时就会报错。<br><figure class="highlight hsp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">s = <span class="keyword">input</span>(<span class="string">'birth: '</span>)</div><div class="line">birth = <span class="keyword">int</span>(s)</div><div class="line"><span class="keyword">if</span> birth &lt; <span class="number">2000</span>:</div><div class="line">    <span class="keyword">print</span>(<span class="string">'00前'</span>)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span>(<span class="string">'00后'</span>)</div></pre></td></tr></table></figure></p>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><h3 id="for…in-循环"><a href="#for…in-循环" class="headerlink" title="for…in 循环"></a>for…in 循环</h3><figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">names = [<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>]</div><div class="line"><span class="keyword">for</span> <span class="keyword">name</span> <span class="keyword">in</span> names:</div><div class="line">    print(<span class="keyword">name</span>)</div></pre></td></tr></table></figure>
+<p>计算1-100的整数之和，Python提供一个range()函数，可以生成一个整数序列，再通过list()函数可以转换为list。<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; <span class="keyword">list</span>(<span class="keyword">range</span>(5))</div><div class="line">[0, 1, 2, 3, 4]</div><div class="line"></div><div class="line"><span class="keyword">sum</span> = 0</div><div class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="keyword">range</span>(101):</div><div class="line">    <span class="keyword">sum</span> = <span class="keyword">sum</span> + x</div><div class="line"><span class="keyword">print</span>(<span class="keyword">sum</span>)</div></pre></td></tr></table></figure></p>
+<h3 id="while-循环"><a href="#while-循环" class="headerlink" title="while 循环"></a>while 循环</h3><figure class="highlight excel"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sum</span> = <span class="number">0</span></div><div class="line"><span class="built_in">n</span> = <span class="number">99</span></div><div class="line">while <span class="built_in">n</span> &gt; <span class="symbol">0:</span></div><div class="line">    <span class="built_in">sum</span> = <span class="built_in">sum</span> + <span class="built_in">n</span></div><div class="line">    <span class="built_in">n</span> = <span class="built_in">n</span> - <span class="number">2</span></div><div class="line">print(<span class="built_in">sum</span>)</div></pre></td></tr></table></figure>
+<h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>break语句可以提前退出循环。</p>
+<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><p>通过continue语句，跳过当前的这次循环，直接开始下一次循环。</p>
+<h2 id="使用dict和set"><a href="#使用dict和set" class="headerlink" title="使用dict和set"></a>使用dict和set</h2><h3 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h3><p>dict全称dictionary，在其他语言中也称为map，使用键-值（key-value）存储，具有极快的查找速度。</p>
+<p>假设要根据同学的名字查找对应的成绩，如果用list实现，需要两个list：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">names = [<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>]</div><div class="line">scores = [<span class="number">95</span>, <span class="number">75</span>, <span class="number">85</span>]</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; d = &#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;</span>&gt; d[<span class="string">'Michael'</span>]</div><div class="line"><span class="number">95</span></div></pre></td></tr></table></figure></p>
+<p>要避免key不存在的错误<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> 通过<span class="keyword">in</span>判断key是否存在</span></div><div class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">'Thomas'</span> <span class="keyword">in</span> d</span></div><div class="line">False</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash"> 通过get方法，不存在返回 None，也可以自定义返回 -1。</span></div><div class="line"><span class="meta">#</span><span class="bash"> 注意：返回None的时候Python的交互式命令行不显示结果。</span></div><div class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; d.get(<span class="string">'Thomas'</span>)</span></div><div class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; d.get(<span class="string">'Thomas'</span>, -1)</span></div><div class="line">-1</div></pre></td></tr></table></figure></p>
+<p>删除一个key，用pop(key)方法，对应的value也会从dict中删除：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; d.pop(<span class="string">'Bob'</span>)</div><div class="line"><span class="number">75</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; d</div><div class="line">&#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</div></pre></td></tr></table></figure></p>
+<p>dict内部存放的顺序和key放入的顺序是没有关系的，dict的key必须是不可变对象，字符串、整数等都是不可变的，list是可变的，就不能作为key。</p>
+<h3 id="dict-与-list-对比"><a href="#dict-与-list-对比" class="headerlink" title="dict 与 list 对比"></a>dict 与 list 对比</h3><p>和list比较，dict有以下几个特点：</p>
+<ol>
+<li>查找和插入的速度极快，不会随着key的增加而变慢；</li>
+<li>需要占用大量的内存，内存浪费多。</li>
+</ol>
+<p>而list相反：</p>
+<ol>
+<li>查找和插入的时间随着元素的增加而增加；</li>
+<li>占用空间小，浪费内存很少。</li>
+</ol>
+<p>所以，dict是用空间来换取时间的一种方法。</p>
+<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><p>set和dict类似</p>
+<ul>
+<li>是一组key的集合，但不存储value</li>
+<li>在set中，没有重复的key</li>
+<li>set是无序的</li>
+</ul>
+<p>要创建一个set，需要提供一个list作为输入集合：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; s = set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</div><div class="line">&gt;&gt;&gt; s</div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</div></pre></td></tr></table></figure></p>
+<p>重复元素在set中自动被过滤：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; s = set([<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>])</div><div class="line">&gt;&gt;&gt; s</div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</div></pre></td></tr></table></figure></p>
+<p>通过add(key)方法可以添加元素到set中，可以重复添加，但不会有效果：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; s.add(<span class="number">4</span>)</div><div class="line">&gt;&gt;&gt; s</div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</div><div class="line">&gt;&gt;&gt; s.add(<span class="number">4</span>)</div><div class="line">&gt;&gt;&gt; s</div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</div></pre></td></tr></table></figure></p>
+<p>通过remove(key)方法可以删除元素：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; s.remove(<span class="number">4</span>)</div><div class="line"><span class="meta">&gt;&gt;</span>&gt; s</div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</div></pre></td></tr></table></figure></p>
+<p>set可以做数学意义上的交集、并集等操作：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; s1 = set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</div><div class="line">&gt;&gt;&gt; s2 = set([<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</div><div class="line">&gt;&gt;&gt; s1 &amp; s2</div><div class="line">&#123;<span class="number">2</span>, <span class="number">3</span>&#125;</div><div class="line">&gt;&gt;&gt; s1 | s2</div><div class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/10/js高程/" rel="next" title="js高程">
+                <i class="fa fa-chevron-left"></i> js高程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/21/天猫模仿SSH/" rel="prev" title="天猫模仿SSH">
+                天猫模仿SSH <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="徐宏亮" />
+          <p class="site-author-name" itemprop="name">徐宏亮</p>
+           
+              <p class="site-description motion-element" itemprop="description">我要用尽所有的力气才能书写一个词，放弃。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xuhongliang1996" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-基础"><span class="nav-number">1.</span> <span class="nav-text">Python 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型和变量"><span class="nav-number">1.1.</span> <span class="nav-text">数据类型和变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">1.1.1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">1.1.2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量"><span class="nav-number">1.1.3.</span> <span class="nav-text">常量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串和编码"><span class="nav-number">1.2.</span> <span class="nav-text">字符串和编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python的字符串"><span class="nav-number">1.2.1.</span> <span class="nav-text">Python的字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#格式化"><span class="nav-number">1.2.2.</span> <span class="nav-text">格式化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#练习"><span class="nav-number">1.2.3.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用list和tuple"><span class="nav-number">1.3.</span> <span class="nav-text">使用list和tuple</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#list"><span class="nav-number">1.3.1.</span> <span class="nav-text">list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tuple"><span class="nav-number">1.3.2.</span> <span class="nav-text">tuple</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件判断"><span class="nav-number">1.4.</span> <span class="nav-text">条件判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环"><span class="nav-number">1.5.</span> <span class="nav-text">循环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#for…in-循环"><span class="nav-number">1.5.1.</span> <span class="nav-text">for…in 循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while-循环"><span class="nav-number">1.5.2.</span> <span class="nav-text">while 循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#break"><span class="nav-number">1.5.3.</span> <span class="nav-text">break</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#continue"><span class="nav-number">1.5.4.</span> <span class="nav-text">continue</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用dict和set"><span class="nav-number">1.6.</span> <span class="nav-text">使用dict和set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dict"><span class="nav-number">1.6.1.</span> <span class="nav-text">dict</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dict-与-list-对比"><span class="nav-number">1.6.2.</span> <span class="nav-text">dict 与 list 对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set"><span class="nav-number">1.6.3.</span> <span class="nav-text">set</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐宏亮</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

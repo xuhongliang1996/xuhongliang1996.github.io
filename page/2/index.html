@@ -306,6 +306,307 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/08/js问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="徐宏亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="离离原上草">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/08/js问题/" itemprop="url">js问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-08T11:44:28+08:00">
+                2017-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="window-onload-方法名-与window-onload-方法名-的区别"><a href="#window-onload-方法名-与window-onload-方法名-的区别" class="headerlink" title="window.onload=方法名;与window.onload=方法名();的区别"></a>window.onload=方法名;与window.onload=方法名();的区别</h1><p>不加括号是函数的引用赋值，当符合条件时才会执行（页面加载完所有的文件后，执行此方法）；加了括号是方法的调用，函数立刻执行。</p>
+<p>补充：window是浏览器类自带的对象，这个onload是window的一个属性，这个属性表现为一个function。也就是说window有一个默认的onload方法。<br>上面的写法就是在重写onload方法，类似于java里面的匿名方法。表示页面加载完所有的文件后，执行此方法。<br>onload本身只是一个变量，不具有任何实际的意义，所以如果要把onload定义为一个方法，那么必须写出具体的方法体：window.onload=function(){//方法体},这样才是完整的声明方式。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/01/CSS居中指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="徐宏亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="离离原上草">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/01/CSS居中指南/" itemprop="url">CSS居中指南</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-01T15:10:37+08:00">
+                2017-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>转自：<a href="https://css-tricks.com/centering-css-complete-guide/" target="_blank" rel="external">https://css-tricks.com/centering-css-complete-guide/</a></p>
+</blockquote>
+<h1 id="水平"><a href="#水平" class="headerlink" title="水平"></a>水平</h1><h2 id="inline或inline-元素（如文本或链接）"><a href="#inline或inline-元素（如文本或链接）" class="headerlink" title="inline或inline-*元素（如文本或链接）"></a>inline或inline-*元素（如文本或链接）</h2><p>你可以在block父元素中水平居中inline元素：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="selector-class">.parent</span>&#123;</div><div class="line">  <span class="attribute">text-align</span>: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://jsrun.net/tfYKp" target="_blank" rel="external">例子</a></p>
+<p>适用于inline, inline-block, inline-table, inline-flex等。</p>
+<h2 id="block元素"><a href="#block元素" class="headerlink" title="block元素"></a>block元素</h2><p>可以给这个block元素margin-left和margin-right属性定义auto（需要定义width，否则它会充满父元素，无法实现对齐）：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.center-me</span> &#123;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://jsrun.net/ufYKp" target="_blank" rel="external">例子</a></p>
+<p>无论什么宽度的block元素都会以父元素为中心。</p>
+<p>注意，浮动可以左浮动、右浮动，但你不能居中浮动“float:center”。</p>
+<p><a href="https://css-tricks.com/float-center/" target="_blank" rel="external">用伪元素伪造“float：center”</a>。</p>
+<p><img src="https://css-tricks.com/wp-content/uploads/2011/04/catinmiddle1.png" alt="image"></p>
+<p><a href="http://jsrun.net/p2YKp" target="_blank" rel="external">查看demo</a></p>
+<p>如果我们想要得到这种布局，这不是特别容易做到的，目前的布局方法没有真正的建立在这一点上。</p>
+<p>这有点像float文字包围图像，但是文本包含这两个方向，像不存在的“float:center”或“float:both”。</p>
+<p>我们可以通过浮动的伪元素占位符做到这点。可以在文本中分本放一个左浮动，一个有浮动，伪元素的高宽由要插入的图像决定。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#l</span><span class="selector-pseudo">:before</span>, <span class="selector-id">#r</span><span class="selector-pseudo">:before</span> &#123; </div><div class="line">  <span class="attribute">content</span>: <span class="string">""</span>; </div><div class="line">  <span class="attribute">width</span>: <span class="number">125px</span>; </div><div class="line">  <span class="attribute">height</span>: <span class="number">250px</span>; </div><div class="line">&#125;</div><div class="line"><span class="selector-id">#l</span><span class="selector-pseudo">:before</span> &#123; </div><div class="line">  <span class="attribute">float</span>: right; </div><div class="line">&#125;</div><div class="line"><span class="selector-id">#r</span><span class="selector-pseudo">:before</span> &#123; </div><div class="line">  <span class="attribute">float</span>: left; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="https://css-tricks.com/wp-content/uploads/2011/04/psuedoplaceholders.jpg" alt="image"></p>
+<p>此时文本中多了一个区域，我们只要对图片进行绝对定位即可完成。也可以讲图片放到文本上放，居中后使用负的margin-top拉到对应位置上。</p>
+<h2 id="多个block元素"><a href="#多个block元素" class="headerlink" title="多个block元素"></a>多个block元素</h2><h3 id="一行水平居中"><a href="#一行水平居中" class="headerlink" title="一行水平居中"></a>一行水平居中</h3><p>如果你需要多个块级元素需在一行水平居中。这里有一个inline-block的例子和一个flexbox的例子：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//inline-block例子</span></div><div class="line"><span class="selector-class">.inline-block-center</span> &#123;</div><div class="line">  <span class="attribute">text-align</span>: center;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.inline-block-center</span> <span class="selector-tag">div</span> &#123;</div><div class="line">  <span class="attribute">display</span>: inline-block;<span class="comment">//让子元素有宽度高度特性又具有inline的同行特性</span></div><div class="line">  <span class="attribute">text-align</span>: left;</div><div class="line">&#125; </div><div class="line"><span class="comment">//inline-blick如果他们高度不一，会以最高的块底部对齐。</span></div><div class="line"></div><div class="line"></div><div class="line">flexbox例子</div><div class="line"><span class="selector-class">.flex-center</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">justify-content</span>: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://jsrun.net/c2YKp" target="_blank" rel="external">例子</a></p>
+<p><a href="http://www.cnblogs.com/KeithWang/p/3139517.html" target="_blank" rel="external">block，inline和inlinke-block介绍</a></p>
+<p>补充</p>
+<ul>
+<li>inline元素 input 和 img 设置 width 和 height 是有效的</li>
+<li>inline元素的 margin 和 padding 属性竖直方向也都是有效的</li>
+<li>inline元素与其父元素在top方向是基于内容对齐的, 而不是block那样的基于margin对齐</li>
+</ul>
+<p>Flex他是未来布局的首选，他不支持IE10以下等游览器。<br>Flex 布局教程：<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool" target="_blank" rel="external">语法篇</a><br>Flex 布局教程：<a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html" target="_blank" rel="external">实例篇</a>  </p>
+<h3 id="堆叠水平居中"><a href="#堆叠水平居中" class="headerlink" title="堆叠水平居中"></a>堆叠水平居中</h3><p>多个block元素堆叠在彼此的顶部，给每个block如下属性：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">margin</span>: <span class="number">5px</span> auto;</div></pre></td></tr></table></figure>
+<p>注意设置宽度</p>
+<p><a href="http://jsrun.net/d2YKp" target="_blank" rel="external">例子</a></p>
+<h1 id="垂直"><a href="#垂直" class="headerlink" title="垂直"></a>垂直</h1><h2 id="inline或者inline-元素（如文本或链接）"><a href="#inline或者inline-元素（如文本或链接）" class="headerlink" title="inline或者inline-*元素（如文本或链接）"></a>inline或者inline-*元素（如文本或链接）</h2><h3 id="单行"><a href="#单行" class="headerlink" title="单行"></a>单行</h3><p>有时，inline / text 元素显示为垂直居中，只是因为它们之上和之下有相等的padding。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.link</span> &#123;</div><div class="line">  <span class="attribute">padding-top</span>: <span class="number">30px</span>;</div><div class="line">  <span class="attribute">padding-bottom</span>: <span class="number">30px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://jsrun.net/F2YKp" target="_blank" rel="external">例子</a></p>
+<p>如果padding由于某种原因不能动，并且你想要居中一些文本，我们可以使文本的line-height与高度相等。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.center-text-trick</span> &#123;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">100px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>实现垂直居中</p>
+<p><a href="http://jsrun.net/J2YKp" target="_blank" rel="external">例子</a></p>
+<h3 id="多行"><a href="#多行" class="headerlink" title="多行"></a>多行</h3><p>padding-top和padding-bottom相等也可以使多行文本垂直居中，但是如果这不起作用，也许文本所在的元素可能是个表单元格。</p>
+<p>在这种情况下，用<a href="https://css-tricks.com/almanac/properties/v/vertical-align/" target="_blank" rel="external">vertical-align</a>属性处理。（<a href="https://css-tricks.com/what-is-vertical-align/" target="_blank" rel="external">更多</a>）  </p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">vertical-align</span>: middle;</div></pre></td></tr></table></figure>
+<p><a href="http://jsrun.net/x2YKp" target="_blank" rel="external">例子</a></p>
+<p>如果可以使用flexbox，单个flex-child可以很容易地在flex-parent中居中。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.flex-center-vertically</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">justify-content</span>: center;</div><div class="line">  <span class="attribute">flex-direction</span>: column;</div><div class="line">  <span class="attribute">height</span>: <span class="number">400px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><a href="http://jsrun.net/G2YKp" target="_blank" rel="external">例子</a></p>
+<p>请记住，父容器一定要有有固定高度（px、% 等），这就是为什么这里的容器有一个高度。</p>
+<p>如果这两种方法都不行，你可以使用“ghost element”技术，让一个全高度的伪元素放置在容器内，文本与它垂直对齐。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.ghost-center</span> &#123;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.ghost-center</span><span class="selector-pseudo">::before</span> &#123;</div><div class="line">  <span class="attribute">content</span>: <span class="string">" "</span>;</div><div class="line">  <span class="attribute">display</span>: inline-block;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">width</span>: <span class="number">1%</span>;</div><div class="line">  <span class="attribute">vertical-align</span>: middle;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.ghost-center</span> <span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">display</span>: inline-block;</div><div class="line">  <span class="attribute">vertical-align</span>: middle;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://jsrun.net/H2YKp" target="_blank" rel="external">例子</a></p>
+<h2 id="block元素-1"><a href="#block元素-1" class="headerlink" title="block元素"></a>block元素</h2><h3 id="知道元素的高度"><a href="#知道元素的高度" class="headerlink" title="知道元素的高度"></a>知道元素的高度</h3><p>不知道网页布局中的高度这是很常见的；有很多原因：</p>
+<ul>
+<li>如果宽度改变文本流可以改变高度</li>
+<li>文本样式中的差可以更改高度</li>
+<li>文本字号的变化可以改变高度</li>
+<li>具有固定宽高比的元素（如图像）可以在调整大小时更改高度等等。</li>
+</ul>
+<p>但如果你知道高度，你可以通过定位“top: 50%”和“margin-top：负数”实现垂直居中：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span> &#123;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.child</span> &#123;</div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">margin-top</span>: -<span class="number">50px</span>; <span class="comment">/* 如果不使用 box-sizing: border-box; 注意padding 和 border*/</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://jsrun.net/D2YKp" target="_blank" rel="external">例子</a></p>
+<h3 id="未知元素的高度"><a href="#未知元素的高度" class="headerlink" title="未知元素的高度"></a>未知元素的高度</h3><p>可以通过定位“top: 50%”和“transform: translateY(-50%)”实现垂直居中：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span> &#123;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.child</span> &#123;</div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</div><div class="line">  <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://jsrun.net/52YKp" target="_blank" rel="external">例子</a></p>
+<h3 id="可以使用flexbox"><a href="#可以使用flexbox" class="headerlink" title="可以使用flexbox"></a>可以使用flexbox</h3><p>垂直居中在flexbox中容易多了。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">flex-direction</span>: column;</div><div class="line">  <span class="attribute">justify-content</span>: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://jsrun.net/t2YKp" target="_blank" rel="external">例子</a> </p>
+<p>还可以用</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">display</span>: flex;</div><div class="line"><span class="attribute">align-items</span>: center;</div></pre></td></tr></table></figure>
+<h1 id="水平并垂直"><a href="#水平并垂直" class="headerlink" title="水平并垂直"></a>水平并垂直</h1><p>可以以任何方式组合上述技术，以获得完全居中的元素。一般分为三个阵营：</p>
+<h2 id="已知元素宽度和高度"><a href="#已知元素宽度和高度" class="headerlink" title="已知元素宽度和高度"></a>已知元素宽度和高度</h2><p>已将其定位在50%/50%之后，再通过margin等于宽度和高度一半的负边距来居中：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span> &#123;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.child</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">20px</span>;</div><div class="line"></div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</div><div class="line">  <span class="attribute">left</span>: <span class="number">50%</span>;</div><div class="line"></div><div class="line">  <span class="attribute">margin</span>: -<span class="number">70px</span> <span class="number">0</span> <span class="number">0</span> -<span class="number">170px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://jsrun.net/n2YKp" target="_blank" rel="external">例子</a></p>
+<h2 id="未知元素宽度和高度"><a href="#未知元素宽度和高度" class="headerlink" title="未知元素宽度和高度"></a>未知元素宽度和高度</h2><p>如果不知道宽度或高度，可以使用transform属性和向中心的两个方向（基于元素的当前宽度/高度）的50％的负向平移：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span> &#123;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.child</span> &#123;</div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</div><div class="line">  <span class="attribute">left</span>: <span class="number">50%</span>;</div><div class="line">  <span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%, -50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://jsrun.net/C2YKp" target="_blank" rel="external">例子</a></p>
+<h2 id="可以使用flexbox-1"><a href="#可以使用flexbox-1" class="headerlink" title="可以使用flexbox"></a>可以使用flexbox</h2><p>要使用flexbox在两个方向居中，需要使用两个中心属性：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">justify-content</span>: center;</div><div class="line">  <span class="attribute">align-items</span>: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://jsrun.net/r2YKp" target="_blank" rel="external">例子</a></p>
+<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>你可以在CSS中居中所有的东西。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/01/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -464,7 +765,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -477,7 +778,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
