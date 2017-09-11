@@ -1,0 +1,926 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="java,ssh," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/uploads/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="先理解一波代码结构Java Resources - srcapplicationContext.xml自动扫描web包 ,将带有注解的类 纳入spring容器管理1&amp;lt;context:component-scan base-package=&quot;com.how2java&quot; /&amp;gt; 支持事务注解1&amp;lt;tx:annotation-driven transaction-manager=&quot;tran">
+<meta name="keywords" content="java,ssh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ssh天猫整站后台结构">
+<meta property="og:url" content="http://yoursite.com/2017/09/07/ssh天猫整站后台结构/index.html">
+<meta property="og:site_name" content="离离原上草">
+<meta property="og:description" content="先理解一波代码结构Java Resources - srcapplicationContext.xml自动扫描web包 ,将带有注解的类 纳入spring容器管理1&amp;lt;context:component-scan base-package=&quot;com.how2java&quot; /&amp;gt; 支持事务注解1&amp;lt;tx:annotation-driven transaction-manager=&quot;tran">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-11T08:43:25.268Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ssh天猫整站后台结构">
+<meta name="twitter:description" content="先理解一波代码结构Java Resources - srcapplicationContext.xml自动扫描web包 ,将带有注解的类 纳入spring容器管理1&amp;lt;context:component-scan base-package=&quot;com.how2java&quot; /&amp;gt; 支持事务注解1&amp;lt;tx:annotation-driven transaction-manager=&quot;tran">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '2826EPHU2B',
+      apiKey: 'f88bfd768a4b086dc17a7c4946499618',
+      indexName: '26fdb1447b8c93b980ce075eb0d6b7e9',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/07/ssh天猫整站后台结构/"/>
+
+
+
+
+
+  <title>ssh天猫整站后台结构 | 离离原上草</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?eee29daecf3c11799e28ab5768869fee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">离离原上草</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/ssh天猫整站后台结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="徐宏亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="离离原上草">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ssh天猫整站后台结构</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T16:31:02+08:00">
+                2017-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="先理解一波"><a href="#先理解一波" class="headerlink" title="先理解一波"></a>先理解一波</h1><h1 id="代码结构"><a href="#代码结构" class="headerlink" title="代码结构"></a>代码结构</h1><h2 id="Java-Resources-src"><a href="#Java-Resources-src" class="headerlink" title="Java Resources - src"></a>Java Resources - src</h2><h3 id="applicationContext-xml"><a href="#applicationContext-xml" class="headerlink" title="applicationContext.xml"></a>applicationContext.xml</h3><p>自动扫描web包 ,将带有注解的类 纳入spring容器管理<br><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">context</span>:<span class="keyword">component</span>-scan base-<span class="keyword">package</span>=<span class="string">"com.how2java"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<p>支持事务注解<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;tx:annotation-driven <span class="attribute">transaction-manager</span>=<span class="string">"transactionManager"</span>/&gt;</div></pre></td></tr></table></figure></p>
+<p>配置事务管理器，对与Hibernate数据访问框架。<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;bean <span class="built_in">id</span>=<span class="string">"transactionManager"</span> <span class="built_in">class</span>=<span class="string">"org.springframework.orm.hibernate3.HibernateTransactionManager"</span>&gt;  </div><div class="line">	&lt;<span class="keyword">property</span> <span class="built_in">name</span>=<span class="string">"sessionFactory"</span> <span class="keyword">ref</span>=<span class="string">"sf"</span>&gt;&lt;/<span class="keyword">property</span>&gt;  </div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<p>Spring对Hibernate的整合，是在applicationContext.xml中配置sessionFactory来实现的，其中sessionFactory中要装配dataSource。<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;bean <span class="built_in">name</span>=<span class="string">"ds"</span></div><div class="line">	<span class="built_in">class</span>=<span class="string">"org.springframework.jdbc.datasource.DriverManagerDataSource"</span>&gt;</div><div class="line">	&lt;<span class="keyword">property</span> <span class="built_in">name</span>=<span class="string">"driverClassName"</span> value=<span class="string">"com.mysql.jdbc.Driver"</span> /&gt;</div><div class="line">	&lt;<span class="keyword">property</span> <span class="built_in">name</span>=<span class="string">"url"</span> value=<span class="string">"jdbc:mysql://localhost:3306/tmall_ssh?characterEncoding=UTF-8"</span> /&gt;</div><div class="line">	&lt;<span class="keyword">property</span> <span class="built_in">name</span>=<span class="string">"username"</span> value=<span class="string">"root"</span> /&gt;</div><div class="line">	&lt;<span class="keyword">property</span> <span class="built_in">name</span>=<span class="string">"password"</span> value=<span class="string">"admin"</span> /&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<p>sessionFactory的Bean配置，需要在DAOimpl中进行注入。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- Bean的id为sf，采用注解的形式实现hibernate --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"sf"</span></span></div><div class="line"><span class="tag">	<span class="attr">class</span>=<span class="string">"org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"</span>&gt;</span></div><div class="line">	</div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"ds"</span> /&gt;</span></div><div class="line"></div><div class="line">	<span class="comment">&lt;!-- 注解扫描的包 --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"packagesToScan"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">list</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>com.how2java.*<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">list</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"></div><div class="line">	<span class="comment">&lt;!-- 防止自动创建和更新表失败 --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"schemaUpdate"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"></div><div class="line">	<span class="comment">&lt;!-- 配置hibernate属性 --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernateProperties"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span></div><div class="line">			<span class="comment">&lt;!-- 配置Hibernate方言 --&gt;</span></div><div class="line">			hibernate.dialect=org.hibernate.dialect.MySQLDialect</div><div class="line">			<span class="comment">&lt;!-- 将执行得到SQL语句都输出到控制台 --&gt;</span></div><div class="line">			hibernate.show_sql=false</div><div class="line">			<span class="comment">&lt;!-- sf启动的时候会去检查数据库schema是否一致，如果不一致会做scheme更新 --&gt;</span></div><div class="line">			hbm2ddl.auto=update</div><div class="line">		<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">	</div><div class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="struts-xml"><a href="#struts-xml" class="headerlink" title="struts.xml"></a>struts.xml</h3><p>指定Web应用的默认编码集<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="built_in">constant</span> <span class="built_in">name</span>=<span class="string">"struts.i18n.encoding"</span> value=<span class="string">"UTF-8"</span>&gt;&lt;/<span class="built_in">constant</span>&gt;</div></pre></td></tr></table></figure></p>
+<p>指定Struts 2默认的ObjectFactory Bean,该属性默认值是spring<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;constant <span class="attribute">name</span>=<span class="string">"struts.objectFactory"</span> <span class="attribute">value</span>=<span class="string">"spring"</span>/&gt;</div></pre></td></tr></table></figure></p>
+<p>使用basicstruts，与Action注解中的basicstruts相对应，继承struts-default.xml，它里面定义了许多跳转类型、拦截器等一些常用的东西。<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;package <span class="attribute">name</span>=<span class="string">"basicstruts"</span> <span class="attribute">extends</span>=<span class="string">"struts-default"</span>&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="pojo"><a href="#pojo" class="headerlink" title="pojo"></a>pojo</h3><p>定义实体类，并用Hibernate注解标识对应的表，字段，约束等信息。</p>
+<h3 id="dao-impl"><a href="#dao-impl" class="headerlink" title="dao.impl"></a>dao.impl</h3><p>DAO类，继承了HibernateTemplate类，从而提供了各种各样的CRUD方法，满足各种数据库操作的需要。</p>
+<p>SessionFactory接口负责初始化Hibernate。它充当数据存储源的代理，并负责创建Session对象。</p>
+<p><code>@Repository(&quot;dao&quot;)</code>标注数据访问组件<br><code>@Resource(name=&quot;sf&quot;)</code>为方法注入sessionFactory<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Resource</span>(name=<span class="string">"sf"</span>)</div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">setSessionFactory</span><span class="params">(SessionFactory sessionFactory)</span> </span>&#123;</div><div class="line">	<span class="keyword">super</span>.setSessionFactory(sessionFactory);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h3 id="service"><a href="#service" class="headerlink" title="service"></a>service</h3><p>Serice接口，用于提供业务方法。</p>
+<h3 id="service-impl"><a href="#service-impl" class="headerlink" title="service.impl"></a>service.impl</h3><p>SericeImpl实现类，提供接口业务方法的具体实现。<br>自动注入了DAOImpl的实例dao。</p>
+<h3 id="action"><a href="#action" class="headerlink" title="action"></a>action</h3><p>Action控制层，注入了Service对象，可以获取数据及操作数据，访问映射，向页面传递数据。</p>
+<h3 id="util"><a href="#util" class="headerlink" title="util"></a>util</h3><p>工具类，提供经常使用的工具方法。</p>
+<ul>
+<li>page.java 分页工具类</li>
+<li>ImageUtil.java 图片工具类</li>
+</ul>
+<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><p>测试类，添加测试数据等。</p>
+<h2 id="WebContent"><a href="#WebContent" class="headerlink" title="WebContent"></a>WebContent</h2><h3 id="WEB-INF"><a href="#WEB-INF" class="headerlink" title="WEB-INF"></a>WEB-INF</h3><h4 id="web-xml"><a href="#web-xml" class="headerlink" title="web.xml"></a>web.xml</h4><ol>
+<li>让所有请求都进入Struts2的过滤器StrutsPrepareAndExecuteFilter</li>
+<li>对所有请求进行UTF-8编码</li>
+<li>指定Spring配置文件的位置在classpath:applicationContext.xml</li>
+</ol>
+<h4 id="lib"><a href="#lib" class="headerlink" title="lib"></a>lib</h4><p>存放 java 用到的包</p>
+<h3 id="admin"><a href="#admin" class="headerlink" title="admin"></a>admin</h3><h4 id="index-jsp"><a href="#index-jsp" class="headerlink" title="index.jsp"></a>index.jsp</h4><p>使用了地址重定向，当访问admin文件夹后，会自动跳转到定义的地址。</p>
+<h4 id="listCategory-jsp"><a href="#listCategory-jsp" class="headerlink" title="listCategory.jsp"></a>listCategory.jsp</h4><p>分类信息页面</p>
+<h3 id="include-admin"><a href="#include-admin" class="headerlink" title="include - admin"></a>include - admin</h3><h4 id="adminHeader-jsp"><a href="#adminHeader-jsp" class="headerlink" title="adminHeader.jsp"></a>adminHeader.jsp</h4><p>定义了页面的开头，title 没写，会放在 body 内进行描写。</p>
+<ol>
+<li>表示本页面会使用html5的技术</li>
+<li>jsp指令</li>
+<li>引入JSTL</li>
+<li>引入js和css</li>
+<li>预先定义一些判断输入框的函数，方便后面使用</li>
+<li>对于删除超链，都需要进行确认操作</li>
+</ol>
+<h4 id="adminNavigator-jsp"><a href="#adminNavigator-jsp" class="headerlink" title="adminNavigator.jsp"></a>adminNavigator.jsp</h4><p>定义了后台功能的菜单。</p>
+<h4 id="adminPage-jsp"><a href="#adminPage-jsp" class="headerlink" title="adminPage.jsp"></a>adminPage.jsp</h4><p>定义了分页的样式。</p>
+<h4 id="adminFooter-jsp"><a href="#adminFooter-jsp" class="headerlink" title="adminFooter.jsp"></a>adminFooter.jsp</h4><p>定义了页脚页面。</p>
+<h1 id="Page-分页结构"><a href="#Page-分页结构" class="headerlink" title="Page 分页结构"></a>Page 分页结构</h1><p>为分页提供必要信息。</p>
+<h2 id="Page-java"><a href="#Page-java" class="headerlink" title="Page.java"></a>Page.java</h2><p>属性：</p>
+<ul>
+<li>int start; 开始位置</li>
+<li>int count; 每页显示的数量</li>
+<li>int total; 总共有多少条数据</li>
+<li>String param; 参数</li>
+<li>int defaultCount ; 默认每页显示5条</li>
+</ul>
+<p>方法：</p>
+<ul>
+<li>getTotalPage 根据count以及total，计算出总共有多少页</li>
+<li>getLast 计算出最后一页的数值是多少</li>
+<li>isHasPreviouse 判断是否有前一页</li>
+<li>isHasNext 判断是否有后一页</li>
+<li>Page() 构造函数设置count为defaultCount</li>
+<li>Page(int start, int count) 带参数的构造函数，设置开始位置和每页显示的数量。</li>
+</ul>
+<h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><p>新增方法：</p>
+<ul>
+<li>total() 获取并返回分类数据的总数</li>
+<li>listByPage(Page page) 获取Page的开始页数和每页数量，返回分页查询结果</li>
+</ul>
+<h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h2><p>将数据传到页面</p>
+<ul>
+<li>Page page</li>
+<li>Service service</li>
+<li>List&lt;实体类&gt; 实体类s</li>
+<li>list() 返回 listByPage 的结果，也就是分页后的数据<ul>
+<li>page == null  page = new Page();</li>
+<li>total = service.total();</li>
+<li>实体类s = service.listByPage(page);</li>
+</ul>
+</li>
+</ul>
+<h2 id="Action-jsp"><a href="#Action-jsp" class="headerlink" title="Action.jsp"></a>Action.jsp</h2><p>接收 categorys 集合<br><figure class="highlight dust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">c:forEach</span> <span class="attr">items</span>=<span class="string">"$</span></span></span><span class="template-variable">&#123;categorys&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">var</span>=<span class="string">"c"</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span></div><div class="line"><span class="xml">	<span class="tag">&lt;<span class="name">td</span>&gt;</span>$</span><span class="template-variable">&#123;c.id&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></div><div class="line"><span class="xml">	<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">height</span>=<span class="string">"40px"</span> <span class="attr">src</span>=<span class="string">"img/category/$</span></span></span><span class="template-variable">&#123;c.id&#125;</span><span class="xml"><span class="tag"><span class="string">.jpg"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></div><div class="line"><span class="xml">	<span class="tag">&lt;<span class="name">td</span>&gt;</span>$</span><span class="template-variable">&#123;c.name&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">c:forEach</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<h2 id="adminPage-jsp-1"><a href="#adminPage-jsp-1" class="headerlink" title="adminPage.jsp"></a>adminPage.jsp</h2><p>首页超链：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> = <span class="string">"?page.start = 0"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">span</span>&gt;</span>«<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>上一页超链：<br><figure class="highlight dust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span></span></div><div class="line"><span class="xml">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> = <span class="string">"?page.start = $</span></span></span><span class="template-variable">&#123;page.start - page.count&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span></span></div><div class="line"><span class="xml">		<span class="tag">&lt;<span class="name">span</span>&gt;</span>‹<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></div><div class="line"><span class="xml">	<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<p>中间页：<br><figure class="highlight dust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">c:forEach</span> <span class="attr">begin</span> = <span class="string">"0"</span> <span class="attr">end</span> = <span class="string">"$</span></span></span><span class="template-variable">&#123;page.totalPage - 1&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">varStatus</span> = <span class="string">"status"</span>&gt;</span></span></div><div class="line"><span class="xml">	<span class="tag">&lt;<span class="name">li</span>&gt;</span></span></div><div class="line"><span class="xml">		<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> = <span class="string">"?page.start = $</span></span></span><span class="template-variable">&#123;status.index * page.count&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">class</span>=<span class="string">"current"</span>&gt;</span></span></div><div class="line"><span class="xml">			<span class="tag">&lt;<span class="name">span</span>&gt;</span>$</span><span class="template-variable">&#123;status.count&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></div><div class="line"><span class="xml">		<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">c:forEach</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<p>下一页超链：<br><figure class="highlight dust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span></span></div><div class="line"><span class="xml">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> = <span class="string">"?page.start = $</span></span></span><span class="template-variable">&#123;page.start + page.count&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">aria-label</span> = <span class="string">"Next"</span>&gt;</span></span></div><div class="line"><span class="xml">		<span class="tag">&lt;<span class="name">span</span> <span class="attr">aria-hidden</span> = <span class="string">"true"</span>&gt;</span>›<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></div><div class="line"><span class="xml">	<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<p>最后一页：<br><figure class="highlight dust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span></span></div><div class="line"><span class="xml">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> = <span class="string">"?page.start = $</span></span></span><span class="template-variable">&#123;page.last&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">aria-label</span> = <span class="string">"Next"</span>&gt;</span></span></div><div class="line"><span class="xml">		<span class="tag">&lt;<span class="name">span</span> <span class="attr">aria-hidden</span> = <span class="string">"true"</span>&gt;</span>»<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></div><div class="line"><span class="xml">	<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<p>限制：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;c:<span class="keyword">if</span> <span class="built_in">test</span>=<span class="string">"<span class="variable">$&#123;!page.hasPreviouse&#125;</span>"</span>&gt;class=<span class="string">"disabled"</span>&lt;/c:<span class="keyword">if</span>&gt;</div><div class="line">&lt;c:<span class="keyword">if</span> <span class="built_in">test</span>=<span class="string">"<span class="variable">$&#123;!page.hasNext&#125;</span>"</span>&gt;class=<span class="string">"disabled"</span>&lt;/c:<span class="keyword">if</span>&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="c-forEach-参数"><a href="#c-forEach-参数" class="headerlink" title="c:forEach 参数"></a>c:forEach 参数</h2><p>属性：</p>
+<ul>
+<li>items    进行循环的项目</li>
+<li>begin    开始条件 0</li>
+<li>end    结束条件 集合中的最后一个项目</li>
+<li>step    步长 1</li>
+<li>var    代表当前项目的变量名</li>
+<li>varStatus    显示循环状态的变量</li>
+</ul>
+<p>vaStatus 属性：</p>
+<ul>
+<li>status.current 当前对象</li>
+<li>status.index 此次迭代的索引</li>
+<li>status.count 已经迭代的数量</li>
+<li>status.first 是否是第一个迭代对象</li>
+<li>status.last 是否是最后一个迭代对象</li>
+</ul>
+<h1 id="Category-查询"><a href="#Category-查询" class="headerlink" title="Category 查询"></a>Category 查询</h1><h2 id="listCategory-jsp-1"><a href="#listCategory-jsp-1" class="headerlink" title="listCategory.jsp"></a>listCategory.jsp</h2><p>通过 EL 表达式获取了 categorys 参数，访问这个链接时会触发 action 中的 list() 方法，返回的是分页后的数据。<br><figure class="highlight dust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-striped table-bordered table-hover  table-condensed"</span>&gt;</span></span></div><div class="line"><span class="xml">	<span class="tag">&lt;<span class="name">thead</span>&gt;</span></span></div><div class="line"><span class="xml">		<span class="tag">&lt;<span class="name">tr</span> <span class="attr">class</span>=<span class="string">"success"</span>&gt;</span></span></div><div class="line"><span class="xml">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>ID<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span></div><div class="line"><span class="xml">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>图片<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span></div><div class="line"><span class="xml">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>分类名称<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span></div><div class="line"><span class="xml">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>属性管理<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span></div><div class="line"><span class="xml">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>产品管理<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span></div><div class="line"><span class="xml">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>编辑<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span></div><div class="line"><span class="xml">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>删除<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span></div><div class="line"><span class="xml">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span></div><div class="line"><span class="xml">	<span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span></div><div class="line"><span class="xml">	<span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span></div><div class="line"><span class="xml">		<span class="tag">&lt;<span class="name">c:forEach</span> <span class="attr">items</span>=<span class="string">"$</span></span></span><span class="template-variable">&#123;categorys&#125;</span><span class="xml"><span class="tag"><span class="string">"</span> <span class="attr">var</span>=<span class="string">"c"</span>&gt;</span></span></div><div class="line"><span class="xml"></span></div><div class="line"><span class="xml">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span></div><div class="line"><span class="xml">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>$</span><span class="template-variable">&#123;c.id&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></div><div class="line"><span class="xml">			<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">height</span>=<span class="string">"40px"</span> <span class="attr">src</span>=<span class="string">"img/category/$</span></span></span><span class="template-variable">&#123;c.id&#125;</span><span class="xml"><span class="tag"><span class="string">.jpg"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></div><div class="line"><span class="xml">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>$</span><span class="template-variable">&#123;c.name&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></div><div class="line"><span class="xml">			</span></div><div class="line"><span class="xml">			<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"admin_property_list?category.id=$</span></span></span><span class="template-variable">&#123;c.id&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-th-list"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span>                    </span></div><div class="line"><span class="xml">			<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"admin_product_list?category.id=$</span></span></span><span class="template-variable">&#123;c.id&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-shopping-cart"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span>                   </span></div><div class="line"><span class="xml">			<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"admin_category_edit?category.id=$</span></span></span><span class="template-variable">&#123;c.id&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-edit"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></div><div class="line"><span class="xml">			<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">deleteLink</span>=<span class="string">"true"</span> <span class="attr">href</span>=<span class="string">"admin_category_delete?category.id=$</span></span></span><span class="template-variable">&#123;c.id&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"  glyphicon glyphicon-trash"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></div><div class="line"><span class="xml">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span></div><div class="line"><span class="xml">		</span></div><div class="line"><span class="xml">		<span class="tag">&lt;/<span class="name">c:forEach</span>&gt;</span></span></div><div class="line"><span class="xml">	<span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<h2 id="CategoryAction"><a href="#CategoryAction" class="headerlink" title="CategoryAction"></a>CategoryAction</h2><ul>
+<li>判断 page 是否存在，不存在生成分页工具类 Page。</li>
+<li>获取数据的总个数 categoryService.total()</li>
+<li>设置分页的总个数 page.setTotal(total)</li>
+<li>获取分页后的数据 categoryService.listByPage(page)</li>
+<li>返回 listCategory ，访问页面 /admin/listCategory.jsp。</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public String list() &#123;</div><div class="line">         </div><div class="line">	<span class="keyword">if</span>(<span class="attribute">page</span>==null)</div><div class="line">	<span class="built_in">	page </span>= new Page();</div><div class="line">	int total = categoryService.total();</div><div class="line">	page.setTotal(total);</div><div class="line">	categorys = categoryService.listByPage(page);</div><div class="line">	return <span class="string">"listCategory"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="CategoryService"><a href="#CategoryService" class="headerlink" title="CategoryService"></a>CategoryService</h2><p>public List list();<br>public int total();<br>public List<category> listByPage(Page page);</category></p>
+<h2 id="CategoryServiceImpl"><a href="#CategoryServiceImpl" class="headerlink" title="CategoryServiceImpl"></a>CategoryServiceImpl</h2><p>这些方法都是些对数据库的操作。</p>
+<h3 id="list"><a href="#list" class="headerlink" title="list()"></a>list()</h3><p>一些 Hibernate 的方式使用。</p>
+<ul>
+<li>用 class 创建 DetachedCriteria</li>
+<li>添加排序条件</li>
+<li>返回不需要分页的数据</li>
+</ul>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public <span class="keyword">List</span> <span class="keyword">list</span>() &#123;</div><div class="line">	DetachedCriteria dc = DetachedCriteria.forClass(Category.<span class="keyword">class</span>);</div><div class="line">	dc.addOrder(<span class="keyword">Order</span>.<span class="keyword">desc</span>(<span class="string">"id"</span>));</div><div class="line">	<span class="keyword">return</span> dao.findByCriteria(dc);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="total"><a href="#total" class="headerlink" title="total()"></a>total()</h3><p>返回数据的总个数。</p>
+<ul>
+<li>定义 sql 字符串</li>
+<li>使用 list 保存 dao.find 的查询结果，使用了数据库的 count(*) 只有一个值。</li>
+<li>判断 list 是否为空，为空 return 0</li>
+<li>获取 list 下标为 0 的值，也就是 count(*) 这个值</li>
+<li>返回这个 Long 转成一个 int 类型的值</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> int total() &#123;</div><div class="line">	String hql = <span class="string">"select count(*) from Category"</span>;</div><div class="line">	List&lt;<span class="built_in">Long</span>&gt; l= dao.find(hql);</div><div class="line">	<span class="keyword">if</span>(l.isEmpty())</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="built_in">Long</span> result= l.<span class="keyword">get</span>(<span class="number">0</span>);</div><div class="line">	<span class="keyword">return</span> result.intValue();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="listByPage-Page-page"><a href="#listByPage-Page-page" class="headerlink" title="listByPage(Page page)"></a>listByPage(Page page)</h3><p>返回数据的分页后数据。</p>
+<ul>
+<li>用 class 创建 DetachedCriteria</li>
+<li>设置排序</li>
+<li>返回分页后的数据，用到了分页类中的 start 和 count 参数，分别表示 开始位置和每页个数。</li>
+</ul>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public <span class="keyword">List</span>&lt;Category&gt; listByPage(Page page) &#123;</div><div class="line">	DetachedCriteria dc = DetachedCriteria.forClass(Category.<span class="keyword">class</span>);</div><div class="line">	dc.addOrder(<span class="keyword">Order</span>.<span class="keyword">desc</span>(<span class="string">"id"</span>));</div><div class="line">	<span class="keyword">return</span> dao.findByCriteria(dc,page.getStart(),page.getCount());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Category-增加"><a href="#Category-增加" class="headerlink" title="Category 增加"></a>Category 增加</h1><h2 id="listCategory-jsp-2"><a href="#listCategory-jsp-2" class="headerlink" title="listCategory.jsp"></a>listCategory.jsp</h2><ol>
+<li>form的action=”admin_category_add”，会导致访问CategoryAction的add()方法</li>
+<li>method=”post” 用于保证中文的正确提交</li>
+<li>必须有enctype=”multipart/form-data”，这样才能上传文件</li>
+<li>accept=”image/*” 这样把上传的文件类型限制在了图片</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">id</span>=<span class="string">"addForm"</span> <span class="attr">action</span>=<span class="string">"admin_category_add"</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"addTable"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>分类名称<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span>  <span class="attr">id</span>=<span class="string">"name"</span> <span class="attr">name</span>=<span class="string">"category.name"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>分类图片<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"categoryPic"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"img"</span> <span class="attr">accept</span>=<span class="string">"image/*"</span>/&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">tr</span> <span class="attr">class</span>=<span class="string">"submitTR"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">"2"</span> <span class="attr">align</span>=<span class="string">"center"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-success"</span>&gt;</span>提 交<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>分类名称，分类图片不能为空，使用了 checkEmpty 函数。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></div><div class="line"><span class="javascript">    $(<span class="string">"#addForm"</span>).submit(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></div><div class="line"><span class="actionscript">        <span class="keyword">if</span>(!checkEmpty(<span class="string">"name"</span>,<span class="string">"分类名称"</span>))</span></div><div class="line"><span class="actionscript">            <span class="keyword">return</span> <span class="literal">false</span>;</span></div><div class="line"><span class="actionscript">        <span class="keyword">if</span>(!checkEmpty(<span class="string">"categoryPic"</span>,<span class="string">"分类图片"</span>))</span></div><div class="line"><span class="actionscript">            <span class="keyword">return</span> <span class="literal">false</span>;</span></div><div class="line"><span class="actionscript">        <span class="keyword">return</span> <span class="literal">true</span>;</span></div><div class="line"><span class="undefined">    &#125;);</span></div><div class="line"><span class="undefined">&#125;);</span></div><div class="line"><span class="undefined"> </span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>通过 id name 判断是否为空，是否为数字，是否是整数。<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">function checkEmpty(<span class="built_in">id</span>, <span class="built_in">name</span>)&#123;</div><div class="line">	var value = $(<span class="string">"#"</span>+<span class="built_in">id</span>).val();</div><div class="line">	<span class="keyword">if</span>(value.<span class="built_in">length</span>==<span class="number">0</span>)&#123;</div><div class="line">		alert(<span class="built_in">name</span>+ <span class="string">"不能为空"</span>);</div><div class="line">		$(<span class="string">"#"</span>+<span class="built_in">id</span>)[<span class="number">0</span>].focus();</div><div class="line"><span class="built_in">		return</span> <span class="literal">false</span>;</div><div class="line">	&#125;</div><div class="line"><span class="built_in">	return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line">function checkNumber(<span class="built_in">id</span>, <span class="built_in">name</span>)&#123;</div><div class="line">	var value = $(<span class="string">"#"</span>+<span class="built_in">id</span>).val();</div><div class="line">	<span class="keyword">if</span>(value.<span class="built_in">length</span>==<span class="number">0</span>)&#123;</div><div class="line">		alert(<span class="built_in">name</span>+ <span class="string">"不能为空"</span>);</div><div class="line">		$(<span class="string">"#"</span>+<span class="built_in">id</span>)[<span class="number">0</span>].focus();</div><div class="line"><span class="built_in">		return</span> <span class="literal">false</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(isNaN(value))&#123;</div><div class="line">		alert(<span class="built_in">name</span>+ <span class="string">"必须是数字"</span>);</div><div class="line">		$(<span class="string">"#"</span>+<span class="built_in">id</span>)[<span class="number">0</span>].focus();</div><div class="line"><span class="built_in">		return</span> <span class="literal">false</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line"><span class="built_in">	return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line">function checkInt(<span class="built_in">id</span>, <span class="built_in">name</span>)&#123;</div><div class="line">	var value = $(<span class="string">"#"</span>+<span class="built_in">id</span>).val();</div><div class="line">	<span class="keyword">if</span>(value.<span class="built_in">length</span>==<span class="number">0</span>)&#123;</div><div class="line">		alert(<span class="built_in">name</span>+ <span class="string">"不能为空"</span>);</div><div class="line">		$(<span class="string">"#"</span>+<span class="built_in">id</span>)[<span class="number">0</span>].focus();</div><div class="line"><span class="built_in">		return</span> <span class="literal">false</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(parseInt(value)!=value)&#123;</div><div class="line">		alert(<span class="built_in">name</span>+ <span class="string">"必须是整数"</span>);</div><div class="line">		$(<span class="string">"#"</span>+<span class="built_in">id</span>)[<span class="number">0</span>].focus();</div><div class="line"><span class="built_in">		return</span> <span class="literal">false</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line"><span class="built_in">	return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使得所有 a 标签带 deleteLink 属性，并且值为 true 的点击时弹出 “确认要删除” 对话框，通过用户的选项来判断是否生效这个点击。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	$(<span class="string">"a"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> deleteLink = $(<span class="keyword">this</span>).attr(<span class="string">"deleteLink"</span>);</div><div class="line">		<span class="built_in">console</span>.log(deleteLink);</div><div class="line">		<span class="keyword">if</span>(<span class="string">"true"</span>==deleteLink)&#123;</div><div class="line">			<span class="keyword">var</span> confirmDelete = confirm(<span class="string">"确认要删除"</span>);</div><div class="line">			<span class="keyword">if</span>(confirmDelete)</div><div class="line">				<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">			</div><div class="line">		&#125;</div><div class="line">	&#125;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h2 id="CategoryAction-1"><a href="#CategoryAction-1" class="headerlink" title="CategoryAction"></a>CategoryAction</h2><p>提交表单后会触发 admin_category_add，执行 action 的 add() 方法，并且返回 listCategoryPage 重定向到一个URL admin_category_list</p>
+<ul>
+<li>首先保存数据，因为后面的图片操作不需要存入数据库。</li>
+<li>创建文件夹路径</li>
+<li>创建文件，并以id.jpg命名</li>
+<li>将上传的图片copy给文件</li>
+<li>对图片文件进行转码</li>
+<li>转换为真正的JPG格式</li>
+<li>返回 listCategoryPage ,重定向到一个URL admin_category_list</li>
+</ul>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> String add() &#123;</div><div class="line">	categoryService.save(category);</div><div class="line">	<span class="keyword">File</span>  imageFolder= <span class="keyword">new</span> <span class="keyword">File</span>(ServletActionContext.getServletContext().getRealPath(<span class="string">"img/category"</span>));</div><div class="line">	<span class="keyword">File</span> <span class="keyword">file</span> = <span class="keyword">new</span> <span class="keyword">File</span>(imageFolder,category.getId()+<span class="string">".jpg"</span>);</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		FileUtils.copyFile(img, <span class="keyword">file</span>);</div><div class="line">		BufferedImage img = ImageUtil.change2jpg(<span class="keyword">file</span>);</div><div class="line">		ImageIO.<span class="keyword">write</span>(img, <span class="string">"jpg"</span>, <span class="keyword">file</span>);            </div><div class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="string">"listCategoryPage"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="CategoryService-1"><a href="#CategoryService-1" class="headerlink" title="CategoryService"></a>CategoryService</h2><p>public void save(Category category);</p>
+<h2 id="CategoryServiceImpl-1"><a href="#CategoryServiceImpl-1" class="headerlink" title="CategoryServiceImpl"></a>CategoryServiceImpl</h2><h3 id="save-Category-category"><a href="#save-Category-category" class="headerlink" title="save(Category category)"></a>save(Category category)</h3><p>保存数据到数据库。<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="built_in">save</span>(Category category) &#123;</div><div class="line">	dao.<span class="built_in">save</span>(category);	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="ImageUtil"><a href="#ImageUtil" class="headerlink" title="ImageUtil"></a>ImageUtil</h2><ul>
+<li>public static BufferedImage change2jpg(File f) 确保图片文件的二进制格式是jpg。</li>
+<li>public static void resizeImage(File srcFile, int width,int height, File destFile) 改变图片大小</li>
+<li>public static Image resizeImage(Image srcImage, int width, int height) 改变图片大小</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/ssh/" rel="tag"># ssh</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/07/SSH入门/" rel="next" title="SSH入门">
+                <i class="fa fa-chevron-left"></i> SSH入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="徐宏亮" />
+          <p class="site-author-name" itemprop="name">徐宏亮</p>
+           
+              <p class="site-description motion-element" itemprop="description">我要用尽所有的力气才能书写一个词，放弃。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xuhongliang1996" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#先理解一波"><span class="nav-number">1.</span> <span class="nav-text">先理解一波</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码结构"><span class="nav-number">2.</span> <span class="nav-text">代码结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-Resources-src"><span class="nav-number">2.1.</span> <span class="nav-text">Java Resources - src</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#applicationContext-xml"><span class="nav-number">2.1.1.</span> <span class="nav-text">applicationContext.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#struts-xml"><span class="nav-number">2.1.2.</span> <span class="nav-text">struts.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pojo"><span class="nav-number">2.1.3.</span> <span class="nav-text">pojo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dao-impl"><span class="nav-number">2.1.4.</span> <span class="nav-text">dao.impl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#service"><span class="nav-number">2.1.5.</span> <span class="nav-text">service</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#service-impl"><span class="nav-number">2.1.6.</span> <span class="nav-text">service.impl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#action"><span class="nav-number">2.1.7.</span> <span class="nav-text">action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#util"><span class="nav-number">2.1.8.</span> <span class="nav-text">util</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test"><span class="nav-number">2.1.9.</span> <span class="nav-text">test</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebContent"><span class="nav-number">2.2.</span> <span class="nav-text">WebContent</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WEB-INF"><span class="nav-number">2.2.1.</span> <span class="nav-text">WEB-INF</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#web-xml"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">web.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lib"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">lib</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#admin"><span class="nav-number">2.2.2.</span> <span class="nav-text">admin</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#index-jsp"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">index.jsp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#listCategory-jsp"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">listCategory.jsp</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#include-admin"><span class="nav-number">2.2.3.</span> <span class="nav-text">include - admin</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#adminHeader-jsp"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">adminHeader.jsp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adminNavigator-jsp"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">adminNavigator.jsp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adminPage-jsp"><span class="nav-number">2.2.3.3.</span> <span class="nav-text">adminPage.jsp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adminFooter-jsp"><span class="nav-number">2.2.3.4.</span> <span class="nav-text">adminFooter.jsp</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Page-分页结构"><span class="nav-number">3.</span> <span class="nav-text">Page 分页结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Page-java"><span class="nav-number">3.1.</span> <span class="nav-text">Page.java</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service"><span class="nav-number">3.2.</span> <span class="nav-text">Service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Action"><span class="nav-number">3.3.</span> <span class="nav-text">Action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Action-jsp"><span class="nav-number">3.4.</span> <span class="nav-text">Action.jsp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adminPage-jsp-1"><span class="nav-number">3.5.</span> <span class="nav-text">adminPage.jsp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c-forEach-参数"><span class="nav-number">3.6.</span> <span class="nav-text">c:forEach 参数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Category-查询"><span class="nav-number">4.</span> <span class="nav-text">Category 查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#listCategory-jsp-1"><span class="nav-number">4.1.</span> <span class="nav-text">listCategory.jsp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CategoryAction"><span class="nav-number">4.2.</span> <span class="nav-text">CategoryAction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CategoryService"><span class="nav-number">4.3.</span> <span class="nav-text">CategoryService</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CategoryServiceImpl"><span class="nav-number">4.4.</span> <span class="nav-text">CategoryServiceImpl</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#list"><span class="nav-number">4.4.1.</span> <span class="nav-text">list()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#total"><span class="nav-number">4.4.2.</span> <span class="nav-text">total()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#listByPage-Page-page"><span class="nav-number">4.4.3.</span> <span class="nav-text">listByPage(Page page)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Category-增加"><span class="nav-number">5.</span> <span class="nav-text">Category 增加</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#listCategory-jsp-2"><span class="nav-number">5.1.</span> <span class="nav-text">listCategory.jsp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CategoryAction-1"><span class="nav-number">5.2.</span> <span class="nav-text">CategoryAction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CategoryService-1"><span class="nav-number">5.3.</span> <span class="nav-text">CategoryService</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CategoryServiceImpl-1"><span class="nav-number">5.4.</span> <span class="nav-text">CategoryServiceImpl</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#save-Category-category"><span class="nav-number">5.4.1.</span> <span class="nav-text">save(Category category)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ImageUtil"><span class="nav-number">5.5.</span> <span class="nav-text">ImageUtil</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐宏亮</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
