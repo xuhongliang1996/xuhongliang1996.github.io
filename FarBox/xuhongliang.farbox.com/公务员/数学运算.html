@@ -1,0 +1,665 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/uploads/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="整除思想常见整数的整除判定局部看$2^n$，$5^n$：（看尾数）2 和 5   末一位4 和 24  末两位8 和 125 末三位$2^n$ 和 $5^n$ 末n位 直接看末 n 位，如果能整除，则整个数都可以整数 整体看3,9,7,11,13：（看全部）整体求和3，93 各位数字加和的结果9 各位数字加和的结果 eg：3159 -&amp;gt; 3+2+5+9=18 -&amp;gt; 18%3=0 -&amp;">
+<meta property="og:type" content="website">
+<meta property="og:title" content="数学运算">
+<meta property="og:url" content="http://yoursite.com/FarBox/xuhongliang.farbox.com/公务员/数学运算.html">
+<meta property="og:site_name" content="离离原上草">
+<meta property="og:description" content="整除思想常见整数的整除判定局部看$2^n$，$5^n$：（看尾数）2 和 5   末一位4 和 24  末两位8 和 125 末三位$2^n$ 和 $5^n$ 末n位 直接看末 n 位，如果能整除，则整个数都可以整数 整体看3,9,7,11,13：（看全部）整体求和3，93 各位数字加和的结果9 各位数字加和的结果 eg：3159 -&amp;gt; 3+2+5+9=18 -&amp;gt; 18%3=0 -&amp;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-06T04:32:59.067Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数学运算">
+<meta name="twitter:description" content="整除思想常见整数的整除判定局部看$2^n$，$5^n$：（看尾数）2 和 5   末一位4 和 24  末两位8 和 125 末三位$2^n$ 和 $5^n$ 末n位 直接看末 n 位，如果能整除，则整个数都可以整数 整体看3,9,7,11,13：（看全部）整体求和3，93 各位数字加和的结果9 各位数字加和的结果 eg：3159 -&amp;gt; 3+2+5+9=18 -&amp;gt; 18%3=0 -&amp;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '2826EPHU2B',
+      apiKey: 'f88bfd768a4b086dc17a7c4946499618',
+      indexName: '26fdb1447b8c93b980ce075eb0d6b7e9',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/FarBox/xuhongliang.farbox.com/公务员/数学运算.html"/>
+
+
+
+
+
+  <title>数学运算 | 离离原上草</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?eee29daecf3c11799e28ab5768869fee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">离离原上草</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline">数学运算</h1>
+
+
+
+</header>
+
+    
+    
+      <p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script></p>
+<h1 id="整除思想"><a href="#整除思想" class="headerlink" title="整除思想"></a>整除思想</h1><h2 id="常见整数的整除判定"><a href="#常见整数的整除判定" class="headerlink" title="常见整数的整除判定"></a>常见整数的整除判定</h2><h3 id="局部看-2-n-，-5-n-：（看尾数）"><a href="#局部看-2-n-，-5-n-：（看尾数）" class="headerlink" title="局部看$2^n$，$5^n$：（看尾数）"></a>局部看$2^n$，$5^n$：（看尾数）</h3><p>2 和 5   末一位<br>4 和 24  末两位<br>8 和 125 末三位<br>$2^n$ 和 $5^n$ 末n位</p>
+<p>直接看末 n 位，如果能整除，则整个数都可以整数</p>
+<h3 id="整体看3-9-7-11-13：（看全部）"><a href="#整体看3-9-7-11-13：（看全部）" class="headerlink" title="整体看3,9,7,11,13：（看全部）"></a>整体看3,9,7,11,13：（看全部）</h3><h4 id="整体求和3，9"><a href="#整体求和3，9" class="headerlink" title="整体求和3，9"></a>整体求和3，9</h4><p>3 各位数字加和的结果<br>9 各位数字加和的结果</p>
+<p>eg：3159 -&gt; 3+2+5+9=18 -&gt; 18%3=0 -&gt; 3159%3=0<br>这样就能快速判定</p>
+<h5 id="弃3弃9法"><a href="#弃3弃9法" class="headerlink" title="弃3弃9法"></a>弃3弃9法</h5><p>判断能否被3整除，弃3法<br>抛弃，3的公倍数<br>eg：52378943261 -&gt; 5278421 -&gt; 527 -&gt; 2 -&gt; 2%3=2<br>判断能否被9整除，弃9法<br>抛弃，9的公倍数<br>eg：85764289745 -&gt; 8576428745 -&gt; 876287 -&gt; 8768 -&gt; 29%9=2</p>
+<h4 id="整体作差7，11，13"><a href="#整体作差7，11，13" class="headerlink" title="整体作差7，11，13"></a>整体作差7，11，13</h4><p>7,11,13</p>
+<h5 id="分隔作差法"><a href="#分隔作差法" class="headerlink" title="分隔作差法"></a>分隔作差法</h5><p>判断能不能被7,11,13整除<br>方法：</p>
+<ul>
+<li>从右往左数三位，分隔</li>
+<li>大数减小数</li>
+<li>如果结果还大的话，继续分隔</li>
+<li>得到的结果做整除</li>
+</ul>
+<p>eg：12345 -&gt; 12 345 -&gt; 345-12=333 -&gt; 333%7 333%11 333%13</p>
+<p>eg：12345678 -&gt; 12345 678 -&gt; 12345-678=11667 -&gt; 11 667 -&gt; 667-11=656 -&gt; 656%7 6563%11 656%13</p>
+<h5 id="奇偶位求和作差法（11）"><a href="#奇偶位求和作差法（11）" class="headerlink" title="奇偶位求和作差法（11）"></a>奇偶位求和作差法（11）</h5><p>方法：</p>
+<ul>
+<li>从左向右数，找奇数偶数上的数</li>
+<li>奇数位，偶数位，上的数求和</li>
+<li>作差，大数减小数</li>
+<li>结果整除</li>
+</ul>
+<p>eg：153274 -&gt; 1+3+7=11 5+2+4=11 -&gt; 11-11=0 -&gt; 0%11=0</p>
+<h3 id="其他合数6-10-12-14-15（看拆分）"><a href="#其他合数6-10-12-14-15（看拆分）" class="headerlink" title="其他合数6,10,12,14,15（看拆分）"></a>其他合数6,10,12,14,15（看拆分）</h3><p>合数：自然数中除了能被1和本身整除外，还能被其他数（0除外）整除的数。<br>质数：在大于1的自然数中，除了1和它本身以外不再有其他因数。</p>
+<p>如6可以拆分为2和3，如果这个数能整除2和3，那么它也可以整除6。<br>拆分的数必须互质：公约数只有1的两个整数<br>eg：12不可以拆成2和6他们有公约数2，可以拆分为3和4，他们互质</p>
+<h2 id="整除的常见应用"><a href="#整除的常见应用" class="headerlink" title="整除的常见应用"></a>整除的常见应用</h2><h3 id="文字表述整除"><a href="#文字表述整除" class="headerlink" title="文字表述整除"></a>文字表述整除</h3><p>明显的整除字眼：每，平均，倍数</p>
+<h3 id="数据体现整除"><a href="#数据体现整除" class="headerlink" title="数据体现整除"></a>数据体现整除</h3><p>出现分数、百分数、比例等<br>eg：$男：女=\frac{2}{5}$，求总人数？<br>则，总人数是7的倍数，只要看四个选项谁可以整除7即可。</p>
+<h3 id="计算应用整除"><a href="#计算应用整除" class="headerlink" title="计算应用整除"></a>计算应用整除</h3><p>如算式，解不定方程</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="判断能否整除"><a href="#判断能否整除" class="headerlink" title="判断能否整除"></a>判断能否整除</h3><p>直接判断即可，可先从简单的开始判断，根据题目怎么减少时间，怎么来解题。</p>
+<p>出题人喜欢将求解数学的过程量列为选项</p>
+
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="徐宏亮" />
+          <p class="site-author-name" itemprop="name">徐宏亮</p>
+           
+              <p class="site-description motion-element" itemprop="description">我要用尽所有的力气才能书写一个词，放弃。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xuhongliang1996" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#整除思想"><span class="nav-number">1.</span> <span class="nav-text">整除思想</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见整数的整除判定"><span class="nav-number">1.1.</span> <span class="nav-text">常见整数的整除判定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#局部看-2-n-，-5-n-：（看尾数）"><span class="nav-number">1.1.1.</span> <span class="nav-text">局部看$2^n$，$5^n$：（看尾数）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整体看3-9-7-11-13：（看全部）"><span class="nav-number">1.1.2.</span> <span class="nav-text">整体看3,9,7,11,13：（看全部）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#整体求和3，9"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">整体求和3，9</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#弃3弃9法"><span class="nav-number">1.1.2.1.1.</span> <span class="nav-text">弃3弃9法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#整体作差7，11，13"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">整体作差7，11，13</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分隔作差法"><span class="nav-number">1.1.2.2.1.</span> <span class="nav-text">分隔作差法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#奇偶位求和作差法（11）"><span class="nav-number">1.1.2.2.2.</span> <span class="nav-text">奇偶位求和作差法（11）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他合数6-10-12-14-15（看拆分）"><span class="nav-number">1.1.3.</span> <span class="nav-text">其他合数6,10,12,14,15（看拆分）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整除的常见应用"><span class="nav-number">1.2.</span> <span class="nav-text">整除的常见应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文字表述整除"><span class="nav-number">1.2.1.</span> <span class="nav-text">文字表述整除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据体现整除"><span class="nav-number">1.2.2.</span> <span class="nav-text">数据体现整除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算应用整除"><span class="nav-number">1.2.3.</span> <span class="nav-text">计算应用整除</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">1.3.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#判断能否整除"><span class="nav-number">1.3.1.</span> <span class="nav-text">判断能否整除</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐宏亮</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,804 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/uploads/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="BrowserWindow创建和控制浏览器窗口。 Frameless window不通过 chrome 创建窗体，或者创建一个任意形状的透明窗体。无边框窗口指的是：除页面本身以外，不包含任何其它可视部分的窗口(chrome)。 创建无边框窗口设置BrowserWindow的选项frame为false:12const BrowserWindow = require(&apos;electron&apos;).Brows">
+<meta property="og:type" content="website">
+<meta property="og:title" content="主进程2.BrowserWindow">
+<meta property="og:url" content="http://yoursite.com/FarBox/xuhongliang.farbox.com/electron/主进程2.BrowserWindow.html">
+<meta property="og:site_name" content="离离原上草">
+<meta property="og:description" content="BrowserWindow创建和控制浏览器窗口。 Frameless window不通过 chrome 创建窗体，或者创建一个任意形状的透明窗体。无边框窗口指的是：除页面本身以外，不包含任何其它可视部分的窗口(chrome)。 创建无边框窗口设置BrowserWindow的选项frame为false:12const BrowserWindow = require(&apos;electron&apos;).Brows">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-03T02:28:10.397Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="主进程2.BrowserWindow">
+<meta name="twitter:description" content="BrowserWindow创建和控制浏览器窗口。 Frameless window不通过 chrome 创建窗体，或者创建一个任意形状的透明窗体。无边框窗口指的是：除页面本身以外，不包含任何其它可视部分的窗口(chrome)。 创建无边框窗口设置BrowserWindow的选项frame为false:12const BrowserWindow = require(&apos;electron&apos;).Brows">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '2826EPHU2B',
+      apiKey: 'f88bfd768a4b086dc17a7c4946499618',
+      indexName: '26fdb1447b8c93b980ce075eb0d6b7e9',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/FarBox/xuhongliang.farbox.com/electron/主进程2.BrowserWindow.html"/>
+
+
+
+
+
+  <title>主进程2.BrowserWindow | 离离原上草</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?eee29daecf3c11799e28ab5768869fee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">离离原上草</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline">主进程2.BrowserWindow</h1>
+
+
+
+</header>
+
+    
+    
+      <h1 id="BrowserWindow"><a href="#BrowserWindow" class="headerlink" title="BrowserWindow"></a>BrowserWindow</h1><p>创建和控制浏览器窗口。</p>
+<h1 id="Frameless-window"><a href="#Frameless-window" class="headerlink" title="Frameless window"></a>Frameless window</h1><p>不通过 chrome 创建窗体，或者创建一个任意形状的透明窗体。<br>无边框窗口指的是：除页面本身以外，不包含任何其它可视部分的窗口(chrome)。</p>
+<h2 id="创建无边框窗口"><a href="#创建无边框窗口" class="headerlink" title="创建无边框窗口"></a>创建无边框窗口</h2><p>设置BrowserWindow的选项frame为false:<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const BrowserWindow = require(<span class="string">'electron'</span>).BrowserWindow</div><div class="line">var win = <span class="keyword">new</span> BrowserWindow(&#123; <span class="string">width:</span> <span class="number">800</span>, <span class="string">height:</span> <span class="number">600</span>, <span class="string">frame:</span> <span class="literal">false</span> &#125;)</div></pre></td></tr></table></figure></p>
+<h2 id="透明窗口"><a href="#透明窗口" class="headerlink" title="透明窗口"></a>透明窗口</h2><p>设置transparent 选项为 true，你能使无边框窗口透明:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123;BrowserWindow&#125; = <span class="built_in">require</span>(<span class="string">'electron'</span>)</div><div class="line"><span class="keyword">let</span> win = <span class="keyword">new</span> BrowserWindow(&#123;<span class="attr">transparent</span>: <span class="literal">true</span>, <span class="attr">frame</span>: <span class="literal">false</span>&#125;)</div><div class="line">win.show()</div></pre></td></tr></table></figure></p>
+<h2 id="可点透区域"><a href="#可点透区域" class="headerlink" title="可点透区域"></a>可点透区域</h2><p>为了创建一个可点透窗体，比如，让窗体忽略所有的鼠标时间，你可以调用win.setIgnoreMouseEvents(ignore) API<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123;BrowserWindow&#125; = <span class="built_in">require</span>(<span class="string">'electron'</span>)</div><div class="line"><span class="keyword">let</span> win = <span class="keyword">new</span> BrowserWindow()</div><div class="line">win.setIgnoreMouseEvents(<span class="literal">true</span>)</div></pre></td></tr></table></figure></p>
+<h2 id="可拖动区域"><a href="#可拖动区域" class="headerlink" title="可拖动区域"></a>可拖动区域</h2><p>默认情况下，无边框窗口是不可拖动的。<br>应用在CSS中设置-webkit-app-region: drag 告诉Electron哪个区域是可拖动的(比如系统标准的标题栏)<br>应用也可以设置-webkit-app-region: no-drag 在可拖动区域中排除不可拖动的区域。<br>需要注意的是，目前只支持矩形区域。</p>
+<p>整个窗口可拖动<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">body</span> style=<span class="string">"-webkit-app-region: drag"</span>&gt;</div><div class="line">&lt;/<span class="keyword">body</span>&gt;</div></pre></td></tr></table></figure></p>
+<p>此时必须标记按钮为不可拖动<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">button</span> &#123;</div><div class="line">  <span class="attribute">-webkit-app-region</span>: no-drag;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="文本选择"><a href="#文本选择" class="headerlink" title="文本选择"></a>文本选择</h2><p>在一个无边框窗口中，拖动动作会与文本选择发生冲突。比如，当你拖动标题栏，偶尔会选中标题栏上的文本。<br>可拖动区域中禁用文本选择:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.titlebar</span> &#123;</div><div class="line">  <span class="attribute">-webkit-user-select</span>: none;</div><div class="line">  <span class="attribute">-webkit-app-region</span>: drag;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="上下文菜单"><a href="#上下文菜单" class="headerlink" title="上下文菜单"></a>上下文菜单</h2><p>在一些平台上，可拖动区域会被认为是非客户端框架(non-client frame)，所有当你点击右键时，一个<strong>系统菜单</strong>会弹出。 为了保证上下文菜单在所有平台下正确的显示，你不应该在可拖动区域使用<strong>自定义上下文菜单</strong>。</p>
+<h1 id="优雅地显示窗口"><a href="#优雅地显示窗口" class="headerlink" title="优雅地显示窗口"></a>优雅地显示窗口</h1><p>为了使窗口显示没有可视的闪烁，下面有两种解决方案，适用于不同的情况。</p>
+<h2 id="使用-ready-to-show-事件"><a href="#使用-ready-to-show-事件" class="headerlink" title="使用 ready-to-show 事件"></a>使用 ready-to-show 事件</h2><p>在加载页面时，进程第一次完成绘制时，渲染器会发出 ready-to-show 事件 ，在此事件后显示窗口将没有可视闪烁：<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123;BrowserWindow&#125; = <span class="built_in">require</span>(<span class="string">'electron'</span>)</div><div class="line"><span class="keyword">let</span> win = <span class="keyword">new</span> BrowserWindow(&#123;show: <span class="literal">false</span>&#125;)</div><div class="line">win.once(<span class="string">'ready-to-show'</span>, <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  win.show()</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>这个事件通常发生在 did-finish-load 事件之后，但是 页面有许多远程资源，它可能会在 did-finish-load 之前发出 事件。</p>
+<h2 id="设置-backgroundColor"><a href="#设置-backgroundColor" class="headerlink" title="设置 backgroundColor"></a>设置 backgroundColor</h2><p>使用接近应用程序的背景 backgroundColor：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123;BrowserWindow&#125; = <span class="built_in">require</span>(<span class="string">'electron'</span>)</div><div class="line"></div><div class="line"><span class="keyword">let</span> win = <span class="keyword">new</span> BrowserWindow(&#123;<span class="attr">backgroundColor</span>: <span class="string">'#2e2c29'</span>&#125;)</div><div class="line">win.loadURL(<span class="string">'https://github.com'</span>)</div></pre></td></tr></table></figure></p>
+<p>请注意，即使是使用 ready-to-show 事件的应用程序，仍建议使用 设置 backgroundColor 使应用程序感觉更原生。</p>
+<h1 id="Parent-和-child-窗口"><a href="#Parent-和-child-窗口" class="headerlink" title="Parent 和 child 窗口"></a>Parent 和 child 窗口</h1><p>使用 parent 选项，你可以创建 child 窗口：<br><figure class="highlight zephir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123;BrowserWindow&#125; = <span class="keyword">require</span>(<span class="string">'electron'</span>)</div><div class="line"></div><div class="line"><span class="keyword">let</span> top = <span class="keyword">new</span> BrowserWindow()</div><div class="line"><span class="keyword">let</span> child = <span class="keyword">new</span> BrowserWindow(&#123;<span class="keyword">parent</span>: top&#125;)</div><div class="line">child.show()</div><div class="line">top.show()</div></pre></td></tr></table></figure></p>
+<p>child 窗口将总是显示在 top 窗口的顶部。<br>也就是说他会在前面创建出来。</p>
+<h2 id="Modal-窗口"><a href="#Modal-窗口" class="headerlink" title="Modal 窗口"></a>Modal 窗口</h2><p>模态窗口是禁用父窗口的子窗口，以创建模态 窗口，你必须设置 parent 和 modal 选项：<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123;BrowserWindow&#125; = <span class="built_in">require</span>(<span class="string">'electron'</span>)</div><div class="line"></div><div class="line"><span class="keyword">let</span> child = <span class="keyword">new</span> BrowserWindow(&#123;parent: top, modal: <span class="literal">true</span>, show: <span class="literal">false</span>&#125;)</div><div class="line">child.loadURL(<span class="string">'https://github.com'</span>)</div><div class="line">child.once(<span class="string">'ready-to-show'</span>, <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  child.show()</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>此时 top 是父窗口，当子窗口 show 后，父窗口被禁用。</p>
+<h1 id="BrowserWindow-属性"><a href="#BrowserWindow-属性" class="headerlink" title="BrowserWindow 属性"></a>BrowserWindow 属性</h1><p>new BrowserWindow([options])<br>options Object</p>
+<ul>
+<li>width Integer - <strong>窗口宽度</strong>,单位像素. 默认是 800.</li>
+<li>height Integer -<strong> 窗口高度</strong>,单位像素. 默认是 600.</li>
+<li>x Integer - 窗口相对于屏幕的<strong>左偏移</strong>位置.默认居中.</li>
+<li>y Integer - 窗口相对于屏幕的<strong>顶部偏移</strong>位置.默认居中.</li>
+<li>useContentSize Boolean<ul>
+<li>true ：width 和 height 设置的是web<strong>网页的尺寸</strong></li>
+<li>默认为 false：width 和 height 包含了<strong>游览器的尺寸</strong>，网页会比 true 小些。</li>
+</ul>
+</li>
+<li>center Boolean - 窗口屏幕<strong>居中</strong>.</li>
+<li>minWidth Integer - 窗口<strong>最小宽度</strong>，默认为 0.</li>
+<li>minHeight Integer - 窗口<strong>最小高度</strong>，默认为 0.</li>
+<li>maxWidth Integer - 窗口<strong>最大宽度</strong>，默认无限制.</li>
+<li>maxHeight Integer - 窗口<strong>最大高度</strong>，默认无限制.</li>
+<li>resizable Boolean - 是否可以<strong>改变窗口</strong>size，默认为 true.</li>
+<li>movable Boolean - 窗口是否可以<strong>拖动</strong>. 在 Linux 上无效. 默认为 true.</li>
+<li>minimizable Boolean - 窗口是否可以<strong>最小化</strong>. 在 Linux 上无效. 默认为 true.</li>
+<li>maximizable Boolean - 窗口是否可以<strong>最大化</strong>. 在 Linux 上无效. 默认为 true.</li>
+<li>closable Boolean - 窗口是否可以<strong>关闭</strong>. 在 Linux 上无效. 默认为 true.</li>
+<li>alwaysOnTop Boolean - 窗口是否总是显示在<strong>其他窗口之前</strong>. 在 Linux 上无效. 默认为 false.</li>
+<li>fullscreen Boolean - 窗口是否可以<strong>全屏幕</strong>. 当明确设置值为 false ，全屏化按钮将会隐藏，在 macOS 将禁用. 默认 false.</li>
+<li>fullscreenable Boolean - 在 macOS 上，全屏化按钮是否可用，默认为 true.</li>
+<li>skipTaskbar Boolean - 是否在<strong>任务栏</strong>中显示窗口. 默认是false.</li>
+<li>kiosk Boolean - kiosk 方式. 默认为 false.</li>
+<li>title String - 窗口默认<strong>title</strong>. 默认 “Electron”.</li>
+<li>iconNativeImage - 窗口<strong>图标</strong>, 如果不设置，窗口将使用可用的默认图标.</li>
+<li>show Boolean - 窗口创建的时候是否<strong>显示</strong>. 默认为 true.</li>
+<li>frame Boolean - 指定 false 来创建一个 Frameless Window. 默认为 true.</li>
+<li>acceptFirstMouse Boolean - 是否允许单击web view来<strong>激活窗口</strong> . 默认为 false.</li>
+<li>disableAutoHideCursor Boolean - 当 typing 时是否<strong>隐藏鼠标</strong>.默认 false.</li>
+<li>autoHideMenuBar Boolean - 除非点击 Alt，否则<strong>隐藏菜单栏</strong>.默认为 false.</li>
+<li>enableLargerThanScreen Boolean - 是否允许改变窗口大小<strong>大于屏幕</strong>. 默认是 false.</li>
+<li>backgroundColor String -窗口的<strong> background color</strong> 值为十六进制,如 #66CD00 或 #FFF 或 #80FFFFFF (支持透明度). 默认为在 Linux 和 Windows 上为 #000 (黑色) , Mac上为 #FFF(或透明).</li>
+<li>hasShadow Boolean - 窗口是否有阴影. 只在 macOS 上有效. 默认为 true.</li>
+<li>darkTheme Boolean - 为窗口使用 dark 主题, 只在一些拥有 GTK+3 桌面环境上有效. 默认为 false.</li>
+<li>transparent Boolean - 窗口<strong>透明</strong>. 默认为 false.</li>
+<li>type String - <strong>窗口type</strong>, 默认普通窗口</li>
+<li>titleBarStyle String - <strong>窗口标题栏样式</strong></li>
+<li>webPreferences Object - <strong>设置界面特性</strong></li>
+</ul>
+<h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><h2 id="page-title-updated"><a href="#page-title-updated" class="headerlink" title="page-title-updated"></a>page-title-updated</h2><p>返回:event Event<br>当文档改变标题时触发,使用 event.preventDefault() 可以阻止原窗口的标题改变.</p>
+<h2 id="close"><a href="#close" class="headerlink" title="close"></a>close</h2><p>返回:event Event<br>在窗口要关闭的时候触发. </p>
+<h2 id="closed"><a href="#closed" class="headerlink" title="closed"></a>closed</h2><p>当窗口已经关闭的时候触发.当你接收到这个事件的时候，你应当删除对已经关闭的窗口的引用对象和避免再次使用它.</p>
+<h2 id="unresponsive"><a href="#unresponsive" class="headerlink" title="unresponsive"></a>unresponsive</h2><p>在界面卡死的时候触发事件.</p>
+<h2 id="responsive"><a href="#responsive" class="headerlink" title="responsive"></a>responsive</h2><p>在界面恢复卡死的时候触发.</p>
+<h2 id="blur"><a href="#blur" class="headerlink" title="blur"></a>blur</h2><p>在窗口失去焦点的时候触发.</p>
+<h2 id="focus"><a href="#focus" class="headerlink" title="focus"></a>focus</h2><p>在窗口获得焦点的时候触发.</p>
+<h2 id="maximize"><a href="#maximize" class="headerlink" title="maximize"></a>maximize</h2><p>在窗口最大化的时候触发.</p>
+<h2 id="unmaximize"><a href="#unmaximize" class="headerlink" title="unmaximize"></a>unmaximize</h2><p>在窗口退出最大化的时候触发.</p>
+<h2 id="minimize"><a href="#minimize" class="headerlink" title="minimize"></a>minimize</h2><p>在窗口最小化的时候触发.</p>
+<h2 id="restore"><a href="#restore" class="headerlink" title="restore"></a>restore</h2><p>在窗口从最小化恢复的时候触发.</p>
+<h2 id="resize"><a href="#resize" class="headerlink" title="resize"></a>resize</h2><p>在窗口size改变的时候触发.</p>
+<h2 id="move"><a href="#move" class="headerlink" title="move"></a>move</h2><p>在窗口移动的时候触发.</p>
+<p>注意：在 macOS 中别名为 moved.</p>
+<h2 id="enter-full-screen"><a href="#enter-full-screen" class="headerlink" title="enter-full-screen"></a>enter-full-screen</h2><p>在的窗口进入全屏状态时候触发.</p>
+<h2 id="leave-full-screen"><a href="#leave-full-screen" class="headerlink" title="leave-full-screen"></a>leave-full-screen</h2><p>在的窗口退出全屏状态时候触发.</p>
+<h2 id="enter-html-full-screen"><a href="#enter-html-full-screen" class="headerlink" title="enter-html-full-screen"></a>enter-html-full-screen</h2><p>在的窗口通过 html api 进入全屏状态时候触发.</p>
+<h2 id="leave-html-full-screen"><a href="#leave-html-full-screen" class="headerlink" title="leave-html-full-screen"></a>leave-html-full-screen</h2><p>在的窗口通过 html api 退出全屏状态时候触发.</p>
+<h2 id="app-command-Windows"><a href="#app-command-Windows" class="headerlink" title="app-command  Windows"></a>app-command  Windows</h2><p>在请求一个App Command的时候触发. 典型的是键盘媒体或浏览器命令, Windows上的 “Back” 按钮用作鼠标也会触发.<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">someWindow.on(<span class="string">'app-command'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(e, cmd)</span> </span>&#123;</div><div class="line">  <span class="comment">// Navigate the window back when the user hits their mouse back button</span></div><div class="line">  <span class="keyword">if</span> (cmd === <span class="string">'browser-backward'</span> &amp;&amp; someWindow.webContents.canGoBack()) &#123;</div><div class="line">    someWindow.webContents.goBack()</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="BrowserWindow-getAllWindows"><a href="#BrowserWindow-getAllWindows" class="headerlink" title="BrowserWindow.getAllWindows()"></a>BrowserWindow.getAllWindows()</h2><p>返回一个所有已经打开了窗口的对象数组.</p>
+<h2 id="BrowserWindow-getFocusedWindow"><a href="#BrowserWindow-getFocusedWindow" class="headerlink" title="BrowserWindow.getFocusedWindow()"></a>BrowserWindow.getFocusedWindow()</h2><p>返回应用当前获得焦点窗口,如果没有就返回 null.</p>
+<h2 id="BrowserWindow-fromWebContents-webContents"><a href="#BrowserWindow-fromWebContents-webContents" class="headerlink" title="BrowserWindow.fromWebContents(webContents)"></a>BrowserWindow.fromWebContents(webContents)</h2><p>webContentsWebContents<br>根据 webContents 查找窗口.</p>
+<h2 id="BrowserWindow-fromId-id"><a href="#BrowserWindow-fromId-id" class="headerlink" title="BrowserWindow.fromId(id)"></a>BrowserWindow.fromId(id)</h2><p>id Integer<br>根据 id 查找窗口.</p>
+<h2 id="BrowserWindow-addDevToolsExtension-path"><a href="#BrowserWindow-addDevToolsExtension-path" class="headerlink" title="BrowserWindow.addDevToolsExtension(path)"></a>BrowserWindow.addDevToolsExtension(path)</h2><p>path String<br>添加位于 path 的开发者工具栏扩展,并且返回扩展项的名字.</p>
+<p>这个扩展会被添加到历史，所以只需要使用这个API一次，这个api不可用作编程使用.</p>
+<h2 id="BrowserWindow-removeDevToolsExtension-name"><a href="#BrowserWindow-removeDevToolsExtension-name" class="headerlink" title="BrowserWindow.removeDevToolsExtension(name)"></a>BrowserWindow.removeDevToolsExtension(name)</h2><p>name String<br>删除开发者工具栏名为 name 的扩展.</p>
+<h1 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h1><h2 id="new-BrowserWindow"><a href="#new-BrowserWindow" class="headerlink" title="new BrowserWindow"></a>new BrowserWindow</h2><p>使用 new BrowserWindow 创建的实例对象<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">var</span> win = <span class="built_in">new</span> BrowserWindow(&#123; <span class="built_in">width</span>: <span class="number">800</span>, <span class="built_in">height</span>: <span class="number">600</span> &#125;)</div></pre></td></tr></table></figure></p>
+<h2 id="win-webContents"><a href="#win-webContents" class="headerlink" title="win.webContents"></a>win.webContents</h2><p>这个窗口的 WebContents 对象，所有与界面相关的事件和方法都通过它完成的.</p>
+<h2 id="win-id"><a href="#win-id" class="headerlink" title="win.id"></a>win.id</h2><p>窗口的唯一id.</p>
+<h1 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h1><h2 id="win-destroy"><a href="#win-destroy" class="headerlink" title="win.destroy()"></a>win.destroy()</h2><p>强制关闭窗口, unload and beforeunload 不会触发，并且 close 也不会触发, 但是它保证了 closed 触发.</p>
+<h2 id="win-close"><a href="#win-close" class="headerlink" title="win.close()"></a>win.close()</h2><p>尝试关闭窗口，这与用户点击关闭按钮的效果一样. 虽然网页可能会取消关闭，查看 close event.</p>
+<h2 id="win-focus"><a href="#win-focus" class="headerlink" title="win.focus()"></a>win.focus()</h2><p>窗口获得焦点.</p>
+<h2 id="win-isFocused"><a href="#win-isFocused" class="headerlink" title="win.isFocused()"></a>win.isFocused()</h2><p>返回 boolean, 窗口是否获得焦点.</p>
+<h2 id="win-show"><a href="#win-show" class="headerlink" title="win.show()"></a>win.show()</h2><p>展示并且使窗口获得焦点.</p>
+<h2 id="win-showInactive"><a href="#win-showInactive" class="headerlink" title="win.showInactive()"></a>win.showInactive()</h2><p>展示窗口但是不获得焦点.</p>
+<h2 id="win-hide"><a href="#win-hide" class="headerlink" title="win.hide()"></a>win.hide()</h2><p>隐藏窗口.</p>
+<h2 id="win-isVisible"><a href="#win-isVisible" class="headerlink" title="win.isVisible()"></a>win.isVisible()</h2><p>返回 boolean, 窗口是否可见.</p>
+<h2 id="win-maximize"><a href="#win-maximize" class="headerlink" title="win.maximize()"></a>win.maximize()</h2><p>窗口最大化.</p>
+<h2 id="win-unmaximize"><a href="#win-unmaximize" class="headerlink" title="win.unmaximize()"></a>win.unmaximize()</h2><p>取消窗口最大化.</p>
+<h2 id="win-isMaximized"><a href="#win-isMaximized" class="headerlink" title="win.isMaximized()"></a>win.isMaximized()</h2><p>返回 boolean, 窗口是否最大化.</p>
+<h2 id="win-minimize"><a href="#win-minimize" class="headerlink" title="win.minimize()"></a>win.minimize()</h2><p>窗口最小化. 在一些os中，它将在dock中显示.</p>
+<h2 id="win-restore"><a href="#win-restore" class="headerlink" title="win.restore()"></a>win.restore()</h2><p>将最小化的窗口恢复为之前的状态.</p>
+<h2 id="win-isMinimized"><a href="#win-isMinimized" class="headerlink" title="win.isMinimized()"></a>win.isMinimized()</h2><p>返回 boolean, 窗口是否最小化.</p>
+<h2 id="win-setFullScreen-flag"><a href="#win-setFullScreen-flag" class="headerlink" title="win.setFullScreen(flag)"></a>win.setFullScreen(flag)</h2><p>flag Boolean<br>设置是否全屏.</p>
+<h2 id="win-isFullScreen"><a href="#win-isFullScreen" class="headerlink" title="win.isFullScreen()"></a>win.isFullScreen()</h2><p>返回 boolean, 窗口是否全屏化.</p>
+<h2 id="win-setAspectRatio-aspectRatio-extraSize-macOS"><a href="#win-setAspectRatio-aspectRatio-extraSize-macOS" class="headerlink" title="win.setAspectRatio(aspectRatio[, extraSize])macOS"></a>win.setAspectRatio(aspectRatio[, extraSize])macOS</h2><p>aspectRatio 维持部分视图内容窗口的高宽比值.<br>extraSize Object (可选) - 维持高宽比值时不包含的额外size.<br>width Integer<br>height Integer<br>由一个窗口来维持高宽比值. extraSize 允许开发者使用它，它的单位为像素，不包含在 aspectRatio 中.这个 API 可用来区分窗口的size和内容的size .</p>
+<p>想象一个普通可控的HD video 播放器窗口. 假如左边缘有15控制像素，右边缘有25控制像素，在播放器下面有50控制像素.为了在播放器内保持一个 16:9 的高宽比例，我们可以调用这个api传入参数16/9 and [ 40, 50 ].第二个参数不管网页中的额外的宽度和高度在什么位置，只要它们存在就行.只需要把网页中的所有额外的高度和宽度加起来就行.</p>
+<h2 id="win-setBounds-options-animate"><a href="#win-setBounds-options-animate" class="headerlink" title="win.setBounds(options[, animate])"></a>win.setBounds(options[, animate])</h2><p>options Object<br>x Integer<br>y Integer<br>width Integer<br>height Integer<br>animate Boolean (可选) macOS<br>重新设置窗口的宽高值，并且移动到指定的 x, y 位置.</p>
+<h2 id="win-getBounds"><a href="#win-getBounds" class="headerlink" title="win.getBounds()"></a>win.getBounds()</h2><p>返回一个对象，它包含了窗口的宽，高，x坐标，y坐标.</p>
+<h2 id="win-setSize-width-height-animate"><a href="#win-setSize-width-height-animate" class="headerlink" title="win.setSize(width, height[, animate])"></a>win.setSize(width, height[, animate])</h2><p>width Integer<br>height Integer<br>animate Boolean (可选) macOS<br>重新设置窗口的宽高值.</p>
+<h2 id="win-getSize"><a href="#win-getSize" class="headerlink" title="win.getSize()"></a>win.getSize()</h2><p>返回一个数组，它包含了窗口的宽，高.</p>
+<h2 id="win-setContentSize-width-height-animate"><a href="#win-setContentSize-width-height-animate" class="headerlink" title="win.setContentSize(width, height[, animate])"></a>win.setContentSize(width, height[, animate])</h2><p>width Integer<br>height Integer<br>animate Boolean (可选) macOS<br>重新设置窗口客户端的宽高值（例如网页界面）.</p>
+<h2 id="win-getContentSize"><a href="#win-getContentSize" class="headerlink" title="win.getContentSize()"></a>win.getContentSize()</h2><p>返回一个数组，它包含了窗口客户端的宽，高.</p>
+<h2 id="win-setMinimumSize-width-height"><a href="#win-setMinimumSize-width-height" class="headerlink" title="win.setMinimumSize(width, height)"></a>win.setMinimumSize(width, height)</h2><p>width Integer<br>height Integer<br>设置窗口最小化的宽高值.</p>
+<h2 id="win-getMinimumSize"><a href="#win-getMinimumSize" class="headerlink" title="win.getMinimumSize()"></a>win.getMinimumSize()</h2><p>返回一个数组，它包含了窗口最小化的宽，高.</p>
+<h2 id="win-setMaximumSize-width-height"><a href="#win-setMaximumSize-width-height" class="headerlink" title="win.setMaximumSize(width, height)"></a>win.setMaximumSize(width, height)</h2><p>width Integer<br>height Integer<br>设置窗口最大化的宽高值.</p>
+<h2 id="win-getMaximumSize"><a href="#win-getMaximumSize" class="headerlink" title="win.getMaximumSize()"></a>win.getMaximumSize()</h2><p>返回一个数组，它包含了窗口最大化的宽，高.</p>
+<h2 id="win-setResizable-resizable"><a href="#win-setResizable-resizable" class="headerlink" title="win.setResizable(resizable)"></a>win.setResizable(resizable)</h2><p>resizable Boolean<br>设置窗口是否可以被用户改变size.</p>
+<h2 id="win-isResizable"><a href="#win-isResizable" class="headerlink" title="win.isResizable()"></a>win.isResizable()</h2><p>返回 boolean,窗口是否可以被用户改变size.</p>
+<h2 id="win-setMovable-movable-macOSWindows"><a href="#win-setMovable-movable-macOSWindows" class="headerlink" title="win.setMovable(movable)macOSWindows"></a>win.setMovable(movable)macOSWindows</h2><p>movable Boolean<br>设置窗口是否可以被用户拖动. Linux 无效.</p>
+<h2 id="win-isMovable-macOSWindows"><a href="#win-isMovable-macOSWindows" class="headerlink" title="win.isMovable()macOSWindows"></a>win.isMovable()macOSWindows</h2><p>返回 boolean,窗口是否可以被用户拖动. Linux 总是返回 true.</p>
+<h2 id="win-setMinimizable-minimizable-macOSWindows"><a href="#win-setMinimizable-minimizable-macOSWindows" class="headerlink" title="win.setMinimizable(minimizable)macOSWindows"></a>win.setMinimizable(minimizable)macOSWindows</h2><p>minimizable Boolean<br>设置窗口是否可以最小化. Linux 无效.</p>
+<h2 id="win-isMinimizable-macOSWindows"><a href="#win-isMinimizable-macOSWindows" class="headerlink" title="win.isMinimizable()macOSWindows"></a>win.isMinimizable()macOSWindows</h2><p>返回 boolean,窗口是否可以最小化. Linux 总是返回 true.</p>
+<h2 id="win-setMaximizable-maximizable-macOSWindows"><a href="#win-setMaximizable-maximizable-macOSWindows" class="headerlink" title="win.setMaximizable(maximizable)macOSWindows"></a>win.setMaximizable(maximizable)macOSWindows</h2><p>maximizable Boolean<br>设置窗口是否可以最大化. Linux 无效.</p>
+<h2 id="win-isMaximizable-macOSWindows"><a href="#win-isMaximizable-macOSWindows" class="headerlink" title="win.isMaximizable()macOSWindows"></a>win.isMaximizable()macOSWindows</h2><p>返回 boolean,窗口是否可以最大化. Linux 总是返回 true.</p>
+<h2 id="win-setFullScreenable-fullscreenable"><a href="#win-setFullScreenable-fullscreenable" class="headerlink" title="win.setFullScreenable(fullscreenable)"></a>win.setFullScreenable(fullscreenable)</h2><p>fullscreenable Boolean<br>设置点击最大化按钮是否可以全屏或最大化窗口.</p>
+<h2 id="win-isFullScreenable"><a href="#win-isFullScreenable" class="headerlink" title="win.isFullScreenable()"></a>win.isFullScreenable()</h2><p>返回 boolean,点击最大化按钮是否可以全屏或最大化窗口.</p>
+<h2 id="win-setClosable-closable-macOSWindows"><a href="#win-setClosable-closable-macOSWindows" class="headerlink" title="win.setClosable(closable)macOSWindows"></a>win.setClosable(closable)macOSWindows</h2><p>closable Boolean<br>设置窗口是否可以人为关闭. Linux 无效.</p>
+<h2 id="win-isClosable-macOSWindows"><a href="#win-isClosable-macOSWindows" class="headerlink" title="win.isClosable()macOSWindows"></a>win.isClosable()macOSWindows</h2><p>返回 boolean,窗口是否可以人为关闭. Linux 总是返回 true.</p>
+<h2 id="win-setAlwaysOnTop-flag"><a href="#win-setAlwaysOnTop-flag" class="headerlink" title="win.setAlwaysOnTop(flag)"></a>win.setAlwaysOnTop(flag)</h2><p>flag Boolean<br>是否设置这个窗口始终在其他窗口之上.设置之后，这个窗口仍然是一个普通的窗口，不是一个不可以获得焦点的工具箱窗口.</p>
+<h2 id="win-isAlwaysOnTop"><a href="#win-isAlwaysOnTop" class="headerlink" title="win.isAlwaysOnTop()"></a>win.isAlwaysOnTop()</h2><p>返回 boolean,当前窗口是否始终在其它窗口之前.</p>
+<h2 id="win-center"><a href="#win-center" class="headerlink" title="win.center()"></a>win.center()</h2><p>窗口居中.</p>
+<h2 id="win-setPosition-x-y-animate"><a href="#win-setPosition-x-y-animate" class="headerlink" title="win.setPosition(x, y[, animate])"></a>win.setPosition(x, y[, animate])</h2><p>x Integer<br>y Integer<br>animate Boolean (可选) macOS<br>移动窗口到对应的 x and y 坐标.</p>
+<h2 id="win-getPosition"><a href="#win-getPosition" class="headerlink" title="win.getPosition()"></a>win.getPosition()</h2><p>返回一个包含当前窗口位置的数组.</p>
+<h2 id="win-setTitle-title"><a href="#win-setTitle-title" class="headerlink" title="win.setTitle(title)"></a>win.setTitle(title)</h2><p>title String<br>改变原窗口的title.</p>
+<h2 id="win-getTitle"><a href="#win-getTitle" class="headerlink" title="win.getTitle()"></a>win.getTitle()</h2><p>返回原窗口的title.</p>
+<p>注意: 界面title可能和窗口title不相同.</p>
+<h2 id="win-flashFrame-flag"><a href="#win-flashFrame-flag" class="headerlink" title="win.flashFrame(flag)"></a>win.flashFrame(flag)</h2><p>flag Boolean<br>开始或停止显示窗口来获得用户的关注.</p>
+<h2 id="win-setSkipTaskbar-skip"><a href="#win-setSkipTaskbar-skip" class="headerlink" title="win.setSkipTaskbar(skip)"></a>win.setSkipTaskbar(skip)</h2><p>skip Boolean<br>让窗口不在任务栏中显示.</p>
+<h2 id="win-setKiosk-flag"><a href="#win-setKiosk-flag" class="headerlink" title="win.setKiosk(flag)"></a>win.setKiosk(flag)</h2><p>flag Boolean<br>进入或离开 kiosk 模式.</p>
+<h2 id="win-isKiosk"><a href="#win-isKiosk" class="headerlink" title="win.isKiosk()"></a>win.isKiosk()</h2><p>返回 boolean,是否进入或离开 kiosk 模式.</p>
+<h2 id="win-getNativeWindowHandle"><a href="#win-getNativeWindowHandle" class="headerlink" title="win.getNativeWindowHandle()"></a>win.getNativeWindowHandle()</h2><p>以 Buffer 形式返回这个具体平台的窗口的句柄.</p>
+<p>windows上句柄类型为 HWND ，macOS NSView* ， Linux Window.</p>
+<h2 id="win-hookWindowMessage-message-callback-Windows"><a href="#win-hookWindowMessage-message-callback-Windows" class="headerlink" title="win.hookWindowMessage(message, callback)Windows"></a>win.hookWindowMessage(message, callback)Windows</h2><p>message Integer<br>callback Function<br>拦截windows 消息，在 WndProc 接收到消息时触发 callback函数.</p>
+<h2 id="win-isWindowMessageHooked-message-Windows"><a href="#win-isWindowMessageHooked-message-Windows" class="headerlink" title="win.isWindowMessageHooked(message)Windows"></a>win.isWindowMessageHooked(message)Windows</h2><p>message Integer<br>返回 true or false 来代表是否拦截到消息.</p>
+<h2 id="win-unhookWindowMessage-message-Windows"><a href="#win-unhookWindowMessage-message-Windows" class="headerlink" title="win.unhookWindowMessage(message)Windows"></a>win.unhookWindowMessage(message)Windows</h2><p>message Integer<br>不拦截窗口消息.</p>
+<h2 id="win-unhookAllWindowMessages-Windows"><a href="#win-unhookAllWindowMessages-Windows" class="headerlink" title="win.unhookAllWindowMessages()Windows"></a>win.unhookAllWindowMessages()Windows</h2><p>窗口消息全部不拦截.</p>
+<h2 id="win-focusOnWebView"><a href="#win-focusOnWebView" class="headerlink" title="win.focusOnWebView()"></a>win.focusOnWebView()</h2><h2 id="win-blurWebView"><a href="#win-blurWebView" class="headerlink" title="win.blurWebView()"></a>win.blurWebView()</h2><h2 id="win-capturePage-rect-callback"><a href="#win-capturePage-rect-callback" class="headerlink" title="win.capturePage([rect, ]callback)"></a>win.capturePage([rect, ]callback)</h2><p>rect Object (可选) - 捕获Page位置<br>x Integer<br>y Integer<br>width Integer<br>height Integer<br>callback Function<br>捕获 rect 中的page 的快照.完成后将调用回调函数 callback 并返回 image . image 是存储了快照信息的NativeImage实例.如果不设置 rect 则将捕获所有可见page.</p>
+<h2 id="win-loadURL-url-options"><a href="#win-loadURL-url-options" class="headerlink" title="win.loadURL(url[, options])"></a>win.loadURL(url[, options])</h2><p>类似 webContents.loadURL(url[, options]).</p>
+<h2 id="win-reload"><a href="#win-reload" class="headerlink" title="win.reload()"></a>win.reload()</h2><p>类似 webContents.reload.</p>
+<h2 id="win-setMenu-menu-LinuxWindows"><a href="#win-setMenu-menu-LinuxWindows" class="headerlink" title="win.setMenu(menu)LinuxWindows"></a>win.setMenu(menu)LinuxWindows</h2><p>menu Menu<br>设置菜单栏的 menu ，设置它为 null 则表示不设置菜单栏.</p>
+<h2 id="win-setProgressBar-progress"><a href="#win-setProgressBar-progress" class="headerlink" title="win.setProgressBar(progress)"></a>win.setProgressBar(progress)</h2><p>progress Double<br>在进度条中设置进度值，有效范围 [0, 1.0].</p>
+<p>当进度小于0时则不显示进度; 当进度大于0时显示结果不确定.</p>
+<p>在libux上，只支持Unity桌面环境，需要指明 *.desktop 文件并且在 package.json 中添加文件名字.默认它为 app.getName().desktop.</p>
+<h2 id="win-setOverlayIcon-overlay-description-Windows-7"><a href="#win-setOverlayIcon-overlay-description-Windows-7" class="headerlink" title="win.setOverlayIcon(overlay, description)Windows 7+"></a>win.setOverlayIcon(overlay, description)Windows 7+</h2><p>overlayNativeImage - 在底部任务栏右边显示图标.<br>description String - 描述.<br>向当前任务栏添加一个 16 x 16 像素的图标，通常用来覆盖一些应用的状态，或者直接来提示用户.</p>
+<h2 id="win-setThumbarButtons-buttons-Windows-7"><a href="#win-setThumbarButtons-buttons-Windows-7" class="headerlink" title="win.setThumbarButtons(buttons)Windows 7+"></a>win.setThumbarButtons(buttons)Windows 7+</h2><p>buttons Array<br>在窗口的任务栏button布局出为缩略图添加一个有特殊button的缩略图工具栏. 返回一个 Boolean 对象来指示是否成功添加这个缩略图工具栏.</p>
+<p>因为空间有限，缩略图工具栏上的 button 数量不应该超过7个.一旦设置了，由于平台限制，就不能移动它了.但是你可使用一个空数组来调用api来清除 buttons .</p>
+<p>所有 buttons 是一个 Button 对象数组:</p>
+<p>Button Object<br>iconNativeImage - 在工具栏上显示的图标.<br>click Function<br>tooltip String (可选) - tooltip 文字.<br>flags Array (可选) - 控制button的状态和行为. 默认它是 [‘enabled’].<br>flags 是一个数组，它包含下面这些 Strings:</p>
+<p>enabled - button 为激活状态并且开放给用户.<br>disabled -button 不可用. 目前它有一个可见的状态来表示它不会响应你的行为.<br>dismissonclick - 点击button，这个缩略窗口直接关闭.<br>nobackground - 不绘制边框，仅仅使用图像.<br>hidden - button 对用户不可见.<br>noninteractive - button 可用但是不可响应; 也不显示按下的状态. 它的值意味着这是一个在通知单使用 button 的实例.<br>win.showDefinitionForSelection()macOS<br>在界面查找选中文字时显示弹出字典.</p>
+<h2 id="win-setAutoHideMenuBar-hide"><a href="#win-setAutoHideMenuBar-hide" class="headerlink" title="win.setAutoHideMenuBar(hide)"></a>win.setAutoHideMenuBar(hide)</h2><p>hide Boolean<br>设置窗口的菜单栏是否可以自动隐藏. 一旦设置了，只有当用户按下 Alt 键时则显示.</p>
+<p>如果菜单栏已经可见，调用 setAutoHideMenuBar(true) 则不会立刻隐藏.</p>
+<h2 id="win-isMenuBarAutoHide"><a href="#win-isMenuBarAutoHide" class="headerlink" title="win.isMenuBarAutoHide()"></a>win.isMenuBarAutoHide()</h2><p>返回 boolean,窗口的菜单栏是否可以自动隐藏.</p>
+<h2 id="win-setMenuBarVisibility-visible-WindowsLinux"><a href="#win-setMenuBarVisibility-visible-WindowsLinux" class="headerlink" title="win.setMenuBarVisibility(visible)WindowsLinux"></a>win.setMenuBarVisibility(visible)WindowsLinux</h2><p>visible Boolean<br>设置菜单栏是否可见.如果菜单栏自动隐藏，用户仍然可以按下 Alt 键来显示.</p>
+<h2 id="win-isMenuBarVisible"><a href="#win-isMenuBarVisible" class="headerlink" title="win.isMenuBarVisible()"></a>win.isMenuBarVisible()</h2><p>返回 boolean,菜单栏是否可见.</p>
+<h2 id="win-setVisibleOnAllWorkspaces-visible"><a href="#win-setVisibleOnAllWorkspaces-visible" class="headerlink" title="win.setVisibleOnAllWorkspaces(visible)"></a>win.setVisibleOnAllWorkspaces(visible)</h2><p>visible Boolean<br>设置窗口是否在所有地方都可见.</p>
+<p>注意: 这个api 在windows无效.</p>
+<h2 id="win-isVisibleOnAllWorkspaces"><a href="#win-isVisibleOnAllWorkspaces" class="headerlink" title="win.isVisibleOnAllWorkspaces()"></a>win.isVisibleOnAllWorkspaces()</h2><p>返回 boolean,窗口是否在所有地方都可见.</p>
+<p>注意: 在 windows上始终返回 false.</p>
+
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="徐宏亮" />
+          <p class="site-author-name" itemprop="name">徐宏亮</p>
+           
+              <p class="site-description motion-element" itemprop="description">我要用尽所有的力气才能书写一个词，放弃。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xuhongliang1996" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BrowserWindow"><span class="nav-number">1.</span> <span class="nav-text">BrowserWindow</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Frameless-window"><span class="nav-number">2.</span> <span class="nav-text">Frameless window</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建无边框窗口"><span class="nav-number">2.1.</span> <span class="nav-text">创建无边框窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#透明窗口"><span class="nav-number">2.2.</span> <span class="nav-text">透明窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可点透区域"><span class="nav-number">2.3.</span> <span class="nav-text">可点透区域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可拖动区域"><span class="nav-number">2.4.</span> <span class="nav-text">可拖动区域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本选择"><span class="nav-number">2.5.</span> <span class="nav-text">文本选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上下文菜单"><span class="nav-number">2.6.</span> <span class="nav-text">上下文菜单</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优雅地显示窗口"><span class="nav-number">3.</span> <span class="nav-text">优雅地显示窗口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-ready-to-show-事件"><span class="nav-number">3.1.</span> <span class="nav-text">使用 ready-to-show 事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置-backgroundColor"><span class="nav-number">3.2.</span> <span class="nav-text">设置 backgroundColor</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Parent-和-child-窗口"><span class="nav-number">4.</span> <span class="nav-text">Parent 和 child 窗口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Modal-窗口"><span class="nav-number">4.1.</span> <span class="nav-text">Modal 窗口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BrowserWindow-属性"><span class="nav-number">5.</span> <span class="nav-text">BrowserWindow 属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事件"><span class="nav-number">6.</span> <span class="nav-text">事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#page-title-updated"><span class="nav-number">6.1.</span> <span class="nav-text">page-title-updated</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#close"><span class="nav-number">6.2.</span> <span class="nav-text">close</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#closed"><span class="nav-number">6.3.</span> <span class="nav-text">closed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unresponsive"><span class="nav-number">6.4.</span> <span class="nav-text">unresponsive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#responsive"><span class="nav-number">6.5.</span> <span class="nav-text">responsive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#blur"><span class="nav-number">6.6.</span> <span class="nav-text">blur</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#focus"><span class="nav-number">6.7.</span> <span class="nav-text">focus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maximize"><span class="nav-number">6.8.</span> <span class="nav-text">maximize</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unmaximize"><span class="nav-number">6.9.</span> <span class="nav-text">unmaximize</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#minimize"><span class="nav-number">6.10.</span> <span class="nav-text">minimize</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#restore"><span class="nav-number">6.11.</span> <span class="nav-text">restore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#resize"><span class="nav-number">6.12.</span> <span class="nav-text">resize</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#move"><span class="nav-number">6.13.</span> <span class="nav-text">move</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#enter-full-screen"><span class="nav-number">6.14.</span> <span class="nav-text">enter-full-screen</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#leave-full-screen"><span class="nav-number">6.15.</span> <span class="nav-text">leave-full-screen</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#enter-html-full-screen"><span class="nav-number">6.16.</span> <span class="nav-text">enter-html-full-screen</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#leave-html-full-screen"><span class="nav-number">6.17.</span> <span class="nav-text">leave-html-full-screen</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-command-Windows"><span class="nav-number">6.18.</span> <span class="nav-text">app-command  Windows</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法"><span class="nav-number">7.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BrowserWindow-getAllWindows"><span class="nav-number">7.1.</span> <span class="nav-text">BrowserWindow.getAllWindows()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BrowserWindow-getFocusedWindow"><span class="nav-number">7.2.</span> <span class="nav-text">BrowserWindow.getFocusedWindow()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BrowserWindow-fromWebContents-webContents"><span class="nav-number">7.3.</span> <span class="nav-text">BrowserWindow.fromWebContents(webContents)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BrowserWindow-fromId-id"><span class="nav-number">7.4.</span> <span class="nav-text">BrowserWindow.fromId(id)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BrowserWindow-addDevToolsExtension-path"><span class="nav-number">7.5.</span> <span class="nav-text">BrowserWindow.addDevToolsExtension(path)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BrowserWindow-removeDevToolsExtension-name"><span class="nav-number">7.6.</span> <span class="nav-text">BrowserWindow.removeDevToolsExtension(name)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例属性"><span class="nav-number">8.</span> <span class="nav-text">实例属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#new-BrowserWindow"><span class="nav-number">8.1.</span> <span class="nav-text">new BrowserWindow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-webContents"><span class="nav-number">8.2.</span> <span class="nav-text">win.webContents</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-id"><span class="nav-number">8.3.</span> <span class="nav-text">win.id</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例方法"><span class="nav-number">9.</span> <span class="nav-text">实例方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#win-destroy"><span class="nav-number">9.1.</span> <span class="nav-text">win.destroy()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-close"><span class="nav-number">9.2.</span> <span class="nav-text">win.close()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-focus"><span class="nav-number">9.3.</span> <span class="nav-text">win.focus()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-isFocused"><span class="nav-number">9.4.</span> <span class="nav-text">win.isFocused()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-show"><span class="nav-number">9.5.</span> <span class="nav-text">win.show()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-showInactive"><span class="nav-number">9.6.</span> <span class="nav-text">win.showInactive()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-hide"><span class="nav-number">9.7.</span> <span class="nav-text">win.hide()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-isVisible"><span class="nav-number">9.8.</span> <span class="nav-text">win.isVisible()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-maximize"><span class="nav-number">9.9.</span> <span class="nav-text">win.maximize()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-unmaximize"><span class="nav-number">9.10.</span> <span class="nav-text">win.unmaximize()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-isMaximized"><span class="nav-number">9.11.</span> <span class="nav-text">win.isMaximized()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-minimize"><span class="nav-number">9.12.</span> <span class="nav-text">win.minimize()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-restore"><span class="nav-number">9.13.</span> <span class="nav-text">win.restore()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-isMinimized"><span class="nav-number">9.14.</span> <span class="nav-text">win.isMinimized()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setFullScreen-flag"><span class="nav-number">9.15.</span> <span class="nav-text">win.setFullScreen(flag)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-isFullScreen"><span class="nav-number">9.16.</span> <span class="nav-text">win.isFullScreen()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setAspectRatio-aspectRatio-extraSize-macOS"><span class="nav-number">9.17.</span> <span class="nav-text">win.setAspectRatio(aspectRatio[, extraSize])macOS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setBounds-options-animate"><span class="nav-number">9.18.</span> <span class="nav-text">win.setBounds(options[, animate])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-getBounds"><span class="nav-number">9.19.</span> <span class="nav-text">win.getBounds()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setSize-width-height-animate"><span class="nav-number">9.20.</span> <span class="nav-text">win.setSize(width, height[, animate])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-getSize"><span class="nav-number">9.21.</span> <span class="nav-text">win.getSize()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setContentSize-width-height-animate"><span class="nav-number">9.22.</span> <span class="nav-text">win.setContentSize(width, height[, animate])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-getContentSize"><span class="nav-number">9.23.</span> <span class="nav-text">win.getContentSize()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setMinimumSize-width-height"><span class="nav-number">9.24.</span> <span class="nav-text">win.setMinimumSize(width, height)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-getMinimumSize"><span class="nav-number">9.25.</span> <span class="nav-text">win.getMinimumSize()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setMaximumSize-width-height"><span class="nav-number">9.26.</span> <span class="nav-text">win.setMaximumSize(width, height)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-getMaximumSize"><span class="nav-number">9.27.</span> <span class="nav-text">win.getMaximumSize()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setResizable-resizable"><span class="nav-number">9.28.</span> <span class="nav-text">win.setResizable(resizable)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-isResizable"><span class="nav-number">9.29.</span> <span class="nav-text">win.isResizable()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setMovable-movable-macOSWindows"><span class="nav-number">9.30.</span> <span class="nav-text">win.setMovable(movable)macOSWindows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-isMovable-macOSWindows"><span class="nav-number">9.31.</span> <span class="nav-text">win.isMovable()macOSWindows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setMinimizable-minimizable-macOSWindows"><span class="nav-number">9.32.</span> <span class="nav-text">win.setMinimizable(minimizable)macOSWindows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-isMinimizable-macOSWindows"><span class="nav-number">9.33.</span> <span class="nav-text">win.isMinimizable()macOSWindows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setMaximizable-maximizable-macOSWindows"><span class="nav-number">9.34.</span> <span class="nav-text">win.setMaximizable(maximizable)macOSWindows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-isMaximizable-macOSWindows"><span class="nav-number">9.35.</span> <span class="nav-text">win.isMaximizable()macOSWindows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setFullScreenable-fullscreenable"><span class="nav-number">9.36.</span> <span class="nav-text">win.setFullScreenable(fullscreenable)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-isFullScreenable"><span class="nav-number">9.37.</span> <span class="nav-text">win.isFullScreenable()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setClosable-closable-macOSWindows"><span class="nav-number">9.38.</span> <span class="nav-text">win.setClosable(closable)macOSWindows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-isClosable-macOSWindows"><span class="nav-number">9.39.</span> <span class="nav-text">win.isClosable()macOSWindows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setAlwaysOnTop-flag"><span class="nav-number">9.40.</span> <span class="nav-text">win.setAlwaysOnTop(flag)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-isAlwaysOnTop"><span class="nav-number">9.41.</span> <span class="nav-text">win.isAlwaysOnTop()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-center"><span class="nav-number">9.42.</span> <span class="nav-text">win.center()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setPosition-x-y-animate"><span class="nav-number">9.43.</span> <span class="nav-text">win.setPosition(x, y[, animate])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-getPosition"><span class="nav-number">9.44.</span> <span class="nav-text">win.getPosition()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setTitle-title"><span class="nav-number">9.45.</span> <span class="nav-text">win.setTitle(title)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-getTitle"><span class="nav-number">9.46.</span> <span class="nav-text">win.getTitle()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-flashFrame-flag"><span class="nav-number">9.47.</span> <span class="nav-text">win.flashFrame(flag)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setSkipTaskbar-skip"><span class="nav-number">9.48.</span> <span class="nav-text">win.setSkipTaskbar(skip)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setKiosk-flag"><span class="nav-number">9.49.</span> <span class="nav-text">win.setKiosk(flag)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-isKiosk"><span class="nav-number">9.50.</span> <span class="nav-text">win.isKiosk()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-getNativeWindowHandle"><span class="nav-number">9.51.</span> <span class="nav-text">win.getNativeWindowHandle()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-hookWindowMessage-message-callback-Windows"><span class="nav-number">9.52.</span> <span class="nav-text">win.hookWindowMessage(message, callback)Windows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-isWindowMessageHooked-message-Windows"><span class="nav-number">9.53.</span> <span class="nav-text">win.isWindowMessageHooked(message)Windows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-unhookWindowMessage-message-Windows"><span class="nav-number">9.54.</span> <span class="nav-text">win.unhookWindowMessage(message)Windows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-unhookAllWindowMessages-Windows"><span class="nav-number">9.55.</span> <span class="nav-text">win.unhookAllWindowMessages()Windows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-focusOnWebView"><span class="nav-number">9.56.</span> <span class="nav-text">win.focusOnWebView()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-blurWebView"><span class="nav-number">9.57.</span> <span class="nav-text">win.blurWebView()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-capturePage-rect-callback"><span class="nav-number">9.58.</span> <span class="nav-text">win.capturePage([rect, ]callback)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-loadURL-url-options"><span class="nav-number">9.59.</span> <span class="nav-text">win.loadURL(url[, options])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-reload"><span class="nav-number">9.60.</span> <span class="nav-text">win.reload()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setMenu-menu-LinuxWindows"><span class="nav-number">9.61.</span> <span class="nav-text">win.setMenu(menu)LinuxWindows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setProgressBar-progress"><span class="nav-number">9.62.</span> <span class="nav-text">win.setProgressBar(progress)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setOverlayIcon-overlay-description-Windows-7"><span class="nav-number">9.63.</span> <span class="nav-text">win.setOverlayIcon(overlay, description)Windows 7+</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setThumbarButtons-buttons-Windows-7"><span class="nav-number">9.64.</span> <span class="nav-text">win.setThumbarButtons(buttons)Windows 7+</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setAutoHideMenuBar-hide"><span class="nav-number">9.65.</span> <span class="nav-text">win.setAutoHideMenuBar(hide)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-isMenuBarAutoHide"><span class="nav-number">9.66.</span> <span class="nav-text">win.isMenuBarAutoHide()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setMenuBarVisibility-visible-WindowsLinux"><span class="nav-number">9.67.</span> <span class="nav-text">win.setMenuBarVisibility(visible)WindowsLinux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-isMenuBarVisible"><span class="nav-number">9.68.</span> <span class="nav-text">win.isMenuBarVisible()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-setVisibleOnAllWorkspaces-visible"><span class="nav-number">9.69.</span> <span class="nav-text">win.setVisibleOnAllWorkspaces(visible)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win-isVisibleOnAllWorkspaces"><span class="nav-number">9.70.</span> <span class="nav-text">win.isVisibleOnAllWorkspaces()</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐宏亮</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

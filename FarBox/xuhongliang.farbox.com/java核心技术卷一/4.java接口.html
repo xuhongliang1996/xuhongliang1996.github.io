@@ -1,0 +1,668 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/uploads/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="接口接口不是类，而是对类的一组需求描述，这些类要遵从接口描述的统一格式进行定义。123public interface Comparable&amp;lt;T&amp;gt;&amp;#123;    int compareTo(T other);&amp;#125; 接口中的所有方法自动的属于public接口不能提供的功能：  不能含有实例域 不能在接口中实现方法  可以将接口看成是没有实例域的抽象类，但还是有一定区别。 实现">
+<meta property="og:type" content="website">
+<meta property="og:title" content="4.java接口">
+<meta property="og:url" content="http://yoursite.com/FarBox/xuhongliang.farbox.com/java核心技术卷一/4.java接口.html">
+<meta property="og:site_name" content="离离原上草">
+<meta property="og:description" content="接口接口不是类，而是对类的一组需求描述，这些类要遵从接口描述的统一格式进行定义。123public interface Comparable&amp;lt;T&amp;gt;&amp;#123;    int compareTo(T other);&amp;#125; 接口中的所有方法自动的属于public接口不能提供的功能：  不能含有实例域 不能在接口中实现方法  可以将接口看成是没有实例域的抽象类，但还是有一定区别。 实现">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-30T06:57:40.908Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="4.java接口">
+<meta name="twitter:description" content="接口接口不是类，而是对类的一组需求描述，这些类要遵从接口描述的统一格式进行定义。123public interface Comparable&amp;lt;T&amp;gt;&amp;#123;    int compareTo(T other);&amp;#125; 接口中的所有方法自动的属于public接口不能提供的功能：  不能含有实例域 不能在接口中实现方法  可以将接口看成是没有实例域的抽象类，但还是有一定区别。 实现">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '2826EPHU2B',
+      apiKey: 'f88bfd768a4b086dc17a7c4946499618',
+      indexName: '26fdb1447b8c93b980ce075eb0d6b7e9',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/FarBox/xuhongliang.farbox.com/java核心技术卷一/4.java接口.html"/>
+
+
+
+
+
+  <title>4.java接口 | 离离原上草</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?eee29daecf3c11799e28ab5768869fee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">离离原上草</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline">4.java接口</h1>
+
+
+
+</header>
+
+    
+    
+      <h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><p>接口不是类，而是对类的一组需求描述，这些类要遵从接口描述的统一格式进行定义。<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public<span class="built_in"> interface </span>Comparable&lt;T&gt;&#123;</div><div class="line">    int compareTo(T other);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>接口中的所有方法自动的属于public<br>接口不能提供的功能：</p>
+<ul>
+<li>不能含有实例域</li>
+<li>不能在接口中实现方法</li>
+</ul>
+<p>可以将接口看成是没有实例域的抽象类，但还是有一定区别。</p>
+<p>实现了接口的方法。</p>
+<h2 id="接口的特性"><a href="#接口的特性" class="headerlink" title="接口的特性"></a>接口的特性</h2><p>接口不是类，不能使用new实例化，但是可以声明接口，可以使用instance检查一个对象是否实现了某个特定的接口。<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(anObject instanceof <span class="type">Comparable</span>) <span class="meta">&#123;...&#125;</span></div></pre></td></tr></table></figure></p>
+<p>要让类实现某个接口，使用关键子 implements ，可以继承多个接口<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> <span class="keyword">implements</span> <span class="title">Comparable</span>, <span class="title">Comparable2</span>, <span class="title">Comparable3</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Object otherObject)</span></span>&#123;</div><div class="line">        Employee other = (Employee) otherObject;</div><div class="line">        <span class="function"><span class="keyword">return</span> Double.<span class="title">compare</span><span class="params">(salary, other.salary)</span></span>;    </div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>接口也可以使用extends扩展接口，并且不像类，它可以扩展多个。<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public<span class="built_in"> interface </span>Powered extends Moveable1, Moveable2, Moveable3&#123;</div><div class="line">    <span class="built_in">..</span>.;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>接口不能包含实例域或静态方法，却可以包含常量，被自动设为<code>public static final</code><br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public<span class="built_in"> interface </span>Powered extends Moveable&#123;</div><div class="line">    double milesPerGallon();</div><div class="line">    double SPELD_LIMIT = 95;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h2><p>一个类只能扩展一个类，不能扩展第二个类，而接口可以扩展多个。</p>
+<h1 id="对象克隆"><a href="#对象克隆" class="headerlink" title="对象克隆"></a>对象克隆</h1><p>拷贝一个变量时，引用同一个对象，更改一个另一个也受影响。<br>如果不想这样，可以使用 clone 方法。<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Employee Employee = new ...</div><div class="line">Employee <span class="keyword">copy</span><span class="bash"> = original.clone();</span></div><div class="line"><span class="bash">copy.raiseSalary(10);</span></div></pre></td></tr></table></figure></p>
+<p>clone 方法没有这么简单，clone 是 Object 类的方法。<br>如果对象都是基本类型，拷贝域没有任何问题。<br>如果对象中包含了对象的引用，他们会引用同一个子对象，与原对象共享这部分信息。<br>想要改变，就要重写。</p>
+<h1 id="接口与回调"><a href="#接口与回调" class="headerlink" title="接口与回调"></a>接口与回调</h1><p>回调，可以指出某个特定事件发生时因该采取的动作。</p>
+<ol>
+<li>Class A调用Class B中的X方法</li>
+<li>Class B中X方法执行的过程中调用Class A中的Y方法完成回调</li>
+</ol>
+<h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><p>内部类是定义在另一个类中的类，原因：</p>
+<ol>
+<li>内部类方法可以访问该类定义所在的作用域中的数据，包括私有数据。</li>
+<li>内部类可以对同一个包中的其他类隐藏起来。</li>
+<li>想要定义一个回调函数且不想编写大量代码时。</li>
+</ol>
+<h2 id="使用内部类访问对象状态"><a href="#使用内部类访问对象状态" class="headerlink" title="使用内部类访问对象状态"></a>使用内部类访问对象状态</h2><p>内部类方法可以访问该类定义所在的作用域中的数据，包括私有数据。<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Outer &#123;</div><div class="line">	<span class="keyword">int</span> num = <span class="number">10</span>;</div><div class="line">	<span class="keyword">class</span> Inner&#123;</div><div class="line">		<span class="keyword">int</span> <span class="keyword">count</span> = <span class="number">20</span>;</div><div class="line">		<span class="keyword">public</span> <span class="keyword">void</span> <span class="keyword">print</span>()&#123;</div><div class="line">			System.out.<span class="keyword">println</span>(<span class="string">"直接访问外部类属性"</span>+num);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> show()&#123;</div><div class="line">		System.out.<span class="keyword">println</span>(<span class="string">"外部类。。。"</span>);</div><div class="line">		System.out.<span class="keyword">println</span>(<span class="string">"在外部类访问内部类属性"</span> + <span class="keyword">new</span> Inner().<span class="keyword">count</span>);</div><div class="line">		System.out.<span class="keyword">println</span>(<span class="string">"在外部类访问内部类方法："</span>);</div><div class="line">		<span class="keyword">new</span> Inner().<span class="keyword">print</span>();</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123; </div><div class="line">		<span class="keyword">new</span> Outer().show();</div><div class="line">		System.out.<span class="keyword">println</span>();</div><div class="line">		System.out.<span class="keyword">println</span>(<span class="string">"main。。。"</span>);</div><div class="line">		System.out.<span class="keyword">println</span>(<span class="string">"在mian中访问内部类属性"</span> + <span class="keyword">new</span> Outer().<span class="keyword">new</span> Inner().<span class="keyword">count</span>);</div><div class="line">		System.out.<span class="keyword">println</span>(<span class="string">"在mian中访问内部类方法："</span>);</div><div class="line">		<span class="keyword">new</span> Outer().<span class="keyword">new</span> Inner().<span class="keyword">print</span>();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="内部类的特殊语法规则"><a href="#内部类的特殊语法规则" class="headerlink" title="内部类的特殊语法规则"></a>内部类的特殊语法规则</h2><p>内部类访问外部类，的复杂形式<code>Outer.tis.属性</code><br>外部类访问内部类，的形式<code>Inner inner = new Inner()</code><br>其他类访问外部类中的内部类，的形式<code>Outer.Inner inner = new Outer().new Inner()</code></p>
+<h2 id="私有内部类"><a href="#私有内部类" class="headerlink" title="私有内部类"></a>私有内部类</h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> <span class="title">Out</span> &#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age = <span class="number">12</span>;</div><div class="line">     </div><div class="line">    <span class="keyword">private</span> <span class="keyword">class</span> <span class="title">In</span> &#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            System.<span class="keyword">out</span>.println(age);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">outPrint</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">new</span> In().print();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="comment">//此方法无效</span></div><div class="line">        <span class="comment">/*</span></div><div class="line"><span class="comment">        Out.In in = new Out().new In();</span></div><div class="line"><span class="comment">        in.print();</span></div><div class="line"><span class="comment">        */</span></div><div class="line">        Out <span class="keyword">out</span> = <span class="keyword">new</span> Out();</div><div class="line">        <span class="keyword">out</span>.outPrint();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果一个内部类只希望被外部类中的方法操作，那么可以使用private声明内部类。<br>上面的代码中，我们必须在Out类里面生成In类的对象进行操作，而无法再使用Out.In in = new Out().new In() 生成内部类的对象。<br>也就是说，此时的内部类只有外部类可控制；如同是，我的心脏只能由我的身体控制，其他人无法直接访问它。</p>
+<h2 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h2><p>局部内部类可以对外界完美的隐藏起来。<br>我们将内部类移到了外部类的方法中，然后在外部类的方法中再生成一个内部类对象去调用内部类方法，这就是局部内部类。<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> <span class="title">Out</span> &#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age = <span class="number">12</span>;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Print</span>(<span class="params">final <span class="keyword">int</span> x</span>) </span>&#123;</div><div class="line">        <span class="keyword">class</span> <span class="title">In</span> &#123;</div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inPrint</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                System.<span class="keyword">out</span>.println(x);</div><div class="line">                System.<span class="keyword">out</span>.println(age);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">new</span> In().inPrint();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        Out <span class="keyword">out</span> = <span class="keyword">new</span> Out();</div><div class="line">        <span class="keyword">out</span>.Print(<span class="number">3</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="由外部方法访问-final-变量"><a href="#由外部方法访问-final-变量" class="headerlink" title="由外部方法访问 final 变量"></a>由外部方法访问 final 变量</h2><p>局部内部类，不仅能够访问包含他们的外部类，还可以访问局部变量，但必须被声明为 final。</p>
+<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><p>加入只创建这个类的一个对象，就不必命名了，这种了被称为匿名内部类。<br>类名可以是一个接口，于是内部类就是实现这个接口；<br>也可以是一个类，于是内部类就是对这个类扩展。<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Person</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eat</span>(<span class="params"></span>)</span>;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        Person p = <span class="keyword">new</span> Person() &#123;</div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                System.<span class="keyword">out</span>.println(<span class="string">"eat something"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        p.eat();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h2><p>有时，使用内部类知识为了把一个类隐藏在另外一个类的内部，并不需要内部类引用外围类对象。<br>可以将内部类声明为 static，以便取消产生的引用。<br>如果用static 将内部内静态化，那么内部类就只能访问外部类的静态成员变量，具有局限性。<br>其次，因为内部类被静态化，因此Out.In可以当做一个整体看，可以直接new 出内部类的对象（通过类名访问static，生不生成外部类对象都没关系）。<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> <span class="title">Out</span> &#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> age = <span class="number">12</span>;</div><div class="line">    <span class="comment">//静态内部类</span></div><div class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">In</span> &#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            System.<span class="keyword">out</span>.println(age);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        Out.In <span class="keyword">in</span> = <span class="keyword">new</span> Out.In();</div><div class="line">        <span class="keyword">in</span>.print();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="徐宏亮" />
+          <p class="site-author-name" itemprop="name">徐宏亮</p>
+           
+              <p class="site-description motion-element" itemprop="description">我要用尽所有的力气才能书写一个词，放弃。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xuhongliang1996" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#接口"><span class="nav-number">1.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#接口的特性"><span class="nav-number">1.1.</span> <span class="nav-text">接口的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口与抽象类"><span class="nav-number">1.2.</span> <span class="nav-text">接口与抽象类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象克隆"><span class="nav-number">2.</span> <span class="nav-text">对象克隆</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口与回调"><span class="nav-number">3.</span> <span class="nav-text">接口与回调</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内部类"><span class="nav-number">4.</span> <span class="nav-text">内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用内部类访问对象状态"><span class="nav-number">4.1.</span> <span class="nav-text">使用内部类访问对象状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内部类的特殊语法规则"><span class="nav-number">4.2.</span> <span class="nav-text">内部类的特殊语法规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#私有内部类"><span class="nav-number">4.3.</span> <span class="nav-text">私有内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局部内部类"><span class="nav-number">4.4.</span> <span class="nav-text">局部内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#由外部方法访问-final-变量"><span class="nav-number">4.5.</span> <span class="nav-text">由外部方法访问 final 变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名内部类"><span class="nav-number">4.6.</span> <span class="nav-text">匿名内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态内部类"><span class="nav-number">4.7.</span> <span class="nav-text">静态内部类</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐宏亮</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,729 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/uploads/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="数据类型java中一共有8种数据类型，其中4种整形，2种浮点类型，1种用于表示编码的字符类型char，1种用于表示真值的boolean类型。 整形为了保证移植性，数据类型的取值范围是固定的。  int 4字节 -2^32 ~ 2^32-1 最常用 short 2字节 -2^16 ~ 2^16-1 需要控制占用存储空间量的大数组 long 8字节 -2^64 ~ 2^64-1 比如计算全球的人数 b">
+<meta property="og:type" content="website">
+<meta property="og:title" content="1.java基本语法">
+<meta property="og:url" content="http://yoursite.com/FarBox/xuhongliang.farbox.com/java核心技术卷一/1.java基本语法.html">
+<meta property="og:site_name" content="离离原上草">
+<meta property="og:description" content="数据类型java中一共有8种数据类型，其中4种整形，2种浮点类型，1种用于表示编码的字符类型char，1种用于表示真值的boolean类型。 整形为了保证移植性，数据类型的取值范围是固定的。  int 4字节 -2^32 ~ 2^32-1 最常用 short 2字节 -2^16 ~ 2^16-1 需要控制占用存储空间量的大数组 long 8字节 -2^64 ~ 2^64-1 比如计算全球的人数 b">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-30T02:25:51.443Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1.java基本语法">
+<meta name="twitter:description" content="数据类型java中一共有8种数据类型，其中4种整形，2种浮点类型，1种用于表示编码的字符类型char，1种用于表示真值的boolean类型。 整形为了保证移植性，数据类型的取值范围是固定的。  int 4字节 -2^32 ~ 2^32-1 最常用 short 2字节 -2^16 ~ 2^16-1 需要控制占用存储空间量的大数组 long 8字节 -2^64 ~ 2^64-1 比如计算全球的人数 b">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '2826EPHU2B',
+      apiKey: 'f88bfd768a4b086dc17a7c4946499618',
+      indexName: '26fdb1447b8c93b980ce075eb0d6b7e9',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/FarBox/xuhongliang.farbox.com/java核心技术卷一/1.java基本语法.html"/>
+
+
+
+
+
+  <title>1.java基本语法 | 离离原上草</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?eee29daecf3c11799e28ab5768869fee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">离离原上草</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline">1.java基本语法</h1>
+
+
+
+</header>
+
+    
+    
+      <h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>java中一共有8种数据类型，其中4种整形，2种浮点类型，1种用于表示编码的字符类型char，1种用于表示真值的boolean类型。</p>
+<h2 id="整形"><a href="#整形" class="headerlink" title="整形"></a>整形</h2><p>为了保证移植性，数据类型的取值范围是固定的。</p>
+<ul>
+<li>int 4字节 -2^32 ~ 2^32-1 最常用</li>
+<li>short 2字节 -2^16 ~ 2^16-1 需要控制占用存储空间量的大数组</li>
+<li>long 8字节 -2^64 ~ 2^64-1 比如计算全球的人数</li>
+<li>byte 1字节 -2^8 ~ 2^8-1 底层的文件处理</li>
+</ul>
+<p>长整形有个后缀L如(40000L)，十六进制前缀0x，八进制前缀0，二进制前缀0b如(0b111_1010_1000)下划线会自动去除。</p>
+<h2 id="浮点类型"><a href="#浮点类型" class="headerlink" title="浮点类型"></a>浮点类型</h2><p>表示有小数部分的数值</p>
+<ul>
+<li>floate 4字节</li>
+<li>double 8字节</li>
+</ul>
+<p>大多数使用double类型<br>floate后缀为F，doublic后缀为D可以省略。</p>
+<h2 id="char-类型"><a href="#char-类型" class="headerlink" title="char 类型"></a>char 类型</h2><p>表示单个字符，二个字节，Unicode编码单元可以表示为16进制，范围是\u0000~\uFFFF。<br>有很多特殊的转义字符，常用的有：</p>
+<ul>
+<li>\n 换行</li>
+<li>\’ 单引号</li>
+<li>\” 双引号</li>
+<li>\ 反斜杠</li>
+</ul>
+<p>强烈建议不要在程序中使用 char 类型，除非需要对 UTF-16 代码单元进行操作。</p>
+<h2 id="boolean-类型"><a href="#boolean-类型" class="headerlink" title="boolean 类型"></a>boolean 类型</h2><p>有两个值：true 和 false ，整形值和布尔值之间不能相互转换。</p>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>变量必须定义类型，命名只能是字母、数字、下划线以及’$’，也可以是某种语言任何代表字母的字符，变量名的开头不能是数字。</p>
+<h2 id="变量初始化"><a href="#变量初始化" class="headerlink" title="变量初始化"></a>变量初始化</h2><p>变量声明后，想要调用必须初始化。<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">int vacationDays</span> = 12;</div></pre></td></tr></table></figure></p>
+<p>变量的声明尽可能地靠近第一次使用的地方，这是一种良好的编程习惯。</p>
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>利用关键字<code>final</code>指示常量。<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">final <span class="keyword">bouble </span>CM_PER_INCH = <span class="number">2</span>.<span class="number">54</span><span class="comment">;</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li>只能被赋值一次</li>
+<li>赋值后不能更改</li>
+<li>常量名尽量用大写</li>
+</ul>
+<p><strong>类常量</strong>的定义位于main方法的外部。因此，在同一个类的其他方法中也可以使用这个常量。而且，如果一个常量被声明为public，那么其他类的方法也可以使用这个常量。<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> CM_PER_INCH = <span class="number">2.45</span>;</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args)</div><div class="line"></div><div class="line"><span class="keyword">Class</span>.CM_PER_INCH <span class="comment">//其他类调用</span></div></pre></td></tr></table></figure></p>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><p>特性：</p>
+<ul>
+<li>两个整数相除表示整数除法，否则是浮点除法</li>
+<li>比较运算符，一旦左边能确定结果，右边就不执行，也就是短路</li>
+<li>位运算符，不存在短路，两边都要执行完 <h2 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Math</span>.sqrt(<span class="number">4</span>);<span class="comment">//平方根</span></div><div class="line"><span class="built_in">Math</span>.pow(<span class="number">2</span>,<span class="number">3</span>);<span class="comment">//幂运算</span></div><div class="line"><span class="built_in">Math</span>.PI;<span class="comment">//帕尔常量近似值</span></div><div class="line"><span class="built_in">Math</span>.E;<span class="comment">//e常量近似值</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果在源文件顶部加上一下代码，就可以省略前缀<code>Math.</code><br><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.lang.Math.*;</div><div class="line">a = <span class="built_in">sqrt</span>(<span class="literal">PI</span>);</div></pre></td></tr></table></figure></p>
+<h2 id="数值类型之间的转换"><a href="#数值类型之间的转换" class="headerlink" title="数值类型之间的转换"></a>数值类型之间的转换</h2><p>转换，存在无信息丢失的转换以及有精度损失的转换。<br>在进行二元操作时：</p>
+<ul>
+<li>如果两个操作符有一个是double类型，另一个转换为double类型</li>
+<li>否则，如果其中有一个是float类型，另一个转换为float类型</li>
+<li>否则，如果其中有一个是long类型，另一个转换为long类型</li>
+<li>否则，两个操作符都转换为int类型</li>
+</ul>
+<h2 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h2><p>在不能自动转换类型的情况下，可以使用强制类型转换。<br>当然，会存在丢失一些信息的可能。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">double</span> x = <span class="number">9.997</span>;</div><div class="line"><span class="keyword">int</span> nx = (<span class="keyword">int</span>) x;</div><div class="line"><span class="comment">//结果 nx = 9;</span></div></pre></td></tr></table></figure></p>
+<p>double类型数据<strong>截断</strong>小数部分转换为int类型数据，如果想要四舍五入可以使用<code>Math.round(x)</code>数学函数。<br>如果试图将一个类型强制类型转换为另一个类型，而又超出了目标类型的表示范围，结果就会截断成一个完全不同的值。</p>
+<h2 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h2><p>变量取值在一个有限的集合内，如服装的尺寸。<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Size</span>&#123;<span class="title">SMALL</span>, <span class="title">MEDIUM</span>, <span class="title">LARGE</span>, <span class="title">EXTRA_LARGE</span>&#125;;</span></div></pre></td></tr></table></figure></p>
+<p>声明这种类型的变量：<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Size s</span> = Size.MEDIUM;</div></pre></td></tr></table></figure></p>
+<p>所以，他是一个类。</p>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><p>java字符就是Unicode字符，java没有内置的字符串类型，java类库中提供了一个预定一类<code>String</code>，每个用双引号括起来的字符串都是String类的一个实例。<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">String a</span> = <span class="string">"b"</span>;</div></pre></td></tr></table></figure></p>
+<h2 id="子串"><a href="#子串" class="headerlink" title="子串"></a>子串</h2><p>复制较大字符串中的一段字符串，参数一为起始位置，参数二为结束位置。<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String greeting = <span class="string">""</span>Hello<span class="string">";</span></div><div class="line">String s = greeting.substring(<span class="number">0</span>,<span class="number">3</span>);</div><div class="line"><span class="comment">//结果 s = "Hel";</span></div></pre></td></tr></table></figure></p>
+<h2 id="拼接"><a href="#拼接" class="headerlink" title="拼接"></a>拼接</h2><p>java语言允许使用<code>+</code>来连接字符串。<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">String</span> a = <span class="string">"a"</span>;</div><div class="line"><span class="keyword">String</span> b = <span class="string">"b"</span>;</div><div class="line"><span class="keyword">String</span> ab = a + b;<span class="comment">//"ab"</span></div><div class="line"><span class="keyword">String</span> c = a + <span class="string">"c"</span>;<span class="comment">//"ac"</span></div></pre></td></tr></table></figure></p>
+<p>字符串和非字符串连接时，非字符串会转换为字符串<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">String</span> a = <span class="string">"a"</span>;</div><div class="line"><span class="keyword">String</span> b = <span class="number">1</span> + <span class="string">"a"</span>;<span class="comment">//"1a"</span></div></pre></td></tr></table></figure></p>
+<h2 id="不可变字符"><a href="#不可变字符" class="headerlink" title="不可变字符"></a>不可变字符</h2><p>String类没有提供修改字符的方法，只能重复赋值。<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String <span class="attr">greeting</span> = <span class="string">"hello"</span>;</div><div class="line"><span class="attr">greeting</span> = greeting.substring(<span class="number">0</span>,<span class="number">3</span>) + <span class="string">"p!"</span>;</div><div class="line">//结果 <span class="attr">greeting</span> = <span class="string">"help!"</span>;</div></pre></td></tr></table></figure></p>
+<p>java中的字符串存放在公共的储存池中，如果复制一个字符串，原始字符串与赋值字符串共享相同的字符。</p>
+<h2 id="检测字符串是否相等"><a href="#检测字符串是否相等" class="headerlink" title="检测字符串是否相等"></a>检测字符串是否相等</h2><p>对于字符串<code>s.equals(t)</code>，如果字符串s与t相等返回true，否则返回false，s与t可以是字符串变量也可以是字符串常量。<br><figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">"Hello"</span>.equals(t)<span class="comment">;</span></div><div class="line"><span class="string">"Hello"</span>.equalsIgnoreCase(<span class="string">"hello"</span>)<span class="comment">;//不区分大小写</span></div></pre></td></tr></table></figure></p>
+<p>不能使用<code>==</code>判断字符串是否相等，它的作用是确定两个字符串是否放置在同一个位置上，基本没有这个场景。</p>
+<h2 id="空串与Null串"><a href="#空串与Null串" class="headerlink" title="空串与Null串"></a>空串与Null串</h2><p>空串””是长度为0的字符串，以下用来检察字符串是否为空。<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">if(<span class="name">str</span>.length() == <span class="number">0</span>)</div><div class="line">if(<span class="name">str</span>.equals(<span class="string">""</span>))</div></pre></td></tr></table></figure></p>
+<p>检察一个字符串是否为null<br><figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="keyword">str</span> == <span class="keyword">null</span>)</div></pre></td></tr></table></figure></p>
+<p>既不是null也不是空串<br><figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="keyword">str</span> != <span class="keyword">null</span> &amp;&amp; <span class="keyword">str</span>.length() != <span class="number">0</span>)</div></pre></td></tr></table></figure></p>
+<h2 id="构建字符串"><a href="#构建字符串" class="headerlink" title="构建字符串"></a>构建字符串</h2><p>当用到大量短字符串，可以使用<code>StringBuilder</code>实现追加和插入，操作完成后调用<code>.toString()</code>方法变为String对象。<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">StringBuilder </span><span class="keyword">builder </span>= new <span class="keyword">StringBuilder();</span></div><div class="line"><span class="keyword">builder.append(ch);</span></div><div class="line"><span class="keyword">builder.append(str);</span></div><div class="line"><span class="keyword">String </span>com = <span class="keyword">builder.toString();</span></div></pre></td></tr></table></figure></p>
+<h1 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h1><p>利用控制台的输入输出，熟悉java程序设计语言。</p>
+<h2 id="读取输入"><a href="#读取输入" class="headerlink" title="读取输入"></a>读取输入</h2><p>首先构造一个Scanner对象，与标准输入流System.in关联。<br>然后通过方法接受用户的输入。<br><figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Scanner <span class="keyword">in</span> = <span class="keyword">new</span> <span class="type">Scanner</span>(System.<span class="keyword">in</span>);</div><div class="line"><span class="keyword">String</span> name = <span class="keyword">in</span>.nextLine();<span class="comment">//读取一行</span></div><div class="line"><span class="keyword">String</span> name2 = <span class="keyword">in</span>.next();<span class="comment">//读取一个单词</span></div><div class="line"><span class="keyword">String</span> name3 = <span class="keyword">in</span>.nextInt();<span class="comment">//读取一个整数</span></div><div class="line"><span class="keyword">String</span> name4 = <span class="keyword">in</span>.nextDouble();<span class="comment">//读取浮点数</span></div></pre></td></tr></table></figure></p>
+<h2 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h2><p>java的格式化输出延续了C。<br><figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">System</span>.out.<span class="keyword">print</span>(x);<span class="comment">//输出x不换行</span></div><div class="line"><span class="keyword">System</span>.out.println(x);<span class="comment">//输出x换行</span></div><div class="line"><span class="keyword">System</span>.out.printf(<span class="string">"%8.2f\n"</span>,x);<span class="comment">//格式化输出，不换行，可以用转义字符</span></div></pre></td></tr></table></figure></p>
+<h2 id="文件输入输出"><a href="#文件输入输出" class="headerlink" title="文件输入输出"></a>文件输入输出</h2><p>文件的读取<br><figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Scanner <span class="keyword">in</span> = <span class="keyword">new</span> <span class="type">Scanner</span>(Paths.<span class="keyword">get</span>(<span class="string">"myfile.txt"</span>);</div></pre></td></tr></table></figure></p>
+<p>文件的写入<br><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">PrintWriter <span class="keyword">out</span> = <span class="keyword">new</span> PrintWriter(<span class="string">"myfile.txt"</span>);</div><div class="line"><span class="comment">//若文件不存在自动创建</span></div></pre></td></tr></table></figure></p>
+<p>文件的路径</p>
+<ul>
+<li>相对路径：启动路径就是命令解释器的当前路径，列如，”mydirectory/myfile.txt”</li>
+<li>绝对路径：”c:/mydirectory/myfile.txt””c:\mydirectory\myfile.txt”</li>
+</ul>
+<h1 id="控制流程"><a href="#控制流程" class="headerlink" title="控制流程"></a>控制流程</h1><p>java用条件语句和循环结构确定控制流程。</p>
+<h2 id="块作用域"><a href="#块作用域" class="headerlink" title="块作用域"></a>块作用域</h2><p>块是指由一对花括号括起来的若干条简单的java语句。</p>
+<blockquote>
+<p>不能在嵌套的两个块中声明同名的变量，会导致无法通过编译。这与C++和js不同。</p>
+</blockquote>
+<h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">if</span> (c != <span class="number">3</span>) &#123;</div><div class="line">    <span class="attribute">a</span> = <span class="number">1</span>;</div><div class="line">&#125; <span class="section">else</span> &#123;</div><div class="line">    <span class="attribute">b</span> = <span class="number">2</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> <span class="comment">(a &lt; b)</span> &#123;</div><div class="line">    a += b;</div><div class="line">&#125;</div><div class="line"><span class="comment">//至少执行一次循环</span></div><div class="line"><span class="keyword">do</span> &#123;</div><div class="line">    a += b;</div><div class="line">&#125; <span class="keyword">while</span> <span class="comment">(a &lt; b)</span>;</div></pre></td></tr></table></figure>
+<p>for 循环是 while 的简化形式<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">for (int i = <span class="number">0</span>; i &lt; args.length; i++) &#123;</div><div class="line">    ;		</div><div class="line">&#125;</div><div class="line">``` </div><div class="line">## 多重选择</div></pre></td></tr></table></figure></p>
+<p>switch (key) {<br>case value:<br>    //语句<br>    break;<br>default:<br>    break;<br>}<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">value</span> 可以为 <span class="keyword">char</span> <span class="keyword">byte</span> <span class="keyword">short</span> 或 <span class="keyword">int</span></div><div class="line">也可以为 枚举常量 以及 字符串字面量</div><div class="line"><span class="meta">## 中断控制流程语句</span></div><div class="line"><span class="keyword">break</span>：退出当前循环语句</div><div class="line"><span class="keyword">continue</span>：中断每次循环进入下次循环</div><div class="line">他们是可选的可以不使用。</div><div class="line"><span class="meta"># 大数值</span></div><div class="line">BigInteger 和 BigDecimal 可以处理包含任意长度数字序列的数值，实现了任意精度的整数运算和任意精度的浮点数运算。</div><div class="line"><span class="meta"># 数组</span></div><div class="line">java中的数组是一组数据结构，用来存储同一类型的集合。通过一个整形下标可以访问数组中的每一个值。</div><div class="line">声明及初始化：</div></pre></td></tr></table></figure></p>
+<p>int[] a;<br>int[] a = new int[100];<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">调用 <span class="selector-tag">toString</span>() 方法可以按格式输出所有元素。</div></pre></td></tr></table></figure></p>
+<p>Arrays.toString(smallPrimes)<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"><span class="comment"># for each 循环</span></span></div><div class="line">格式：</div></pre></td></tr></table></figure></p>
+<p>for (variable : collection ){<br>    statement;<br>}<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">不必为集合的初始值和终止值操心。</div><div class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 数组初始化以及匿名数组</span></span></div><div class="line">初始化简化方式：</div></pre></td></tr></table></figure></p>
+<p>int[] smallPrimes = { 2, 3, 4, 5 };<br>new int[] { 2, 3, 4, 5 };<br>smallPrimes = new int[] { 2, 3, 4, 5 };<br><figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">简化初始化数组可以省略 <span class="keyword">new</span> <span class="type"></span>，数组重新初始化要用匿名数组。</div><div class="line"><span class="meta">## 数组之间的拷贝</span></div><div class="line">讲一个数组变量拷贝到另一个数组变量，这时，两个变量将引用同一个数组。</div><div class="line">其中一个改变值时，另一个页改变对应的值。</div><div class="line">提供一个方法，可以拷贝数组并且变大或变小，变大时，整数类型变为<span class="number">0</span>，布尔类型变为<span class="literal">false</span>，变小时，只拷贝最前面的数据元素。</div></pre></td></tr></table></figure></p>
+<p>int[] smallPrimes = {1,2,3,4,5};<br>smallPrimes = Arrays.copyOf(smallPrimes, 8);<br>System.out.println(Arrays.toString(smallPrimes));<br>// [1, 2, 3, 4, 5, 0, 0, 0]<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 数组排序</span></span></div><div class="line">可以使用自己的算法，或者自带优化的快速排序算法。</div></pre></td></tr></table></figure></p>
+<p>Arrays.sort(smallPrimes);<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 多维数组</span></span></div><div class="line">跟一维数组差不多：</div></pre></td></tr></table></figure></p>
+<p>int[][] smallPrimes = new int[4][4];</p>
+<p>int[][] smallPrimes = {<br>{1, 2, 3, 4},<br>{1, 2, 3, 4},<br>{1, 2, 3, 4},<br>{1, 2, 3, 4}<br>};<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">快速打印二维数组的方法：</div></pre></td></tr></table></figure></p>
+<p>Arrays.deepToString(smallPrimes);<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 不规则数组</span></span></div><div class="line">不规则数组，即第二维的数组长度不一样。</div><div class="line">首先分配数组：</div></pre></td></tr></table></figure></p>
+<p>int[][] odds = new int[NMAX + 1][];//先确定一维<br>for(int n = 0;n &lt;= NMAX;n++){<br>    odds[n] = new int[n+1]//在确定二维<br>}<br>```<br>需要不规则的数组时，只能单独的创建。</p>
+
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="徐宏亮" />
+          <p class="site-author-name" itemprop="name">徐宏亮</p>
+           
+              <p class="site-description motion-element" itemprop="description">我要用尽所有的力气才能书写一个词，放弃。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xuhongliang1996" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#整形"><span class="nav-number">1.1.</span> <span class="nav-text">整形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮点类型"><span class="nav-number">1.2.</span> <span class="nav-text">浮点类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#char-类型"><span class="nav-number">1.3.</span> <span class="nav-text">char 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#boolean-类型"><span class="nav-number">1.4.</span> <span class="nav-text">boolean 类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量"><span class="nav-number">2.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量初始化"><span class="nav-number">2.1.</span> <span class="nav-text">变量初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常量"><span class="nav-number">2.2.</span> <span class="nav-text">常量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运算符"><span class="nav-number">3.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数学函数"><span class="nav-number">3.1.</span> <span class="nav-text">数学函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值类型之间的转换"><span class="nav-number">3.2.</span> <span class="nav-text">数值类型之间的转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强制类型转换"><span class="nav-number">3.3.</span> <span class="nav-text">强制类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#枚举类型"><span class="nav-number">3.4.</span> <span class="nav-text">枚举类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串"><span class="nav-number">4.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#子串"><span class="nav-number">4.1.</span> <span class="nav-text">子串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拼接"><span class="nav-number">4.2.</span> <span class="nav-text">拼接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不可变字符"><span class="nav-number">4.3.</span> <span class="nav-text">不可变字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检测字符串是否相等"><span class="nav-number">4.4.</span> <span class="nav-text">检测字符串是否相等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空串与Null串"><span class="nav-number">4.5.</span> <span class="nav-text">空串与Null串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建字符串"><span class="nav-number">4.6.</span> <span class="nav-text">构建字符串</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#输入输出"><span class="nav-number">5.</span> <span class="nav-text">输入输出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#读取输入"><span class="nav-number">5.1.</span> <span class="nav-text">读取输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#格式化输出"><span class="nav-number">5.2.</span> <span class="nav-text">格式化输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件输入输出"><span class="nav-number">5.3.</span> <span class="nav-text">文件输入输出</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#控制流程"><span class="nav-number">6.</span> <span class="nav-text">控制流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#块作用域"><span class="nav-number">6.1.</span> <span class="nav-text">块作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件语句"><span class="nav-number">6.2.</span> <span class="nav-text">条件语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环语句"><span class="nav-number">6.3.</span> <span class="nav-text">循环语句</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐宏亮</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

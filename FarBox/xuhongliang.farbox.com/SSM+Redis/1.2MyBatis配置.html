@@ -1,0 +1,664 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/uploads/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="概念MyBatis 配置项的顺序不能颠倒。12345678910111213141516171819&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&amp;gt;&amp;lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;  &quot;http://mybatis.org/dtd/mybatis-3">
+<meta property="og:type" content="website">
+<meta property="og:title" content="1.2MyBatis配置">
+<meta property="og:url" content="http://yoursite.com/FarBox/xuhongliang.farbox.com/SSM+Redis/1.2MyBatis配置.html">
+<meta property="og:site_name" content="离离原上草">
+<meta property="og:description" content="概念MyBatis 配置项的顺序不能颠倒。12345678910111213141516171819&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&amp;gt;&amp;lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;  &quot;http://mybatis.org/dtd/mybatis-3">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-13T06:12:49.400Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1.2MyBatis配置">
+<meta name="twitter:description" content="概念MyBatis 配置项的顺序不能颠倒。12345678910111213141516171819&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&amp;gt;&amp;lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;  &quot;http://mybatis.org/dtd/mybatis-3">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '2826EPHU2B',
+      apiKey: 'f88bfd768a4b086dc17a7c4946499618',
+      indexName: '26fdb1447b8c93b980ce075eb0d6b7e9',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/FarBox/xuhongliang.farbox.com/SSM+Redis/1.2MyBatis配置.html"/>
+
+
+
+
+
+  <title>1.2MyBatis配置 | 离离原上草</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?eee29daecf3c11799e28ab5768869fee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">离离原上草</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline">1.2MyBatis配置</h1>
+
+
+
+</header>
+
+    
+    
+      <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>MyBatis 配置项的顺序不能颠倒。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span> <span class="meta">?&gt;</span></span></div><div class="line"><span class="meta">&lt;!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"</span></div><div class="line"><span class="meta">  "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span>配置</div><div class="line">	<span class="tag">&lt;<span class="name">properties</span> /&gt;</span>属性</div><div class="line">	<span class="tag">&lt;<span class="name">settings</span> /&gt;</span>设置</div><div class="line">	<span class="tag">&lt;<span class="name">typeAliases</span> /&gt;</span>类型命名</div><div class="line">	<span class="tag">&lt;<span class="name">typeHandlers</span> /&gt;</span>类型处理器</div><div class="line">	<span class="tag">&lt;<span class="name">objectFactory</span> /&gt;</span>对象工厂</div><div class="line">	<span class="tag">&lt;<span class="name">plugins</span> /&gt;</span>插件</div><div class="line">	<span class="tag">&lt;<span class="name">environments</span> /&gt;</span>配置环境</div><div class="line">		<span class="tag">&lt;<span class="name">environment</span>&gt;</span>环境变量</div><div class="line">			<span class="tag">&lt;<span class="name">transactionManager</span> /&gt;</span>事务管理器</div><div class="line">			<span class="tag">&lt;<span class="name">dataSource</span> /&gt;</span>数据源</div><div class="line">		<span class="tag">&lt;/<span class="name">environment</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">environments</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">databaseIdProvider</span> /&gt;</span>数据库厂商标识</div><div class="line">	<span class="tag">&lt;<span class="name">mappers</span> /&gt;</span>映射器</div><div class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h1 id="properties-属性"><a href="#properties-属性" class="headerlink" title="properties 属性"></a>properties 属性</h1><p>提供了三种方式：</p>
+<ul>
+<li>property 子元素</li>
+<li>properties 文件</li>
+<li>程序代码传递</li>
+</ul>
+<h2 id="property-子元素"><a href="#property-子元素" class="headerlink" title="property 子元素"></a>property 子元素</h2><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;properties&gt;</div><div class="line">    &lt;<span class="keyword">property</span> <span class="built_in">name</span>=<span class="string">"database.driver"</span> value=<span class="string">"com.mysql.jdbc.Driver"</span>/&gt;</div><div class="line">    &lt;<span class="keyword">property</span> <span class="built_in">name</span>=<span class="string">"database.url"</span> value=<span class="string">"jdbc:mysql://localhost:3306/chapter4"</span>/&gt;</div><div class="line">    &lt;<span class="keyword">property</span> <span class="built_in">name</span>=<span class="string">"database.username"</span> value=<span class="string">"root"</span>/&gt;</div><div class="line">    &lt;<span class="keyword">property</span> <span class="built_in">name</span>=<span class="string">"database.password"</span> value=<span class="string">"123456"</span>/&gt;</div><div class="line">&lt;/properties&gt;</div></pre></td></tr></table></figure>
+<h2 id="properties-文件"><a href="#properties-文件" class="headerlink" title="properties 文件"></a>properties 文件</h2><p>普遍方法：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">properties</span> <span class="attr">resource</span>=<span class="string">"jdbc.properties"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>创建文件<code>jdbc.properties</code>，放到 classpath 路径下：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">database.<span class="attribute">driver</span>=com.mysql.jdbc.Driver</div><div class="line">database.<span class="attribute">url</span>=jdbc:mysql://localhost:3306/chapter4</div><div class="line">database.<span class="attribute">username</span>=root</div><div class="line">database.<span class="attribute">password</span>=123456</div></pre></td></tr></table></figure></p>
+<h2 id="程序代码传递"><a href="#程序代码传递" class="headerlink" title="程序代码传递"></a>程序代码传递</h2><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Properties <span class="built_in">props</span> = <span class="built_in">new</span> Properties();</div><div class="line">//加入值</div><div class="line"><span class="built_in">props</span>.<span class="built_in">put</span>(<span class="string">"database.username"</span>,<span class="string">"root"</span>);</div><div class="line"><span class="built_in">props</span>.<span class="built_in">put</span>(<span class="string">"database.password"</span>,<span class="string">"123456"</span>);</div><div class="line">//使用程序传递的方式覆盖原有的 <span class="built_in">properties</span> 属性参数</div><div class="line">SqlSessionFactory = <span class="built_in">new</span> SqlSessionFactoryBuilder().build(inputStream, <span class="built_in">props</span>);</div></pre></td></tr></table></figure>
+<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>property 子元素 &lt; properties 文件 &lt; 程序代码传递</p>
+<h1 id="setting-设置"><a href="#setting-设置" class="headerlink" title="setting 设置"></a>setting 设置</h1><h1 id="typeAliases-别名"><a href="#typeAliases-别名" class="headerlink" title="typeAliases 别名"></a>typeAliases 别名</h1><p>定义别名简写来代表类，分为系统定义别名和自定义别名。</p>
+<h2 id="自定义别名"><a href="#自定义别名" class="headerlink" title="自定义别名"></a>自定义别名</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">typeAlias</span> <span class="attr">alias</span>=<span class="string">"role"</span> <span class="attr">type</span>=<span class="string">"com.learn.ssm.chapter4.pojo.Role"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"com.learn.ssm.chapter4.pojo"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>说明：</p>
+<ul>
+<li>typeAlias 中 alias 对应别名，type 对应类，每次只能定义一个类的别名</li>
+<li>package 中 name 中的包会被扫描，内部的 POJO 会自动定义别名，规则为字母变为小写</li>
+<li>当有重名现象时，用注解重新命名<code>@Alias(&quot;user3&quot;)</code></li>
+</ul>
+<h1 id="typeHandler-类型转换器"><a href="#typeHandler-类型转换器" class="headerlink" title="typeHandler 类型转换器"></a>typeHandler 类型转换器</h1><p>分为 jdbcType 定义数据库类型和 javaType 定义 Java 类型。<br>作用为承担他们之间的相互转换。<br>很多情况下我们不需要去配置他们，对于需要使用自定义枚举的场景，或者数据库使用特殊数据类型的场景，可以自定义 typeHandler 去处理类型之间的转换问题。</p>
+<h1 id="对象工厂"><a href="#对象工厂" class="headerlink" title="对象工厂"></a>对象工厂</h1><h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><h1 id="environments-运行环境"><a href="#environments-运行环境" class="headerlink" title="environments 运行环境"></a>environments 运行环境</h1><p>通常由 spring 对数据源和数据库的书屋进行管理</p>
+<h1 id="databaseIdProvider-数据库厂商标识"><a href="#databaseIdProvider-数据库厂商标识" class="headerlink" title="databaseIdProvider 数据库厂商标识"></a>databaseIdProvider 数据库厂商标识</h1><p>支持多种不同厂商的数据库，</p>
+<h1 id="mappers-引入映射器"><a href="#mappers-引入映射器" class="headerlink" title="mappers 引入映射器"></a>mappers 引入映射器</h1><p>引入有多种方法</p>
+<ul>
+<li>文件路径</li>
+<li>包名引入</li>
+<li>类注册引入</li>
+<li>userMapper.xml 引入</li>
+</ul>
+
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="徐宏亮" />
+          <p class="site-author-name" itemprop="name">徐宏亮</p>
+           
+              <p class="site-description motion-element" itemprop="description">我要用尽所有的力气才能书写一个词，放弃。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xuhongliang1996" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#properties-属性"><span class="nav-number">2.</span> <span class="nav-text">properties 属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#property-子元素"><span class="nav-number">2.1.</span> <span class="nav-text">property 子元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#properties-文件"><span class="nav-number">2.2.</span> <span class="nav-text">properties 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序代码传递"><span class="nav-number">2.3.</span> <span class="nav-text">程序代码传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优先级"><span class="nav-number">2.4.</span> <span class="nav-text">优先级</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#setting-设置"><span class="nav-number">3.</span> <span class="nav-text">setting 设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#typeAliases-别名"><span class="nav-number">4.</span> <span class="nav-text">typeAliases 别名</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义别名"><span class="nav-number">4.1.</span> <span class="nav-text">自定义别名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#typeHandler-类型转换器"><span class="nav-number">5.</span> <span class="nav-text">typeHandler 类型转换器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象工厂"><span class="nav-number">6.</span> <span class="nav-text">对象工厂</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件"><span class="nav-number">7.</span> <span class="nav-text">插件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#environments-运行环境"><span class="nav-number">8.</span> <span class="nav-text">environments 运行环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#databaseIdProvider-数据库厂商标识"><span class="nav-number">9.</span> <span class="nav-text">databaseIdProvider 数据库厂商标识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mappers-引入映射器"><span class="nav-number">10.</span> <span class="nav-text">mappers 引入映射器</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐宏亮</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

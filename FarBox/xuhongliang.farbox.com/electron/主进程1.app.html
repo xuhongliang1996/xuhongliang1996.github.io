@@ -1,0 +1,729 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/uploads/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="appapp 模块是为了控制整个应用的生命周期设计的。最后一个窗口被关闭时退出应用：1234const &amp;#123;app&amp;#125; = require(&apos;electron&apos;)app.on(&apos;window-all-closed&apos;, () =&amp;gt; &amp;#123;  app.quit()&amp;#125;) 事件列表will-finish-launching完成基础启动触发Windows：与 ready">
+<meta property="og:type" content="website">
+<meta property="og:title" content="主进程1.app">
+<meta property="og:url" content="http://yoursite.com/FarBox/xuhongliang.farbox.com/electron/主进程1.app.html">
+<meta property="og:site_name" content="离离原上草">
+<meta property="og:description" content="appapp 模块是为了控制整个应用的生命周期设计的。最后一个窗口被关闭时退出应用：1234const &amp;#123;app&amp;#125; = require(&apos;electron&apos;)app.on(&apos;window-all-closed&apos;, () =&amp;gt; &amp;#123;  app.quit()&amp;#125;) 事件列表will-finish-launching完成基础启动触发Windows：与 ready">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-03T02:30:35.648Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="主进程1.app">
+<meta name="twitter:description" content="appapp 模块是为了控制整个应用的生命周期设计的。最后一个窗口被关闭时退出应用：1234const &amp;#123;app&amp;#125; = require(&apos;electron&apos;)app.on(&apos;window-all-closed&apos;, () =&amp;gt; &amp;#123;  app.quit()&amp;#125;) 事件列表will-finish-launching完成基础启动触发Windows：与 ready">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '2826EPHU2B',
+      apiKey: 'f88bfd768a4b086dc17a7c4946499618',
+      indexName: '26fdb1447b8c93b980ce075eb0d6b7e9',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/FarBox/xuhongliang.farbox.com/electron/主进程1.app.html"/>
+
+
+
+
+
+  <title>主进程1.app | 离离原上草</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?eee29daecf3c11799e28ab5768869fee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">离离原上草</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline">主进程1.app</h1>
+
+
+
+</header>
+
+    
+    
+      <h1 id="app"><a href="#app" class="headerlink" title="app"></a>app</h1><p>app 模块是为了控制整个应用的生命周期设计的。<br>最后一个窗口被关闭时退出应用：<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">const &#123;app&#125; = <span class="built_in">require</span>(<span class="string">'electron'</span>)</div><div class="line">app.<span class="literal">on</span>(<span class="string">'window-all-closed'</span>, <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  app.quit()</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h1 id="事件列表"><a href="#事件列表" class="headerlink" title="事件列表"></a>事件列表</h1><h2 id="will-finish-launching"><a href="#will-finish-launching" class="headerlink" title="will-finish-launching"></a>will-finish-launching</h2><p>完成基础启动触发<br>Windows：与 ready 事件是相同<br>Linux：与 ready 事件是相同<br>macOS：相当于 NSApplication 中的 applicationWillFinishLaunching 提示</p>
+<p>你应该经常在这里为 open-file 和 open-url 设置监听器，并启动崩溃报告和自动更新。<br>在大多数的情况下，你应该只在 ready 事件处理器中完成所有的业务。</p>
+<h2 id="ready"><a href="#ready" class="headerlink" title="ready"></a>ready</h2><p>初始化时触发<br>macOS返回：launchInfo Object<br>macOs：如果从通知中心中启动，那么launchInfo 中的userInfo包含 用来打开应用程序的 NSUserNotification 信息。<br>你可以通过调用 app.isReady() 方法来检查此事件是否已触发。</p>
+<h2 id="before-quit"><a href="#before-quit" class="headerlink" title="before-quit"></a>before-quit</h2><p>关闭窗口触发<br>返回：event Event<br>调用 event.preventDefault() 将会阻止终止应用程序的默认行为。</p>
+<h2 id="will-quit"><a href="#will-quit" class="headerlink" title="will-quit"></a>will-quit</h2><p>所有窗口关闭即将退出触发<br>返回：event Event<br>调用 event.preventDefault() 将会阻止终止应用程序的默认行为。<br>你可以在 window-all-closed 事件的描述中看到 will-quit 事件 和 window-all-closed 事件的区别。</p>
+<h2 id="quit"><a href="#quit" class="headerlink" title="quit"></a>quit</h2><p>返回：event Event、exitCode Integer<br>正在退出触发</p>
+<h2 id="browser-window-blur"><a href="#browser-window-blur" class="headerlink" title="browser-window-blur"></a>browser-window-blur</h2><p>返回：event Event、window BrowserWindow<br>当一个 BrowserWindow 失去焦点的时候触发。</p>
+<h2 id="browser-window-focus"><a href="#browser-window-focus" class="headerlink" title="browser-window-focus"></a>browser-window-focus</h2><p>返回：event Event、window BrowserWindow<br>当一个 BrowserWindow 获得焦点的时候触发。</p>
+<h2 id="browser-window-created"><a href="#browser-window-created" class="headerlink" title="browser-window-created"></a>browser-window-created</h2><p>返回：event Event、window BrowserWindow<br>当一个 BrowserWindow 被创建的时候触发。</p>
+<h2 id="web-contents-created"><a href="#web-contents-created" class="headerlink" title="web-contents-created"></a>web-contents-created</h2><p>返回：event Event、webContents WebContents<br>在新的 webContents 创建后触发。</p>
+<h2 id="certificate-error"><a href="#certificate-error" class="headerlink" title="certificate-error"></a>certificate-error</h2><p>返回：</p>
+<ul>
+<li>event Event</li>
+<li>webContentsWebContents</li>
+<li>url String - URL 地址</li>
+<li>error String - 错误码</li>
+<li>certificate Object<ul>
+<li>data Buffer - PEM 编码数据</li>
+<li>issuerName String - 发行者的公有名称</li>
+</ul>
+</li>
+<li>callback Function</li>
+</ul>
+<p>当对 url 验证 certificate 证书失败的时候触发，如果需要信任这个证书，你需要阻止默认行为 event.preventDefault() 并且 调用 callback(true)。</p>
+<h2 id="select-client-certificate"><a href="#select-client-certificate" class="headerlink" title="select-client-certificate"></a>select-client-certificate</h2><p>返回：</p>
+<ul>
+<li>event Event</li>
+<li>webContentsWebContents</li>
+<li>url String - URL 地址</li>
+<li>certificateList [Object]<ul>
+<li>data Buffer - PEM 编码数据</li>
+<li>issuerName String - 发行者的公有名称</li>
+</ul>
+</li>
+<li>callback Function</li>
+</ul>
+<p>当一个客户端认证被请求的时候被触发。<br>url 指的是请求客户端认证的网页地址，调用 callback 时需要传入一个证书列表中的证书。<br>需要通过调用 event.preventDefault() 来防止应用自动使用第一个证书进行验证。</p>
+<h2 id="login"><a href="#login" class="headerlink" title="login"></a>login</h2><p>返回：</p>
+<ul>
+<li>event Event</li>
+<li>webContentsWebContents</li>
+<li>request Object<ul>
+<li>method String</li>
+<li>url URL</li>
+<li>referrer URL</li>
+</ul>
+</li>
+<li>authInfo Object<ul>
+<li>isProxy Boolean</li>
+<li>scheme String</li>
+<li>host String</li>
+<li>port Integer</li>
+<li>realm String</li>
+</ul>
+</li>
+<li>callback Function</li>
+</ul>
+<p>当 webContents 要做进行一次 HTTP 登陆验证时被触发。<br>默认情况下，Electron 会取消所有的验证行为，如果需要重写这个行为，你需要用 event.preventDefault() 来阻止默认行为，并且用callback(username, password) 来进行验证。</p>
+<h2 id="gpu-process-crashed"><a href="#gpu-process-crashed" class="headerlink" title="gpu-process-crashed"></a>gpu-process-crashed</h2><p>返回:event Event、killed Boolean<br>当 GPU 进程崩溃时触发。</p>
+<h3 id="换位"><a href="#换位" class="headerlink" title="换位"></a>换位</h3><h2 id="macO-SWindows"><a href="#macO-SWindows" class="headerlink" title="macO SWindows"></a>macO SWindows</h2><h3 id="accessibility-support-changed"><a href="#accessibility-support-changed" class="headerlink" title="accessibility-support-changed"></a>accessibility-support-changed</h3><p>返回:event Event、accessibilitySupportEnabled Boolean - 当启用Chrome的辅助功能时候为true, 其他情况为 false。<br>当 Chrome 的辅助功能状态改变时触发，比如屏幕阅读被启用或被禁用。</p>
+<h1 id="方法列表"><a href="#方法列表" class="headerlink" title="方法列表"></a>方法列表</h1><h2 id="app-quit"><a href="#app-quit" class="headerlink" title="app.quit()"></a>app.quit()</h2><p>关掉所有的窗口。<br>事件：<br>before-quit 事件将会最先被触发<br>will-quit 事件将会在所有的窗口都被成功关闭了触发</p>
+<h2 id="app-exit-exitCode"><a href="#app-exit-exitCode" class="headerlink" title="app.exit(exitCode)"></a>app.exit(exitCode)</h2><p>exitCode 整数<br>带着exitCode退出应用，exitCode 默认为0<br>所有的窗口会被立刻关闭，不会询问用户。before-quit 和 will-quit 这2个事件不会被触发</p>
+<h2 id="app-relaunch-options"><a href="#app-relaunch-options" class="headerlink" title="app.relaunch([options])"></a>app.relaunch([options])</h2><p>options Object (optional)</p>
+<ul>
+<li>args String[] (optional)</li>
+<li>execPath String (optional)</li>
+</ul>
+<p>当前实例退出，重启应用。</p>
+<h2 id="app-isReady"><a href="#app-isReady" class="headerlink" title="app.isReady()"></a>app.isReady()</h2><p>返回 Boolean - true 如果Electron 初始化完成, false 其他情况.</p>
+<h2 id="app-focus"><a href="#app-focus" class="headerlink" title="app.focus()"></a>app.focus()</h2><p>在Linux系统中, 使第一个可见窗口获取焦点. macOS, 让该应用成为活动应用程序。 Windows, 使应用的第一个窗口获取焦点.</p>
+<h2 id="app-getAppPath"><a href="#app-getAppPath" class="headerlink" title="app.getAppPath()"></a>app.getAppPath()</h2><p>返回当前应用所在的文件路径。</p>
+<h2 id="app-getPath-name"><a href="#app-getPath-name" class="headerlink" title="app.getPath(name)"></a>app.getPath(name)</h2><p>返回一个与 name 参数相关的特殊文件夹或文件路径。当失败时抛出一个 Error 。</p>
+<h2 id="app-getFileIcon-path-options-callback"><a href="#app-getFileIcon-path-options-callback" class="headerlink" title="app.getFileIcon(path[, options], callback)"></a>app.getFileIcon(path[, options], callback)</h2><p>获取文件关联的图标.</p>
+<h2 id="app-setPath-name-path"><a href="#app-setPath-name-path" class="headerlink" title="app.setPath(name, path)"></a>app.setPath(name, path)</h2><p>重写某个 name 的路径为 path，path 可以是一个文件夹或者一个文件，这个和 name 的类型有关。 如果这个路径指向的文件夹不存在，这个文件夹将会被这个方法创建。 如果错误则会抛出 Error。</p>
+<h2 id="app-getVersion"><a href="#app-getVersion" class="headerlink" title="app.getVersion()"></a>app.getVersion()</h2><p>返回加载应用程序的版本。</p>
+<h2 id="app-getName"><a href="#app-getName" class="headerlink" title="app.getName()"></a>app.getName()</h2><p>返回当前应用程序的 package.json 文件中的名称。</p>
+<h2 id="app-setName-name"><a href="#app-setName-name" class="headerlink" title="app.setName(name)"></a>app.setName(name)</h2><p>重写当前应用的名字</p>
+<h2 id="app-getLocale"><a href="#app-getLocale" class="headerlink" title="app.getLocale()"></a>app.getLocale()</h2><p>返回当前应用程序的语言。</p>
+<h2 id="app-makeSingleInstance-callback"><a href="#app-makeSingleInstance-callback" class="headerlink" title="app.makeSingleInstance(callback)"></a>app.makeSingleInstance(callback)</h2><p>这个方法可以让你的应用在同一时刻最多只会有一个实例，否则你的应用可以被运行多次并产生多个实例。你可以利用这个接口保证只有一个实例正 常运行，其余的实例全部会被终止并退出。</p>
+<h2 id="app-releaseSingleInstance"><a href="#app-releaseSingleInstance" class="headerlink" title="app.releaseSingleInstance()"></a>app.releaseSingleInstance()</h2><p>释放所有由 makeSingleInstance 创建的限制. 这将允许应用程序的多个实例依次运行.</p>
+<h2 id="app-disableHardwareAcceleration"><a href="#app-disableHardwareAcceleration" class="headerlink" title="app.disableHardwareAcceleration()"></a>app.disableHardwareAcceleration()</h2><p>为当前应用程序禁用硬件加速，该方法只能在应用ready之前调用</p>
+<h2 id="app-commandLine-appendSwitch-switch-value"><a href="#app-commandLine-appendSwitch-switch-value" class="headerlink" title="app.commandLine.appendSwitch(switch[, value])"></a>app.commandLine.appendSwitch(switch[, value])</h2><p>通过可选的参数 value 给 Chromium 中添加一个命令行开关。<br>注意 这个方法不会影响 process.argv，我们通常用这个方法控制一些底层 Chromium 行为。</p>
+<h2 id="app-commandLine-appendArgument-value"><a href="#app-commandLine-appendArgument-value" class="headerlink" title="app.commandLine.appendArgument(value)"></a>app.commandLine.appendArgument(value)</h2><p>给 Chromium 中直接添加一个命令行参数，这个参数 value 的引号和格式必须正确。</p>
+<h3 id="换位-1"><a href="#换位-1" class="headerlink" title="换位"></a>换位</h3><h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><h3 id="app-setUserTasks-tasks"><a href="#app-setUserTasks-tasks" class="headerlink" title="app.setUserTasks(tasks)"></a>app.setUserTasks(tasks)</h3><p>任务栏跳转列表</p>
+<h3 id="app-getJumpListSettings"><a href="#app-getJumpListSettings" class="headerlink" title="app.getJumpListSettings()"></a>app.getJumpListSettings()</h3><p>自定义跳转列表</p>
+<h3 id="app-setAppUserModelId-id"><a href="#app-setAppUserModelId-id" class="headerlink" title="app.setAppUserModelId(id)"></a>app.setAppUserModelId(id)</h3><p>改变当前应用的 Application User Model ID 为 id.</p>
+<h2 id="macOSWindows"><a href="#macOSWindows" class="headerlink" title="macOSWindows"></a>macOSWindows</h2><h3 id="app-addRecentDocument-path"><a href="#app-addRecentDocument-path" class="headerlink" title="app.addRecentDocument(path)"></a>app.addRecentDocument(path)</h3><p>在最近访问的文档列表中添加 path。</p>
+<h3 id="app-clearRecentDocuments"><a href="#app-clearRecentDocuments" class="headerlink" title="app.clearRecentDocuments()"></a>app.clearRecentDocuments()</h3><p>清除最近访问的文档列表。</p>
+<h3 id="app-setAsDefaultProtocolClient-protocol-path-args"><a href="#app-setAsDefaultProtocolClient-protocol-path-args" class="headerlink" title="app.setAsDefaultProtocolClient(protocol[, path, args])"></a>app.setAsDefaultProtocolClient(protocol[, path, args])</h3><p>返回 Boolean - 调用是否成功.此方法将当前可执行程序设置为协议(亦称 URI scheme)的默认处理程序。</p>
+<h3 id="app-removeAsDefaultProtocolClient-protocol-path-args"><a href="#app-removeAsDefaultProtocolClient-protocol-path-args" class="headerlink" title="app.removeAsDefaultProtocolClient(protocol[, path, args])"></a>app.removeAsDefaultProtocolClient(protocol[, path, args])</h3><p>返回 Boolean - 调用是否成功。此方法检查当前程序是否为协议（也称为URI scheme）的默认处理程序。 如果是，它会移除程序默认处理该协议。</p>
+<h3 id="app-isDefaultProtocolClient-protocol-path-args"><a href="#app-isDefaultProtocolClient-protocol-path-args" class="headerlink" title="app.isDefaultProtocolClient(protocol[, path, args])"></a>app.isDefaultProtocolClient(protocol[, path, args])</h3><p>返回 Boolean。此方法检查当前程序是否为协议（也称为URI scheme）的默认处理程序。 是则返回true 否则返回false</p>
+<h3 id="app-getLoginItemSettings"><a href="#app-getLoginItemSettings" class="headerlink" title="app.getLoginItemSettings()"></a>app.getLoginItemSettings()</h3><p>返回 Object:<br>openAtLogin Boolean - true 如果程序设置的在登录时启动.</p>
+<h3 id="app-setLoginItemSettings-settings"><a href="#app-setLoginItemSettings-settings" class="headerlink" title="app.setLoginItemSettings(settings)"></a>app.setLoginItemSettings(settings)</h3><p>设定应用的登录选项</p>
+<h3 id="app-isAccessibilitySupportEnabled"><a href="#app-isAccessibilitySupportEnabled" class="headerlink" title="app.isAccessibilitySupportEnabled()"></a>app.isAccessibilitySupportEnabled()</h3><p>返回： Boolean - 如果开启了Chrome的辅助功能，则返回true, 其他情况返回 false. 如果使用了辅助技术，将会返回 true , 比如检测到使用屏幕阅读功能。</p>
+
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="徐宏亮" />
+          <p class="site-author-name" itemprop="name">徐宏亮</p>
+           
+              <p class="site-description motion-element" itemprop="description">我要用尽所有的力气才能书写一个词，放弃。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xuhongliang1996" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#app"><span class="nav-number">1.</span> <span class="nav-text">app</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事件列表"><span class="nav-number">2.</span> <span class="nav-text">事件列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#will-finish-launching"><span class="nav-number">2.1.</span> <span class="nav-text">will-finish-launching</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ready"><span class="nav-number">2.2.</span> <span class="nav-text">ready</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#before-quit"><span class="nav-number">2.3.</span> <span class="nav-text">before-quit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#will-quit"><span class="nav-number">2.4.</span> <span class="nav-text">will-quit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quit"><span class="nav-number">2.5.</span> <span class="nav-text">quit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#browser-window-blur"><span class="nav-number">2.6.</span> <span class="nav-text">browser-window-blur</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#browser-window-focus"><span class="nav-number">2.7.</span> <span class="nav-text">browser-window-focus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#browser-window-created"><span class="nav-number">2.8.</span> <span class="nav-text">browser-window-created</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web-contents-created"><span class="nav-number">2.9.</span> <span class="nav-text">web-contents-created</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#certificate-error"><span class="nav-number">2.10.</span> <span class="nav-text">certificate-error</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#select-client-certificate"><span class="nav-number">2.11.</span> <span class="nav-text">select-client-certificate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#login"><span class="nav-number">2.12.</span> <span class="nav-text">login</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gpu-process-crashed"><span class="nav-number">2.13.</span> <span class="nav-text">gpu-process-crashed</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#换位"><span class="nav-number">2.13.1.</span> <span class="nav-text">换位</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#macO-SWindows"><span class="nav-number">2.14.</span> <span class="nav-text">macO SWindows</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#accessibility-support-changed"><span class="nav-number">2.14.1.</span> <span class="nav-text">accessibility-support-changed</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法列表"><span class="nav-number">3.</span> <span class="nav-text">方法列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#app-quit"><span class="nav-number">3.1.</span> <span class="nav-text">app.quit()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-exit-exitCode"><span class="nav-number">3.2.</span> <span class="nav-text">app.exit(exitCode)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-relaunch-options"><span class="nav-number">3.3.</span> <span class="nav-text">app.relaunch([options])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-isReady"><span class="nav-number">3.4.</span> <span class="nav-text">app.isReady()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-focus"><span class="nav-number">3.5.</span> <span class="nav-text">app.focus()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-getAppPath"><span class="nav-number">3.6.</span> <span class="nav-text">app.getAppPath()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-getPath-name"><span class="nav-number">3.7.</span> <span class="nav-text">app.getPath(name)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-getFileIcon-path-options-callback"><span class="nav-number">3.8.</span> <span class="nav-text">app.getFileIcon(path[, options], callback)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-setPath-name-path"><span class="nav-number">3.9.</span> <span class="nav-text">app.setPath(name, path)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-getVersion"><span class="nav-number">3.10.</span> <span class="nav-text">app.getVersion()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-getName"><span class="nav-number">3.11.</span> <span class="nav-text">app.getName()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-setName-name"><span class="nav-number">3.12.</span> <span class="nav-text">app.setName(name)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-getLocale"><span class="nav-number">3.13.</span> <span class="nav-text">app.getLocale()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-makeSingleInstance-callback"><span class="nav-number">3.14.</span> <span class="nav-text">app.makeSingleInstance(callback)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-releaseSingleInstance"><span class="nav-number">3.15.</span> <span class="nav-text">app.releaseSingleInstance()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-disableHardwareAcceleration"><span class="nav-number">3.16.</span> <span class="nav-text">app.disableHardwareAcceleration()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-commandLine-appendSwitch-switch-value"><span class="nav-number">3.17.</span> <span class="nav-text">app.commandLine.appendSwitch(switch[, value])</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-commandLine-appendArgument-value"><span class="nav-number">3.18.</span> <span class="nav-text">app.commandLine.appendArgument(value)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#换位-1"><span class="nav-number">3.18.1.</span> <span class="nav-text">换位</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows"><span class="nav-number">3.19.</span> <span class="nav-text">Windows</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#app-setUserTasks-tasks"><span class="nav-number">3.19.1.</span> <span class="nav-text">app.setUserTasks(tasks)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#app-getJumpListSettings"><span class="nav-number">3.19.2.</span> <span class="nav-text">app.getJumpListSettings()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#app-setAppUserModelId-id"><span class="nav-number">3.19.3.</span> <span class="nav-text">app.setAppUserModelId(id)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#macOSWindows"><span class="nav-number">3.20.</span> <span class="nav-text">macOSWindows</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#app-addRecentDocument-path"><span class="nav-number">3.20.1.</span> <span class="nav-text">app.addRecentDocument(path)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#app-clearRecentDocuments"><span class="nav-number">3.20.2.</span> <span class="nav-text">app.clearRecentDocuments()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#app-setAsDefaultProtocolClient-protocol-path-args"><span class="nav-number">3.20.3.</span> <span class="nav-text">app.setAsDefaultProtocolClient(protocol[, path, args])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#app-removeAsDefaultProtocolClient-protocol-path-args"><span class="nav-number">3.20.4.</span> <span class="nav-text">app.removeAsDefaultProtocolClient(protocol[, path, args])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#app-isDefaultProtocolClient-protocol-path-args"><span class="nav-number">3.20.5.</span> <span class="nav-text">app.isDefaultProtocolClient(protocol[, path, args])</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#app-getLoginItemSettings"><span class="nav-number">3.20.6.</span> <span class="nav-text">app.getLoginItemSettings()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#app-setLoginItemSettings-settings"><span class="nav-number">3.20.7.</span> <span class="nav-text">app.setLoginItemSettings(settings)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#app-isAccessibilitySupportEnabled"><span class="nav-number">3.20.8.</span> <span class="nav-text">app.isAccessibilitySupportEnabled()</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">徐宏亮</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
